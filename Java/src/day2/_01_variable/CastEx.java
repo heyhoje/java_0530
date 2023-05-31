@@ -3,7 +3,7 @@ package day2._01_variable;
 public class CastEx {
 
 	public static void main(String[] args) {
-		//3.14는 double형 리터럴이기 때문에 int에 저장할 수 없다. 강제형변환을 해야함.
+		//3.14는 double형 리터럴이기 때문에 int에 저장할 수 없다(강제형변환)
 		int pi = (int) 3.14;
 		//3은 int형 리터럴이기 때문에 double형 변수에 저장할 수 있음(자동형변환)
 		double num1 = 3;
@@ -15,7 +15,8 @@ public class CastEx {
 		System.out.println(num1);
 		System.out.println(num2);
 		
-		
+		// 1/2는 문법에는 문제가 없지만 원하는 결과값을 얻기 위해서 (강제형변환) 
+		// 대표적으로 나누기(/)
 		System.out.println((double)1/2);
 	}
 
