@@ -31,5 +31,6 @@ public class Ex1 {
 				System.out.println("" + num3 + '*' + num4 + '=' + mul);
 				System.out.println("" + num3 + '/' + num4 + '=' + div);
 				System.out.println("" + num3 + '%' + num4 + '=' + mod);
+				
 			}
 		}
