@@ -1,18 +1,18 @@
-package day3_02_Operator;
-
-public class _06_SCEEx {
+	package day3_02_Operator;
 	
-	public static void main(String[] args) {
-		String str = "abc";//null
-		System.out.println("Is " + str + " equal to abc? " + (str != null && str.equals("abc")));
+	public class _06_SCEEx {
 		
-		String str = null;
-		//strÀÌ nullÀÌ±â ¶§¹®¿¡ str.xxÀ¸·Î µÇ¾î ÀÖ´Â ¸ğµç °÷¿¡¼­ ¿¡·¯°¡ ¹ß»ı
-		//±×·±µ¥ && ¿¬»êÀÚ ¾Õ¿¡¼­ null Ã¼Å©ÇÏ´Â ÄÚµå°¡ ¸ÕÀú ÀÖ±â ¶§¹®¿¡ 
-		//null ÀÎ °æ¿ì¿¡ ¾ÕºÎºĞÀÌ °ÅÁşÀÌ µÇ¼­ µŞºÎºĞÀÌ ¹®Á¦°¡ µÇ´Â ÄÚµå¸¦ ½ÇÇàÇÏÁö ¾Ê¾Æ¼­ ¹«»çÈ÷ ³Ñ¾î°¨(SCE: ´Ü¶ôÈ¸·ÎÆò°¡)
-		System.out.println("Is " + str + " equal to abc? " + (str != null && str.equals("abc")));// ÄÄÇ»ÅÍ°¡ ¾øÁö ¾Ê´Ù(ÀÖ´Ù) && ÄÄÇ»ÅÍ Àü¿øÀ» ÄÑ¶ó?
-		// ¾Æ·¡ ÄÚµå´Â À§ ÄÚµå¿¡¼­ ¼ø¼­¸¸ º¯°æÇÑ ÄÚµå·Î, ¹®Á¦°¡ µÇ´Â ÄÚµå¸¦ ¸ÕÀú ½ÇÇàÇÏ±â ¶§¹®¿¡ ¿¡·¯(¿¹¿Ü)±î ¹ß»ı
-		System.out.println("Is " + str + " equal to abc? " + (str.equals("abc") && str != null));// ÄÄÇ»ÅÍ°¡ ¾ø´Âµ¥, && ÄÄÇ»ÅÍ Àü¿øÀ» ÄÑ¶ó??
+		public static void main(String[] args) {
+			String str = "abc";//null
+			System.out.println("Is " + str + " equal to abc? " + (str != null && str.equals("abc")));
+			
+			String str1 = null;
+			//strì´ nullì´ê¸° ë•Œë¬¸ì— str.xxìœ¼ë¡œ ë˜ì–´ ìˆëŠ” ëª¨ë“  ê³³ì—ì„œ ì—ëŸ¬ê°€ ë°œìƒ
+			//ê·¸ëŸ°ë° && ì—°ì‚°ì ì•ì—ì„œ null ì²´í¬í•˜ëŠ” ì½”ë“œê°€ ë¨¼ì € ìˆê¸° ë•Œë¬¸ì— 
+			//null ì¸ ê²½ìš°ì— ì•ë¶€ë¶„ì´ ê±°ì§“ì´ ë˜ì„œ ë’·ë¶€ë¶„ì´ ë¬¸ì œê°€ ë˜ëŠ” ì½”ë“œë¥¼ ì‹¤í–‰í•˜ì§€ ì•Šì•„ì„œ ë¬´ì‚¬íˆ ë„˜ì–´ê°(SCE: ë‹¨ë½íšŒë¡œí‰ê°€)
+			System.out.println("Is " + str1 + " equal to abc? " + (str1 != null && str1.equals("abc")));// ì»´í“¨í„°ê°€ ì—†ì§€ ì•Šë‹¤(ìˆë‹¤) && ì»´í“¨í„° ì „ì›ì„ ì¼œë¼?
+			// ì•„ë˜ ì½”ë“œëŠ” ìœ„ ì½”ë“œì—ì„œ ìˆœì„œë§Œ ë³€ê²½í•œ ì½”ë“œë¡œ, ë¬¸ì œê°€ ë˜ëŠ” ì½”ë“œë¥¼ ë¨¼ì € ì‹¤í–‰í•˜ê¸° ë•Œë¬¸ì— ì—ëŸ¬(ì˜ˆì™¸)ê¹Œ ë°œìƒ
+			System.out.println("Is " + str1 + " equal to abc? " + (str1.equals("abc") && str1 != null));// ì»´í“¨í„°ê°€ ì—†ëŠ”ë°, && ì»´í“¨í„° ì „ì›ì„ ì¼œë¼??
+		}
+	
 	}
-
-}
