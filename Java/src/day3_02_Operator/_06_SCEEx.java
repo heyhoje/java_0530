@@ -7,12 +7,14 @@
 			System.out.println("Is " + str + " equal to abc? " + (str != null && str.equals("abc")));
 			
 			String str1 = null;
-			//strì´ nullì´ê¸° ë•Œë¬¸ì— str.xxìœ¼ë¡œ ë˜ì–´ ìžˆëŠ” ëª¨ë“  ê³³ì—ì„œ ì—ëŸ¬ê°€ ë°œìƒ
-			//ê·¸ëŸ°ë° && ì—°ì‚°ìž ì•žì—ì„œ null ì²´í¬í•˜ëŠ” ì½”ë“œê°€ ë¨¼ì € ìžˆê¸° ë•Œë¬¸ì— 
-			//null ì¸ ê²½ìš°ì— ì•žë¶€ë¶„ì´ ê±°ì§“ì´ ë˜ì„œ ë’·ë¶€ë¶„ì´ ë¬¸ì œê°€ ë˜ëŠ” ì½”ë“œë¥¼ ì‹¤í–‰í•˜ì§€ ì•Šì•„ì„œ ë¬´ì‚¬ížˆ ë„˜ì–´ê°(SCE: ë‹¨ë½íšŒë¡œí‰ê°€)
-			System.out.println("Is " + str1 + " equal to abc? " + (str1 != null && str1.equals("abc")));// ì»´í“¨í„°ê°€ ì—†ì§€ ì•Šë‹¤(ìžˆë‹¤) && ì»´í“¨í„° ì „ì›ì„ ì¼œë¼?
-			// ì•„ëž˜ ì½”ë“œëŠ” ìœ„ ì½”ë“œì—ì„œ ìˆœì„œë§Œ ë³€ê²½í•œ ì½”ë“œë¡œ, ë¬¸ì œê°€ ë˜ëŠ” ì½”ë“œë¥¼ ë¨¼ì € ì‹¤í–‰í•˜ê¸° ë•Œë¬¸ì— ì—ëŸ¬(ì˜ˆì™¸)ê¹Œ ë°œìƒ
-			System.out.println("Is " + str1 + " equal to abc? " + (str1.equals("abc") && str1 != null));// ì»´í“¨í„°ê°€ ì—†ëŠ”ë°, && ì»´í“¨í„° ì „ì›ì„ ì¼œë¼??
+			//strÀÌ nullÀÌ±â ¶§¹®¿¡ str.xxÀ¸·Î µÇ¾î ÀÖ´Â ¸ðµç °÷¿¡¼­ ¿¡·¯°¡ ¹ß»ý
+			//±×·±µ¥ && ¿¬»êÀÚ ¾Õ¿¡¼­ null Ã¼Å©ÇÏ´Â ÄÚµå°¡ ¸ÕÀú ÀÖ±â ¶§¹®¿¡ 
+			//null ÀÎ °æ¿ì¿¡ ¾ÕºÎºÐÀÌ °ÅÁþÀÌ µÇ¼­ µÞºÎºÐÀÌ ¹®Á¦°¡ µÇ´Â ÄÚµå¸¦ ½ÇÇàÇÏÁö ¾Ê¾Æ¼­ ¹«»çÈ÷ ³Ñ¾î°¨(SCE: ´Ü¶ôÈ¸·ÎÆò°¡)
+			System.out.println("Is " + str1 + " equal to abc? " + (str1 != null && str1.equals("abc")));// ÄÄÇ»ÅÍ°¡ ¾øÁö ¾Ê´Ù(ÀÖ´Ù) && ÄÄÇ»ÅÍ Àü¿øÀ» ÄÑ¶ó?
+			// ¾Æ·¡ ÄÚµå´Â À§ ÄÚµå¿¡¼­ ¼ø¼­¸¸ º¯°æÇÑ ÄÚµå·Î, ¹®Á¦°¡ µÇ´Â ÄÚµå¸¦ ¸ÕÀú ½ÇÇàÇÏ±â ¶§¹®¿¡ ¿¡·¯(¿¹¿Ü)°¡ ¹ß»ý
+			//System.out.println("Is " + str1 + " equal to abc? " + (str1.equals("abc") && str1 != null));// ÄÄÇ»ÅÍ°¡ ¾ø´Âµ¥, && ÄÄÇ»ÅÍ Àü¿øÀ» ÄÑ¶ó??
+			//                                                      ¤¤ÀÌºÎºÐÀÌ ¿¡·¯ÀÓ
+			//                                                 2¹øÂ° sysoutÀº str1 != null ³ÎÀÌ ¾Æ´Ï´Ù°¡ °ÅÁþÀÌ±â¶§¹®¿¡ µÚ¿¡±îÁö È®ÀÎ ¾ÈÇØµµ false·Î Á¾·áµÇ¾úÀ½
 		}
 	
 	}

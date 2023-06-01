@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Ex3 {
 
 	public static void main(String[] args) {
-		/*ì •ìˆ˜ numì„ ì…ë ¥ë°›ì•„ì„œ numì´ 0ì¸ì§€, ìŒìˆ˜ì¸ì§€, ì–‘ìˆ˜ì¸ì§€ë¥¼ íŒë³„í•˜ëŠ” ì½”ë“œë¥¼ ifë¬¸ì„ ì´ìš©í•˜ì—¬ ì‘ì„±í•˜ì„¸ìš”.
-		numê°€ 0ì´ë©´ 0ì´ë¼ê³  ì¶œë ¥í•˜ê³ , 
-		numê°€ ìŒìˆ˜ì´ë©´ ìŒìˆ˜ë¼ê³  ì¶œë ¥í•˜ê³ ,
-		numê°€ ì–‘ìˆ˜ì´ë©´ ì–‘ìˆ˜ë¼ê³  ì¶œë ¥í•˜ëŠ” ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš”.
+		/*Á¤¼ö numÀ» ÀÔ·Â¹Ş¾Æ¼­ numÀÌ 0ÀÎÁö, À½¼öÀÎÁö, ¾ç¼öÀÎÁö¸¦ ÆÇº°ÇÏ´Â ÄÚµå¸¦ if¹®À» ÀÌ¿ëÇÏ¿© ÀÛ¼ºÇÏ¼¼¿ä.
+		num°¡ 0ÀÌ¸é 0ÀÌ¶ó°í Ãâ·ÂÇÏ°í, 
+		num°¡ À½¼öÀÌ¸é À½¼ö¶ó°í Ãâ·ÂÇÏ°í,
+		num°¡ ¾ç¼öÀÌ¸é ¾ç¼ö¶ó°í Ãâ·ÂÇÏ´Â ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä.
 		 */
 		
 		int num;
@@ -17,13 +17,13 @@ public class Ex3 {
 		num = sc.nextInt();
 		
 		if(num == 0) {
-			System.out.println(num + "ëŠ” 0ì´ë‹¤");
+			System.out.println(num + "´Â 0ÀÌ´Ù");
 		}
 		if(num > 0) {
-			System.out.println(num + "ëŠ” ì–‘ìˆ˜ì´ë‹¤");
+			System.out.println(num + "´Â ¾ç¼öÀÌ´Ù");
 		}
 		if(num < 0) {
-			System.out.println(num + "ëŠ” ìŒìˆ˜ì´ë‹¤");
+			System.out.println(num + "´Â À½¼öÀÌ´Ù");
 		}
 		
 		sc.close();

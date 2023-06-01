@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 public class Ex4_even {
 	public static void main(String[] args) {
-	//ì •ìˆ˜ numì„ ì…ë ¥ë°›ì•„ numê°€ í™€ìˆ˜ì¸ì§€ ì§ìˆ˜ì¸ì§€ íŒë³„í•˜ëŠ” ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš”.
+	//Á¤¼ö numÀ» ÀÔ·Â¹Ş¾Æ num°¡ È¦¼öÀÎÁö Â¦¼öÀÎÁö ÆÇº°ÇÏ´Â ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä.
 
 	int num;
 	Scanner scan = new Scanner(System.in);
 	System.out.println("input number : ");
 	num = scan.nextInt();
 	
-	//numë¥¼ 2ë¡œ [ë‚˜ëˆ„ì—ˆì„ë•Œ ë‚˜ë¨¸ì§€]ê°€ 0ì´ ì•„ë‹ˆë©´ í™€ìˆ˜
-	//numì„ 2ë¡œ [ë‚˜ëˆ„ì—ˆì„ë•Œ ë‚˜ë¨¸ì§€]ê°€ 0ì´ë©´ ì§ìˆ˜
+	//num¸¦ 2·Î [³ª´©¾úÀ»¶§ ³ª¸ÓÁö]°¡ 0ÀÌ ¾Æ´Ï¸é È¦¼ö
+	//numÀ» 2·Î [³ª´©¾úÀ»¶§ ³ª¸ÓÁö]°¡ 0ÀÌ¸é Â¦¼ö
 	
 	if(num % 2 == 0) {
-		System.out.println(num + "ì€ ì§ìˆ˜ì´ë‹¤.");
+		System.out.println(num + "Àº Â¦¼öÀÌ´Ù.");
 	}
 	if(num % 2 != 0) {
-		System.out.println(num + "ì€ í™€ìˆ˜ì´ë‹¤.");
+		System.out.println(num + "Àº È¦¼öÀÌ´Ù.");
 	}
 	scan.close();
 	

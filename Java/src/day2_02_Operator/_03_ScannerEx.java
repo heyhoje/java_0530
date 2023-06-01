@@ -5,34 +5,34 @@ import java.util.Scanner;
 public class _03_ScannerEx {
 
 	public static void main(String[] args) {
-		//System.in : í‘œì¤€ì…ë ¥
-		//í‘œì¤€ ì…ë ¥ì„ ì´ìš©í•´ì„œ ìŠ¤ìºë„ˆë¥¼ ìƒì„±
-		Scanner scan = new Scanner(System.in); // ì½˜ì†”ì—ì„œ ì…ë ¥ë°›ìœ¼ë ¤ë©´ ê¼­ ê¸°ì–µí•´ì•¼í•˜ëŠ” í´ë˜ìŠ¤?ë¬´ì—‡?
+		//System.in : Ç¥ÁØÀÔ·Â
+		//Ç¥ÁØ ÀÔ·ÂÀ» ÀÌ¿ëÇØ¼­ ½ºÄ³³Ê¸¦ »ı¼º
+		Scanner scan = new Scanner(System.in); // ÄÜ¼Ö¿¡¼­ ÀÔ·Â¹ŞÀ¸·Á¸é ²À ±â¾ïÇØ¾ßÇÏ´Â Å¬·¡½º?¹«¾ù?
 	
-		System.out.println("ì •ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		System.out.println("Á¤¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 		
-		int num1 = scan.nextInt();//scanì´ë¼ëŠ” ê°ì²´ì—ì„œ ì •ìˆ˜ë¥¼ ì…ë ¥ë°›ìŒ
+		int num1 = scan.nextInt();//scanÀÌ¶ó´Â °´Ã¼¿¡¼­ Á¤¼ö¸¦ ÀÔ·Â¹ŞÀ½
 		System.out.println(num1);
 		
-		System.out.println("ì‹¤ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
-		double num2 = scan.nextDouble();//ì‹¤ìˆ˜ë¥¼ ì…ë ¥ ë°›ìŒ
+		System.out.println("½Ç¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		double num2 = scan.nextDouble();//½Ç¼ö¸¦ ÀÔ·Â ¹ŞÀ½
 		System.out.println(num2);
 		
-		System.out.println("ë¬¸ìì—´1ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		System.out.println("¹®ÀÚ¿­1À» ÀÔ·ÂÇÏ¼¼¿ä.");
 		scan.nextLine();//
-		String str1 = scan.nextLine();//ìŠ¤í˜ì´ìŠ¤ë¥¼ í¬í•¨í•œ ë¬¸ìì—´ í•œì¤„ì„ ì½ì–´ì˜´(ë§ˆì§€ë§‰ ì…ë ¥í•œ ì—”í„° í¬í•¨)
+		String str1 = scan.nextLine();//½ºÆäÀÌ½º¸¦ Æ÷ÇÔÇÑ ¹®ÀÚ¿­ ÇÑÁÙÀ» ÀĞ¾î¿È(¸¶Áö¸· ÀÔ·ÂÇÑ ¿£ÅÍ Æ÷ÇÔ)
 		System.out.println(str1);
 		
-		System.out.println("ë¬¸ìì—´2ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
-		String str2 = scan.next();//ì²« ë²ˆì§¸ ë¬¸ìë¶€í„° ì½ì–´ì™€ì„œ ë‹¤ìŒ ê³µë°±(ì—”í„°, ìŠ¤í˜ì´ìŠ¤)ê°€ ì˜¤ê¸° ì „ê¹Œì§€ ì½ì–´ì˜´
+		System.out.println("¹®ÀÚ¿­2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		String str2 = scan.next();//Ã¹ ¹øÂ° ¹®ÀÚºÎÅÍ ÀĞ¾î¿Í¼­ ´ÙÀ½ °ø¹é(¿£ÅÍ, ½ºÆäÀÌ½º)°¡ ¿À±â Àü±îÁö ÀĞ¾î¿È
 		System.out.println(str2);
 		
-		System.out.println("ë¬¸ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
-		char ch = scan.next().charAt(0);//next()ë¥¼ ì´ìš©í•˜ì—¬ í•œ ë‹¨ì–´ë¥¼ ì½ì–´ì˜¤ê³  ì½ì–´ì˜¨ ë‹¨ì–´ì˜ ì²«ê¸€ìë¥¼ ê°€ì ¸ì˜´ << String í´ë˜ìŠ¤ì—ì„œ ìì„¸í•œ ì„¤ëª…
+		System.out.println("¹®ÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		char ch = scan.next().charAt(0);//next()¸¦ ÀÌ¿ëÇÏ¿© ÇÑ ´Ü¾î¸¦ ÀĞ¾î¿À°í ÀĞ¾î¿Â ´Ü¾îÀÇ Ã¹±ÛÀÚ¸¦ °¡Á®¿È << String Å¬·¡½º¿¡¼­ ÀÚ¼¼ÇÑ ¼³¸í
 		System.out.println(ch);	
 		
 		
-		scan.close();//close() ë¡œ ë‹«ì§€ ì•Šì•„ë„ í¬ê²Œ ë¬¸ì œëŠ” ì—†ì§€ë§Œ ì•ˆì“°ë©´ ì£¼ì˜í‘œì‹œê°€ ìƒê¹€
+		scan.close();//close() ·Î ´İÁö ¾Ê¾Æµµ Å©°Ô ¹®Á¦´Â ¾øÁö¸¸ ¾È¾²¸é ÁÖÀÇÇ¥½Ã°¡ »ı±è
 	}
 
 }
