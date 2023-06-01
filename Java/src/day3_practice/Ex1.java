@@ -21,7 +21,7 @@ public class Ex1 {
 		/score = 45;
 		/System.out.println();*/
 		
-		Scanner sc = new Scanner(System.in);//왜자꾸 스캐너를 쓰는지 모르겠음. 근데 객체생성처럼 그냥 외워야하는듯
+		Scanner sc = new Scanner(System.in);//왜 자꾸 스캐너를 쓰는지 모르겠음. 근데 객체생성처럼 그냥 외워야하는거야...?
 		System.out.println("Input score : ");
 		int score = sc.nextInt();
 		
