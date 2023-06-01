@@ -2,7 +2,7 @@ package day2_02_Operator;
 
 import java.util.Scanner;
 
-public class ScannerEx {
+public class _03_ScannerEx {
 
 	public static void main(String[] args) {
 		//System.in : 표준입력

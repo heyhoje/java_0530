@@ -1,4 +1,4 @@
-package day2._01_variable;
+package day2_01_variable;
 
 public class ConstantEx {
 
