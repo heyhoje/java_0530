@@ -1,5 +1,7 @@
 package day4.homework;
 
+import java.util.Scanner;
+
 public class _3_TriangleEx {
 
 	public static void main(String[] args) {
@@ -12,6 +14,23 @@ public class _3_TriangleEx {
 //		2 2 3 
 //		Able to create triangle.
 
+		int num1, num2, num3;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("삼각형의 세 변의 길이 : ");
+		num1 = scan.nextInt();
+		num2 = scan.nextInt();
+		num3 = scan.nextInt();
+		
+//		num1 > num2
+//		num2 > num3  ㅡ 1 2 3 / 2 ( 1, 3 )  / 3 2 1  
+//		num3 > num1
+//		>> 제일 큰 숫자가 나옴 A
+//		B + C > A
+		
+		// num1 + num2 > num3;
+		
+		if ()
+		
 	}
 
 }
