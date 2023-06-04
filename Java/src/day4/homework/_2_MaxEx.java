@@ -16,6 +16,8 @@ public class _2_MaxEx {
 		
 		Max = (num1 > num2) ? num1 : num2;
 		System.out.println("두 정수 중 큰 수는 " + Max + "입니다." );
+		
+		sc.close();
 	}
 
 }
