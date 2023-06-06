@@ -15,14 +15,21 @@ public class _1_TeamLeaderEx {
 		// 6
 		// Student number 6 is the team leader.
 		
-		int studentNumber;
+		int num;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("학생 번호를 입력하세요");
-		studentNumber = sc.nextInt();
+		num = sc.nextInt();
 		
 		// 3의 배수 = 리더 / 아니면 조원
 		
-		switch (studentNumber)
+		switch(num % 3) {
+		case 0: 
+			System.out.println("조장입니다");
+			break;
+		default:
+			System.out.println("조원입니다");
+			
+		}
 	}
 
 }
