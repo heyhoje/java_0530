@@ -23,9 +23,9 @@ public class _Answer2 {
 		// 반복문 : 맞출때까지, 입력한 정수가 정답이 아니면 반복
 			// 정수를 입력
 			// 정수와 정답을 비교하여 판별
-//		System.out.println(random);
-//		System.out.println("랜덤한 수 : " + random);
-//		System.out.println("----------");
+		//System.out.println(random);
+		//System.out.println("랜덤한 수 : " + random);
+		//System.out.println("----------");
 		
 		num = 0; // 0으로 초기화 = while 조건문에서 해당 변수 초기화 하라고 해서 함
 		while(num != random) {
@@ -34,8 +34,6 @@ public class _Answer2 {
 		num = scan.nextInt();
 		
 		// 내가 부른 숫자 num, 맞춰야할 숫자 random
-		// 범위/구간 이니까 switch문은 아님ㄴㄴㄴㄴ
-		//i = random; // i를 안만들어도 될거같은데..... // 삭제
 			if(random == num) {
 				System.out.println("GOOOOOD!!");
 			}else if(random < num) {
