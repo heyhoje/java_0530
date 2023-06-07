@@ -2,7 +2,7 @@ package day5.homework;
 
 import java.util.Scanner;
 
-public class _1_TeamLeaderEx {
+public class _Answer1 {
 
 	public static void main(String[] args) {
 		// 1. 30명의 학생이 있는 반에서 1번부터 연속된 번호를 가진 3명의 학생이 1조가 되도록 나누었다. 
@@ -38,3 +38,4 @@ public class _1_TeamLeaderEx {
 	}
 
 }
+
