@@ -30,6 +30,8 @@ public class _1_TeamLeaderEx {
 			System.out.println("조원입니다");
 			
 		}
+		
+		sc.close();
 	}
 
 }
