@@ -1,4 +1,4 @@
-package day6_04_whilEx2;
+package day6_041_whilEx2;
 
 import java.util.Scanner;
 

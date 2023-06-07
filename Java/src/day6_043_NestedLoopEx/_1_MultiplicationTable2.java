@@ -1,4 +1,4 @@
-package day6_04_NestedLoopEx;
+package day6_043_NestedLoopEx;
 
 public class _1_MultiplicationTable2 {
 

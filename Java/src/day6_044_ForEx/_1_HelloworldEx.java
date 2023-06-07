@@ -1,4 +1,4 @@
-package day6_04_ForEx;
+package day6_044_ForEx;
 
 public class _1_HelloworldEx {
 

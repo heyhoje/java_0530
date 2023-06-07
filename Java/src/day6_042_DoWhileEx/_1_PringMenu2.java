@@ -1,4 +1,4 @@
-package day6_04_DoWhileEx;
+package day6_042_DoWhileEx;
 
 import java.util.Scanner;
 

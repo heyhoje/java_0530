@@ -36,7 +36,7 @@ public class _3_GCDEx {
 		i = 1;
 		gcd = 0;
 		while (i <= num1) {
-			if (num1 % i == 0 && num2 % i ==0) {
+			if (num1 % i == 0 && num2 % i == 0) {
 				gcd = i; // *i를 gcd에 저장!! l변수와 r변수 순서도 중요함...!!!
 			}
 			// System.out.println(gcd);
