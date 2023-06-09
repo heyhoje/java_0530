@@ -43,18 +43,6 @@ public class _1_MethodOverloadingEx {
 		}
 	
 		
-
-//		public static int EvenNumher (int num) {
-//			int result = num % 2;
-//			if (result == 0) {
-//				System.out.println("짝수");
-//			}else {
-//				System.out.println("홀수");
-//			}
-//			System.out.println();
-			
-		
-		
 		/** 1. num가 주어지면 num가 짝수인지 홀수인지 출력하는 메소드 
 		 * @param num : 판별할 정수
 		 * @return : 없음 => void

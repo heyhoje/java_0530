@@ -21,6 +21,9 @@ public class _4_MethodLCMEx {
 		int lcm = lcm1(num1, num2);
 		System.out.println(num1 + "과 " + num2 + "의 lcm : " + lcm);
 		
+		lcm = lcm2(num1, num2);
+		System.out.println(num1 + "과 " + num2 + "의 lcm : " + lcm);
+		
 		sc.close();
 		
 	}
@@ -39,6 +42,10 @@ public class _4_MethodLCMEx {
 			}
 		}
 		return num1*num2; 
+	}
+	
+	public static int lcm2(int num1, int num2) {
+		return num1*num2 / GCD(num1, num2);
 	}
 	public static boolean isMultiple(int num1, int num2) {
 		return num1 % num2 == 0;
