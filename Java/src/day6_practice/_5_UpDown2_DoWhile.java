@@ -19,13 +19,13 @@ public class _5_UpDown2_DoWhile {
 		 * 규칙성 : Up Down 게임 한 판 진행
 		 * */
 		
-		do {
-			//랜덤한 수 생성
+		do {//랜덤한 수 생성
 			random = (int)(Math.random() * (max - min + 1) + min);
 			/*내부반복문 : UpDown 게임 진행하는 반복문
 			 * 반복횟수 : 입력받은 숫자가 랜덤한 숫자와 일치하지 않으면 반복
 			 * 규칙성 : 입력받은 숫자가 정답보다 크면 Down!, 작으면 Up! 맞으면 Goood!을 출력
 			 * */	
+			System.out.println(random);
 			do {
 				// 입력
 				System.out.println("input : ");
@@ -39,14 +39,15 @@ public class _5_UpDown2_DoWhile {
 				}else {
 					System.out.println("Goood!");
 				}
-		} while(menu != 'n');		
-		//menu를 선택(더 할건지 말건지)
-		System.out.println("continue?(y/n) : ");
-		menu = scan.next().charAt(0);
+			}while(random != num);
+			//menu를 선택(더 할건지 말건지)
+			System.out.println("continue?(y/n) : ");
+			menu = scan.next().charAt(0);
+		}while(menu != 'n');
 		
 		
-		}
 		scan.close();
+		
 	}
-
+	
 }
