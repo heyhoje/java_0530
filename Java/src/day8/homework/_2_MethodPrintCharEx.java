@@ -1,5 +1,7 @@
 package day8.homework;
 
+import java.util.Scanner;
+
 public class _2_MethodPrintCharEx {
 
 	public static void main(String[] args) {
@@ -9,6 +11,23 @@ public class _2_MethodPrintCharEx {
 		// ***
 		// ?????
 		// ^^^^^^^
+		
+		System.out.println("*****");
+		System.out.println("***");
+		System.out.println("?????");
+		System.out.println("^^^^^^^");
 	}
 
+	
+	/** 매개변수 : int i, char 
+	 *	리턴타입 : 특수문자 => Char
+	 *	매소드명 : PrintChar 
+	 */
+	 
+	//public static 리턴타입 메소드명(매개변수);
+	
+	public static void PrintChar(String text) {
+		System.out.println(text);
+	}
+	
 }
