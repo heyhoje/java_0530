@@ -4,12 +4,12 @@ public class OverflowEx {
 
 	public static void main(String[] args) {
 		byte num = 127;
-		++num;//numì— 1ì„ ì¦ê°€
-		System.out.println(num);// ì˜¤ë²„í”Œë¡œìš°ê°€ ë°œìƒ
+		++num;//num¿¡ 1À» Áõ°¡
+		System.out.println(num);// ¿À¹öÇÃ·Î¿ì°¡ ¹ß»ı
 		
 		num = -128;
 		--num;
-		System.out.println(num);// ì–¸ë”í”Œë¡œìš°ê°€ ë°œìƒ
+		System.out.println(num);// ¾ğ´õÇÃ·Î¿ì°¡ ¹ß»ı
 	}
 
 }

@@ -3,14 +3,14 @@ package day2_01_variable;
 public class Practice {
 
 	public static void main(String[] args) {
-		//1. ì•„ë˜ ì½”ë“œì—ì„œ ì˜ëª»ëœ ë¶€ë¶„ì„ ì°¾ì•„ ìˆ˜ì •í•˜ì„¸ìš”.
+		//1. ¾Æ·¡ ÄÚµå¿¡¼­ Àß¸øµÈ ºÎºĞÀ» Ã£¾Æ ¼öÁ¤ÇÏ¼¼¿ä.
 		// char ch1 = "A";
 		char ch1 = 'A';
 		System.out.println(ch1);
 		
-		//2. êµ­ì–´, ì˜ì–´, ìˆ˜í•™ ì„±ì ì„ ì…ë ¥í•˜ì—¬ í‰ê· ì„ êµ¬í•˜ë ¤ í•œë‹¤. ì´ë•Œ í•„ìš”í•œ ë³€ìˆ˜ë“¤ì„ ì„ ì–¸í•˜ì„¸ìš”.
-		//int kor, eng, math / ì •ìˆ˜í˜• ë³€ìˆ˜
-		//double, float avg / ì‹¤ìˆ˜í˜• ë³€ìˆ˜
+		//2. ±¹¾î, ¿µ¾î, ¼öÇĞ ¼ºÀûÀ» ÀÔ·ÂÇÏ¿© Æò±ÕÀ» ±¸ÇÏ·Á ÇÑ´Ù. ÀÌ¶§ ÇÊ¿äÇÑ º¯¼öµéÀ» ¼±¾ğÇÏ¼¼¿ä.
+		//int kor, eng, math / Á¤¼öÇü º¯¼ö
+		//double, float avg / ½Ç¼öÇü º¯¼ö
 		int koreaScore = 100;
 		int englishScore = 85;
 		int mathScore = 90;
