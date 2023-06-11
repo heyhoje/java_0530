@@ -19,8 +19,10 @@ public class _1_MethodArithmeticEx {
 		operator = sc.next().charAt(0);
 		num2 = sc.nextInt();
 		
-		String getArithmetic = Arithmetic(num1, num2, operator);
-		System.out.println(getArithmetic);
+//		String getArithmetic = Arithmetic(num1, num2, operator);
+//		System.out.println(getArithmetic);
+		
+		Arithmetic(num1, operator, num2);
 		
 		sc.close();
 	}
@@ -32,13 +34,7 @@ public class _1_MethodArithmeticEx {
 	 * 메소드명 : Arithmetic
 	 * @return 
 	 */
-	public static String Arithmetic(int num1, int num2, char operator) {
-//		int sum = num1 + num2;
-//		int sub = num1 - num2;
-//		int mul = num1 * num2;
-//		double div = (double)num1 / num2;
-//		int mod = num1 % num2;
-		
+	public static void Arithmetic(int num1, char operator ,int num2) {
 		if (operator == '+') {// ""문자열로 처리할 경우 .equals()를 써야하니까 ''문자처리하자
 			System.out.println(num1 + " + " + num2 + " = " + (num1+num2));
 		}else if (operator == '-') {
@@ -46,12 +42,12 @@ public class _1_MethodArithmeticEx {
 		}else if (operator == '*') {
 			System.out.println(num1 + " * " + num2 + " = " + (num1*num2));
 		}else if (operator == '/') {
-			System.out.println((double)num1 + " / " + num2 + " = " + (double)(num1/num2));
-		}
+			System.out.println((double)num1 + " / " + num2 + " = " + (double)num1/num2);
+		} // 나누기를 (double)(num1/num2) 이렇게 하지 말고 >> (double)num1/num2 이렇게 하니까 됨
 		else if (operator == '%') {
 			System.out.println(num1 + " % " + num2 + " = " + (num1 % num2));
 		}
-		return null; // 리턴타입을 void로 바꾸거나, 리턴문을 더하라는 경고문 떠서 쓰긴했는데, 
+		//return null; // 리턴타입을 void로 바꾸거나, 리턴문을 더하라는 경고문 떠서 쓰긴했는데, 
 					 // 콘솔창에 그대로 출력됨. 이러면 안되잖아...? 		
 											
 	}

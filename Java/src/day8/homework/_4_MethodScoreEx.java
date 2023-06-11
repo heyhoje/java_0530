@@ -12,31 +12,34 @@ public class _4_MethodScoreEx {
 		System.out.println("성적을 입력하세요 : ");
 		score = sc.nextInt();
 		
-		grade(60)
+		grade(score);
+		
+		sc.close();
 	}
 	
-	/** 매개변수 : 성적을 입력하고 => int score 
-	 *	리턴타입 : 학점을 출력한다 => char
+	/** 기능 : 성적을 입력하면 학점을 알려준다. 
+	 * 매개변수 : 성적 => int score 
+	 *	리턴타입 : 학점 문자열
 	 *	매소드명 : grade 
 	 */
-	public static char grade(int num) {
-		int score;
-		char grade = 0;
+	public static void grade(int num) {
+		int score = num; // 0도 1도 아닌, 매개변수 num이었다네 어쩐지 안썼더라...는 몰랐다
+		// String grade;
 		if (score < 0 || score > 100) {
 			System.out.println("Wrong Score");
-		}else if () {
-			System.out.println('A');
-		}else if () {
-			System.out.println('B');
-		}else if () {
-			System.out.println('C');
-		}else if () {
-			System.out.println('D');
-		}else if () {
-			System.out.println('F');
+		}else if (score >= 90 && score <= 100) {
+			System.out.println("A 입니다");
+		}else if (score >= 80 && score < 90) {
+			System.out.println("B 입니다");
+		}else if (score >= 70 && score < 80) {
+			System.out.println("C 입니다");
+		}else if (score >= 60 && score < 70) {
+			System.out.println("D 입니다");
+		}else if (score < 60) {
+			System.out.println("F 입니다");
 		}
 		
-		}
 	}
+	
 
 }
