@@ -10,7 +10,7 @@ public class Car {
 	 private char gear;		// P:주차, R:후진, D:주행, N:중립
 	 private boolean power;		// 전원
 	 
-	// 생성자
+	// (멤버변수 초기화하는)생성자
 	 public Car(String _name, String _company, int _year) {
 		name = _name;
 		company = _company;
@@ -23,7 +23,7 @@ public class Car {
 		//멤버변수 파랑, 매개변수 갈색
 		//클래스 = 멤버변수 + 메소드
 	 }
-	// 메소드
+	// 메소드 (기능추가)
 		/** 자동차 정보를 출력하는 메소드
 		 * 매개변수 : 없음 (내 정보를 갖다 쓸 때)
 		 // 멤버변수가 이미 알고있어서, 알려줄 필요 없음...(이름, 제조사, 연식, 속력, 기어상태, 전원상태 => String, int, char, boolean)
