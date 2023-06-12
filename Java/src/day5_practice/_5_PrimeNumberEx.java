@@ -21,7 +21,7 @@ public class _5_PrimeNumberEx {
 		// 반복문 종료 후 : count가 2이면 소수라고 출력, 아니면 소수가 아님 이라고 출력
 		
 		// 반복문 i는 1부터 num까지 1씩 증가
-			//i가 num의 약수라면 약수의 개수 countfmf 1 증가
+			//i가 num의 약수라면 약수의 개수 count를 1 증가
 		i = 1;
 		count = 0;
 		while(i <= num) {
