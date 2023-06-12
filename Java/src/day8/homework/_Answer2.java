@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class _Answer2 {
 
 	public static void main(String[] args) {
-		// 2.´ÙÀ½°ú °°ÀÌ Ãâ·ÂÇÏ±â À§ÇÑ ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä (´Ü, ¸Ş¼Òµå ÀÌ¿ë)
-		// if Á¶°Ç µûÁö´Â°Ô ¾Æ´Ï¶ó ÇÑÁÙ¾¿ ÀÔ·ÂµÇµµ·Ï 
+		// 2.ë‹¤ìŒê³¼ ê°™ì´ ì¶œë ¥í•˜ê¸° ìœ„í•œ ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš” (ë‹¨, ë©”ì†Œë“œ ì´ìš©)
+		// if ì¡°ê±´ ë”°ì§€ëŠ”ê²Œ ì•„ë‹ˆë¼ í•œì¤„ì”© ì…ë ¥ë˜ë„ë¡ 
 		// *****
 		// ***
 		// ?????
@@ -36,54 +36,53 @@ public class _Answer2 {
 				
 		int num = 5;
 		for (int i = 1; i <= num; i++) {
-		// °ø¹é('')ÀÌ num - i°³ Ãâ·Â
+		// ê³µë°±('')ì´ num - iê°œ ì¶œë ¥
 		printChar(' ', num - i);
-		// '*'ÀÌ i°³ Ãâ·Â ÈÄ ¿£ÅÍ
+		// '*'ì´ iê°œ ì¶œë ¥ í›„ ì—”í„°
 		printChar('*', i, '\n');
-				}
+		}
 
-			
-		/** ±â   ´É : ¹®ÀÚ¿­ÀÌ ÁÖ¾îÁö¸é ÁÖ¾îÁø ¹®ÀÚ¿­À» Ãâ·ÂÇÏ°í ÁÙ¹Ù²ŞÇÏ´Â ¸Å¼Òµå 
-		 * 	¸Å°³º¯¼ö : ¹®ÀÚ¿­ => String text(Str)
-		 *	¸®ÅÏÅ¸ÀÔ : ¾øÀ½ => void
-		 *	¸Å¼Òµå¸í : PrintString 
+	}		
+		/** ê¸°   ëŠ¥ : ë¬¸ìì—´ì´ ì£¼ì–´ì§€ë©´ ì£¼ì–´ì§„ ë¬¸ìì—´ì„ ì¶œë ¥í•˜ê³  ì¤„ë°”ê¿ˆí•˜ëŠ” ë§¤ì†Œë“œ 
+		 * 	ë§¤ê°œë³€ìˆ˜ : ë¬¸ìì—´ => String text(Str)
+		 *	ë¦¬í„´íƒ€ì… : ì—†ìŒ => void
+		 *	ë§¤ì†Œë“œëª… : PrintString 
 		 */
 			 
-		//public static ¸®ÅÏÅ¸ÀÔ ¸Ş¼Òµå¸í(¸Å°³º¯¼ö);
+	//public static ë¦¬í„´íƒ€ì… ë©”ì†Œë“œëª…(ë§¤ê°œë³€ìˆ˜);
 			
-		public static void printString(String text) {
-			System.out.println(text);
+	public static void printString(String text) {
+		System.out.println(text);
 		}
 			
-		/** ±â   ´É : ¹®ÀÚ¿Í °³¼ö°¡ ÁÖ¾îÁö¸é ÁÖ¾îÁø ¹®ÀÚ¸¦ °³¼ö¸¸Å­ ­„·ÂÇÏ´Â ¸Å¼Òµå 
-		 * 	¸Å°³º¯¼ö : ¹®ÀÚ¿Í °³¼ö => char ch, int count 
-		 *	¸®ÅÏÅ¸ÀÔ : ¾øÀ½ => void
-		 *	¸Å¼Òµå¸í : PrintChar 
+		/** ê¸°   ëŠ¥ : ë¬¸ìì™€ ê°œìˆ˜ê°€ ì£¼ì–´ì§€ë©´ ì£¼ì–´ì§„ ë¬¸ìë¥¼ ê°œìˆ˜ë§Œí¼ ï¿½ï¿½ë ¥í•˜ëŠ” ë§¤ì†Œë“œ 
+		 * 	ë§¤ê°œë³€ìˆ˜ : ë¬¸ìì™€ ê°œìˆ˜ => char ch, int count 
+		 *	ë¦¬í„´íƒ€ì… : ì—†ìŒ => void
+		 *	ë§¤ì†Œë“œëª… : PrintChar 
 		 */
 			
-		public static void printChar(char ch, int count) {
-			for (int i = 1; i <= count; i++) {
-				System.out.print(ch);
+	public static void printChar(char ch, int count) {
+		for (int i = 1; i <= count; i++) {
+			System.out.print(ch);
 			}
 		}
 			
-			/** ±â   ´É : ¹®ÀÚ¿Í °³¼ö, ¸¶Áö¸· ¹®ÀÚ°¡ ÁÖ¾îÁö¸é ÁÖ¾îÁø ¹®ÀÚ¸¦ °³¼ö¸¸Å­ Ãâ·ÂÇÏ°í ¸¶Áö¸· ¹®ÀÚ¸¦ Ãâ·ÂÇÏ´Â ¸Ş¼Òµå 
-			 * 	¸Å°³º¯¼ö : ¹®ÀÚ¿Í °³¼ö, ¸¶Áö¸· ¤Ó¹®ÀÚ => char ch, int count, char lastCh 
-			 *	¸®ÅÏÅ¸ÀÔ : ­‹·ÂµÈ ¹®ÀÚ¿­ => String
-			 *	¸Ş¼Òµå¸í : PrintChar 
-			 *  ¸Ş¼Òµå ¿À¹ö·ÎµùÀ¸·Î printChar ¸Ş¼Òµå Ãß°¡! ¸Å°³º¯¼ö 2 -> 3
-			 */
+		/** ê¸°   ëŠ¥ : ë¬¸ìì™€ ê°œìˆ˜, ë§ˆì§€ë§‰ ë¬¸ìê°€ ì£¼ì–´ì§€ë©´ ì£¼ì–´ì§„ ë¬¸ìë¥¼ ê°œìˆ˜ë§Œí¼ ì¶œë ¥í•˜ê³  ë§ˆì§€ë§‰ ë¬¸ìë¥¼ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ 
+		 * 	ë§¤ê°œë³€ìˆ˜ : ë¬¸ìì™€ ê°œìˆ˜, ë§ˆì§€ë§‰ ã…£ë¬¸ì => char ch, int count, char lastCh 
+		 *	ë¦¬í„´íƒ€ì… : ï¿½ï¿½ë ¥ëœ ë¬¸ìì—´ => String
+		 *	ë©”ì†Œë“œëª… : PrintChar 
+		 *  ë©”ì†Œë“œ ì˜¤ë²„ë¡œë”©ìœ¼ë¡œ printChar ë©”ì†Œë“œ ì¶”ê°€! ë§¤ê°œë³€ìˆ˜ 2 -> 3
+		 */
 			
-		public static String printChar(char ch, int count, char lastCh) {
-			String str = "";
-			for(int i = 1; i <= count; i++) {
-				System.out.print(ch);
-				str += ch;
-				}
-				System.out.println(lastCh);
-				str += lastCh;
-				return str;
+	public static String printChar(char ch, int count, char lastCh) {
+		String str = "";
+		for(int i = 1; i <= count; i++) {
+			System.out.print(ch);
+			str += ch;
 			}
-		}
+			System.out.println(lastCh);
+			str += lastCh;
+			return str;
+			
 	}
 }
