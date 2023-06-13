@@ -18,52 +18,73 @@ public class _1_pointEx {
 	}
 }
 
-// 좌표의 점을 관리하는 클래스
+	// 좌표의 점을 관리하는 클래스
 	/* 클래스의 접근제어자가 public으로 올 수 있는 조건
 	 * - 파일명과 클래스명이 같아야 public을 붙일 수 있다.
 	 * - 같은 패키지에 같은 이름의 클래스가 있으면 안됨
 	 * */
-class Rect1 {
-	// 멤버변수
-	/* 왼쪽 위의 점 x좌표, 왼쪽 위의 점 y좌표
-	 * 오른쪽 아래의 점 x좌표, 오른쪽 아래 점 y좌표*
-	 */
-	private int leftUpX, leftUpY;
-	private int rightDownX, rightDownY;
+class point{
+	//멤버변수
+	// x좌표, y좌표
+	private int x, y;
 	
-	// 생성자 는 public
-	public Rect1(int leftUpX, int leftUpY, int rightDownX, int rightDownY) {
-		this.leftUpX = leftUpX;
-		this.leftUpY = leftUpY;
-		this.rightDownX = rightDownX;
-		this.rightDownY = rightDownY;
-	}
-	
-	// getter, setter
-	// 생략, 여기서는 해당 기능이 필요하지 않음
-		
-	
-	//메서드
-	/** 기능 : 현재 좌표를 출력하는 기능
-	 * 매개변수 : 없음(내 좌표이기 때문에 이미 알고있음)
-	 * 리턴타입 : 없음(출력하면 끝이기 때문에 알려줄게 없음
-	 * 메소드명 : print
-	 */
-	public void print() {
-		System.out.println("" + x + ", " + y + "px");
-	}
-	
-	/** 기능 : 주어진 x, y좌표로 이동하는 메소드(좌표 수정)
-	 * => 멤버변수 x, y를 주어진 x, y로 수정하는 메소드
-	 * 매개변수 : 주어진 x, y => int x, int y
-	 * 리턴타입 : 없음 => void
-	 * ㄴex) setter처럼
-	 * 메소드명 : move
-	 */
-	public void move(int x, int y) {
+	// 생성자
+	public Point() {}
+	// 생성자 오버로딩. x,y좌표가 주어졌을때 객체를 초기화
+	public Point(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
+	
+	
+	// getter와 setter (메서드에 포함)
+	/* getter
+	 * public 리턴타입 get변수명() {
+	 * 				return 변수명;
+	 * }
+	 * get변수명에서 변수명의 첫 글자를 대문자로
+	 * 리턴타입은 변수의 자료형
+	 * 
+	 * setter
+	 * public void set변수명(자료형 변수명) {
+	 * 				this.변수명 = 변수명;
+	 * }
+	 * */
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	//메서드
+		/**현재 좌표를 출력하는 메서드
+		 * 매개변수 : 없음.
+		 * 리턴타입 : 없음 => void
+		 * 메서드명 : print
+		 * */
+		public void print() {
+			System.out.println("" + x + "," + y + "px");
+		}
+		/**주어진 x,y좌표로 이동하는 메서드
+		 *  =>멤버변수 x,y를 주어진 x,y로 수정하는 메서드
+		 * 매개변수 : 주어진 x,y => int x,int y
+		 * 리턴타입 : 없음 => void
+		 * 메서드명 : move
+		 */
+		public void move(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	
+	
+
 }
 	
 
