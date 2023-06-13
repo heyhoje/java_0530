@@ -23,7 +23,7 @@ public class _1_pointEx {
 	 * - 파일명과 클래스명이 같아야 public을 붙일 수 있다.
 	 * - 같은 패키지에 같은 이름의 클래스가 있으면 안됨
 	 * */
-class point{
+class Point{
 	//멤버변수
 	// x좌표, y좌표
 	private int x, y;
