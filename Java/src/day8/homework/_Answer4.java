@@ -7,16 +7,15 @@ public class _Answer4 {
 	public static void main(String[] args) {
 		// 4. 성적을 입력받아 학점을 출력하는 코드를 작성하세요 (단, 메소드 이용)
 		
-		double score, score2;
+		double score;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("성적을 입력하세요 : ");
 		score = sc.nextInt();
-		score2 = sc.nextInt();
 		
-		getGrade1(score);
+		getGrade(score);
 		
-		score2 = 100.1;
-		System.out.println(getGrade2(score2));
+	
+		System.out.println(getGrade(score));
 		
 		sc.close();
 	}
@@ -26,27 +25,8 @@ public class _Answer4 {
 	 *	리턴타입 : 학점 문자열 => String
 	 *	매소드명 : getGrade 
 	 */
-	public static String getGrade1(double score) {
-		score = 0.0;
-		// String grade;
-		if (score < 0 || score > 100) {
-			System.out.println("Wrong Score");
-		}else if (score >= 90) {
-			System.out.println("A 입니다");
-		}else if (score >= 80) {
-			System.out.println("B 입니다");
-		}else if (score >= 70) {
-			System.out.println("C 입니다");
-		}else if (score >= 60) {
-			System.out.println("D 입니다");
-		}else if (score < 60) {
-			System.out.println("F 입니다");
-		}
-		return null;
-	}
-	public static String getGrade2(double score2) {
-		double score = 0.0;
-		// String grade;
+	
+	public static String getGrade(double score) {
 		if (score < 0 || score > 100) {
 			return "Wrong Score";
 		}
@@ -71,10 +51,10 @@ public class _Answer4 {
 		default:
 			return "F";
 		}
-		return null;
+		//return null; // 학점값이 출력이 안되여....
 	}
 	
 	
 
-	}
+	
 }
