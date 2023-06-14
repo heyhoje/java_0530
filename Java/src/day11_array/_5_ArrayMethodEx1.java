@@ -1,6 +1,7 @@
 package day11_array;
 
 // tmpArr 호출하는데서 놓침 
+// 그냥 난장판임... 깃헙 봐도 쓸게 너무 많아서 골라내기 어렵겠는걸? 이해는 될까? 
 
 public class _5_ArrayMethodEx1 {
 
@@ -48,6 +49,13 @@ public class _5_ArrayMethodEx1 {
 		printArr(arr1);
 		printArr(arr2);
   	}
+	
+	System.out.println("----------");
+	
+	public static void test1(int arr[]) {
+		arr = new int [4];
+		arr[0] = 3;
+	}
 	
 	public static void printArr(int arr[]) {
 		for(int num : arr) {
