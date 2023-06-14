@@ -1,6 +1,6 @@
 package day10_practice;
 
-public class _2_RectEx1 {
+public class _2_RectEx {
 
 	public static void main(String[] args) {
 		Rect1 r = new Rect1(0,0,10,10);
@@ -14,7 +14,8 @@ public class _2_RectEx1 {
 		r.resize(0,0,30,30);
 		r.print();
 		
-		System.out.println("R2 start!");
+		System.out.println();
+		System.out.println("[R2 start!]");
 		
 		Rect2 r2 = new Rect2(new Point(0,0), new Point(10,10));
 		r2.print();
@@ -113,7 +114,7 @@ class Rect2{
 	 * 메소드명 : print
 	 */
 	public void print() {
-		System.out.println("---------");
+		System.out.println("----Rect2-----");
 		System.out.println("LeftUp point : " );
 		leftUp.print();
 		System.out.println("RightDown point : ");
@@ -133,7 +134,7 @@ class Rect2{
 		int dx = leftUp.getX() -x; //이동한 x좌표 거리, -10
 		int dy = leftUp.getY() -y; // 이동한 y좌표 거리, -10
 		leftUp.move(x, y);
-		rightDown.move(rightDown.getX - dx, rightDown.getY - dy);
+		rightDown.move(rightDown.getX() - dx, rightDown.getY() - dy);
 	}
 	
 	/**기능 : 사각형의 크기를 변경하는 메소드
