@@ -23,8 +23,10 @@ public class _2_RectEx2 {
 		r2.print();
 		r2.move(10,10);
 		r2.print();
+		
 		r2.resize(10,10,20,20);
 		r2.print();
+		
 		r2.resize(0, 0, 30, 30);
 		r2.print();
 		

@@ -64,27 +64,25 @@ class Point{
 	}
 	
 	//메서드
-		/**현재 좌표를 출력하는 메서드
-		 * 매개변수 : 없음.
-		 * 리턴타입 : 없음 => void
-		 * 메서드명 : print
-		 * */
-		public void print() {
-			System.out.println("" + x + "," + y + "px");
-		}
-		/**주어진 x,y좌표로 이동하는 메서드
-		 *  =>멤버변수 x,y를 주어진 x,y로 수정하는 메서드
-		 * 매개변수 : 주어진 x,y => int x,int y
-		 * 리턴타입 : 없음 => void
-		 * 메서드명 : move
-		 */
-		public void move(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
+	/**현재 좌표를 출력하는 메서드
+	 * 매개변수 : 없음.
+	 * 리턴타입 : 없음 => void
+	 * 메서드명 : print
+	 */
+	public void print() {
+		System.out.println("" + x + "," + y + "px");
+	}
 	
-	
-
+	/**주어진 x,y좌표로 이동하는 메서드
+	 *  =>멤버변수 x,y를 주어진 x,y로 수정하는 메서드
+	 * 매개변수 : 주어진 x,y => int x,int y
+	 * 리턴타입 : 없음 => void
+	 * 메서드명 : move
+	 */
+	public void move(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 }
 	
 
