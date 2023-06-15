@@ -19,6 +19,7 @@ public class _Answer1 {
 		// 1. 맞춰야할 숫자 3개를 랜덤으로 생성(중복x)!
 		int com[] = new int[3]; // 랜덤으로 생성된 수를 저장할 배열
 		int user[] = new int[3]; // 사용자가 입력한 수를 저장할 배열
+		
 		int min = 1, max = 9;
 		int strike = 0; // 스트라이크 개수
 		int ball = 0; // 볼의 개수  // 아웃은 카운트 안해도됨
@@ -30,9 +31,9 @@ public class _Answer1 {
  		Array.createRandomArray(min, max, com);
 		Array.printArray(com); // 판정이 제대로 되는지 테스트 해보고, 나중에 주석처리
 		
-		// 4. 반복문(여러번 입력하고 판별해야함)
+		// 2+3. 반복문(여러번 입력하고 판별해야함)
 		do {
-			// 사용자가 숫자 3개를 입력
+			// 2. 사용자가 숫자 3개를 입력
 			System.out.println("user : ");
 			for(int i = 0; i < user.length; i++) {
 				user[i] = sc.nextInt();
