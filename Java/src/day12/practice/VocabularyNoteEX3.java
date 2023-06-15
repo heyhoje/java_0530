@@ -4,13 +4,13 @@ public class VocabularyNoteEX3 {
 
 	public static void main(String[] args) {
 		Word wordList[] = {
-				new Word("abc"),
-				new Word("def", "def is define");
-		};
+				new Word("def", "def is define")};
 		
-		Voca
+		VocabularyNote note = new VocabularyNote(wordList);
+		note.print();
+	
 	}
-
+}
 	/** 기능 : 단어가 주어지면 단어장에 추가하는 메소드
 	 * 매개변수 : 
 	 * 리턴타입 : 
@@ -49,4 +49,4 @@ public class VocabularyNoteEX3 {
 	 * 리턴타입 : 
 	 * 메소드명 : 
 	 */
-}
+

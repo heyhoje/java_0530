@@ -21,7 +21,6 @@ public class Array {
 	
 	/** 배열 일부, <start번지부터 end-1번지까지> 출력 (메소드 오버로딩함) */
 	public static void printArray(int arr[], int start, int end) {
-		//int i;// 밖에서 숫자 100을 알려줘도 메소드 안에 들어가면 0으로 초기화됨. 알려줄 필요없음. 지역변수화.
 		System.out.print("[");
 		for(int i = start; i < end; i++) {
 			if(i >= arr.length) {

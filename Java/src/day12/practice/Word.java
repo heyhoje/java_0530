@@ -31,10 +31,11 @@ public class Word {
 			this.meaning = new String[5];
 			//this.meaning = w.meaning; // 얕은복사, 공유해서 어쩌구함...
 			for(int i = 0; i <w.meaningCount; i++) {
-				meaning[i] = w.meaning[i];
+				this.meaning[i] = w.meaning[i];
 			}
 			meaningCount = w.meaningCount;
 		}
+		
 		// 메소드
 		/** 기능 : 단어와 뜻을 출력하는 메소드
 		 * 매개변수 : 없어?(내정보 출력이라 굳이 남이 알려줄 필요 없음.)(자기 자신이라????)
@@ -89,10 +90,10 @@ public class Word {
 					meaning[i] = meaning[i+1]; //한칸씩 땡겨옴
 				}
 				// 마지막에 쓸모없는 데이터를 지움
-				//meaning[meaningCount-1] = null; // 해도되고 안해도됨. 
+				meaning[meaningCount-1] = null; // 해도되고 안해도됨. 
 				// 제거 됐으면 뜻 개수를 하나 줄임
 				meaningCount--;
 			}
 			
 		}
-}
+
