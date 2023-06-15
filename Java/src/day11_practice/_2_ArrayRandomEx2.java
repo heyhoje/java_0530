@@ -38,9 +38,13 @@ public class _2_ArrayRandomEx2 {
 		}
 		for(i = 0; i < 3; i++) {
 			System.out.println(arr[i]);
+			// printArray(arr) 메소드화
 		}
 	
 		System.out.println("---- 방 법 2----");
+		
+		// 역시 이해가 안된다.
+		
 		// 방법2 : 저장된 값들을 비교(이중 반복문 필요)
 		int count = 0; // 현재 저장된 랜덤수 개수
 		i = 0; // 반복문에서 사용할 변수
@@ -63,6 +67,7 @@ public class _2_ArrayRandomEx2 {
 			if(i == count) { // i랑 count랑 숫자가 어떻게 변하는지 모르겠네???
 				arr[count] = random;
 				count++;
+				// arr[couont++] = ramdom; 과 같다
 			}
 		}
 		printArray(arr);
@@ -71,11 +76,19 @@ public class _2_ArrayRandomEx2 {
 		System.out.println("---- 방 법 3----");
 		// 방법3 : 방법2를 메소드로 변형
 		createRandomArray(min, max, arr);
+			// 랜덤한 수를 배열에 저장(최소 ~ 최대, 배열)
+			// ㄴif(!contains(arr, random, count)) {
+			//		arr[count] = random;
+			//  	count++;
+				//중복된 값이 있는지 확인. 
 		printArray(arr);
+			// 정수형 배열값 출력
+		
+		
 	}
-	
+		// 메소드1 : printArray (정수형 배열의 값 출력)
 		/** 기능 : 정수형 배열이 주어지면, 정수형 배열의 값을 콘솔에 출력하는 메소드
-		 * 매개변수 : 배열 => int arr[]
+		 * 매개변수 : 배열, 배열의 개수 => int arr[], int size = arr.length
 		 * 리턴타입 : 없음 => void
 		 * 메서드명 : printArray
 		 */
@@ -88,25 +101,34 @@ public class _2_ArrayRandomEx2 {
 			
 		}
 		
-		/** 기능 : 정수 num이 배열의 0번지부터 count개만큼 확인했을 때 중복된 값이 있는지 없는지(boolean) 알려주는 메소드
+		// 메소드2 : contains (중복된 값 있는지 확인, count개)
+		/** 기능 : 정수 num이 배열의 0번지부터 count개만큼(전체가 아니라 내가 지정한 count개수만큼)
+		 * 		  확인했을 때 중복된 값이 있는지 없는지(boolean) 알려주는 메소드
 		 * 매개변수 : 중복을 확인할 배열(기준), 비교할 정수 num, 비교할 개수 count
 		 * 			=> int arr[]. int num, int count
-		 * 리턴타입 있는지 없는지 => boolean
+		 * 리턴타입 : 있는지 없는지 => boolean
+		 * ㄴ '알려준다', '반환한다', '돌려준다'
 		 * 메소드명 : contains
 		 */
 		
 		public static boolean contains(int arr[], int num, int count) {
 			for(int i = 0; i < count; i++) {
 				// 중복되면 메소드를 종료하면서 중복됐다고 알려줌
-				if(num == arr[i]) {
+				if(num == arr[i]) { // <- 중복된게 없다
 					return true;
 				}
-			}
-			// 이 위치까지 왔다는건 return true(중복되는 값을 만났다?) 를 못만났다는 뜻이고
-			// 그 말은 중복되지 않았다는 뜻
-			return false; // 반복문도 다 나왔는데 왜 return false;를 써야하지? 
+				// 이 위치까지 왔다는건 return true(중복되는 값을 만났다?) 를 못만났다는 뜻이고
+				// 그 말은 중복되지 않았다는 뜻
+			} // 아래 if문 따져볼 필요없이 바로 return false; 하면됨
+			// if(i = count) {
+			//arr[count] = random;
+			//count++
+			//}
+			return false; 
+			  
 		}
 		
+		// 메소드3 : 랜덤한 수 생성, 배열에 저장
 		/** 기능 : min에서 max사이의 랜덤한 수를 생성하여 배열에 저장하는 메소드
 		 * 매개변수 : 최소값, 최대값, 배열 => int min, int max, int arr[]
 		 * 리턴타입 : 없음(저장만) => void
@@ -114,18 +136,19 @@ public class _2_ArrayRandomEx2 {
 		 */
 		
 		public static void createRandomArray(int min, int max, int arr[]) {
-			// 배열이 생성되어 있지 않으면(배열이 만들어져있지 않으면, null이면) 메소드 종료
+			// 예외2) 배열이 생성되어 있지 않으면(배열이 만들어져있지 않으면, null이면) 메소드 종료
 			if(arr == null) {
-				return; //리턴의 의미는? 그냥 조건문을 나간다???
+				return; //리턴의 의미는? 그냥 조건문을 나간다??? * 메소드를 종료한다.
 			}
 			
-			// 랜덤으로 만들어지는 수의 개수가 배열의 크기보다 작으면 메소드를 종료
+			// 예외1) 랜덤으로 만들어지는 수의 개수가 배열의 크기보다 작으면 메소드를 종료
 			// min 1 ~ max 3 : 중복되지 않게 최대 3개 가능 / 4개 불가능, 어떤 수라도 중복됨(=> 무한루프빠짐)
 			//				 : 랜덤한 수 3개가 4개짜리 배열에 중복되지 않게 들어갈 수 없음
 			if(max - min + 1 < arr.length) {
 				return; // 배열의 값을 저장 안하고 종료한다.
 			}
 			
+			// 같거나 크면 랜덤하게 생성한다
 			int count = 0;
 			while(count < 3) {
 				int random = (int)(Math.random()*(max - min + 1) + min);
