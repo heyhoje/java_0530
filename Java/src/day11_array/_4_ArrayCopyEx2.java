@@ -38,7 +38,7 @@ public class _4_ArrayCopyEx2 {
 		//pointArr2에 있는 첫번째 점을 100,0으로 이동
 		pointArr2[0].move(100,0);
 	
-		System.out.println("---------");
+		System.out.println("----Arr2 move-----");
 		//향상된 for문
 		for(Point pt : pointArr) {
 			pt.print();
