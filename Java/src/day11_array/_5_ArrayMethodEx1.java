@@ -11,7 +11,7 @@ public class _5_ArrayMethodEx1 {
 		int num2 = 20;
 		System.out.println("num1 = " + num1 + ", num2 = " + num2);
 		
-		//두 정수를 교환하는 코드 작성
+		//1. 두 정수를 교환하는 코드 작성
 		int tmp = num1;
 		num1 = num2;
 		num2 = tmp; // 두 수를 교환하려면 변수 하나가 더 필요
@@ -19,7 +19,8 @@ public class _5_ArrayMethodEx1 {
 		System.out.println("num1 = " + num1 + ", num2 = " + num2);
 		
 		System.out.println("----호출전------");
-		num1 = 10; num2 = 20;
+		num1 = 10; 
+		num2 = 20;
 		System.out.println("num1 = " + num1 + ", num2 = " + num2);
 		swap(num1, num2);
 		System.out.println("----호출후------");
@@ -33,27 +34,67 @@ public class _5_ArrayMethodEx1 {
 		// 주소를 바꿔주는것
 		int tmpArr[] = new int [arr1.length];
 		
+		System.out.println("---------");
+		printArr(arr1);
+		printArr(arr2);
 		
+		// 2. 두 배열을 교환
 		tmpArr = arr1;
 		arr1 = arr2;
 		arr2 = tmpArr;
 		
-		//메소드 오버로딩 (정수 1개/정수2개)
-		swap(arr1, arr2);
-		System.out.println("--------");
+		System.out.println("---------");
 		printArr(arr1);
 		printArr(arr2);
 		
-		swap2(arr1, arr2);
-		System.out.println("--------");
+		// 매개변수로 넘겨준 배열의 주소가 메소드 안에서 바뀌면 원본에 영향이 없음
+		swap(arr1, arr2);
+		System.out.println("---------");
 		printArr(arr1);
 		printArr(arr2);
-  	}
+		
+		// 매개변수로 넘겨준 배열의 주소가 아닌 배열의 값이 메소드 안에서 바뀌면ㄴ
+		
+		// 원본이 영향을 받음
+		swap2(arr1, arr2);
+		System.out.println("---------");
+		printArr(arr1);
+		printArr(arr2);
+		
+		System.out.println("----------");
+		int arr3[] = {1,2,3,4};
+		printArr(arr3);
+		test1(arr3);
+		printArr(arr3);
+		
+		System.out.println("------------");
+		int arr4[] = {1,2,3,4};
+		printArr(arr4);
+		test2(arr4);
+		printArr(arr4);
+		
+//		//메소드 오버로딩 (정수 1개/정수2개)
+//		swap(arr1, arr2);
+//		System.out.println("--------");
+//		printArr(arr1);
+//		printArr(arr2);
+//		
+//		swap2(arr1, arr2);
+//		System.out.println("--------");
+//		printArr(arr1);
+//		printArr(arr2);
+  	
 	
 	System.out.println("----------");
 	
 	public static void test1(int arr[]) {
+		// 기존 배열을 버리고 새로운 배열을 만듬
+		// => main에서 연결되었던 배열과 연결이 끊김
 		arr = new int [4];
+		arr[0] = 3;
+	}
+	
+	public static void test2(int arr[]) {
 		arr[0] = 3;
 	}
 	
