@@ -1,6 +1,10 @@
 package day12.practice;
 
+import lombok.Data;
+
 // 또 놓쳤다 뭐어디에 복사생성자를 넣으라는데 갑자기 class word로 넘어와있네
+@Data // getter, setter, toString equals를 자동 추가
+
 public class Word {
 		/* 한 단어를 관리하는 클래스
 		 * - 단어
@@ -85,15 +89,47 @@ public class Word {
 				// return을 쓰지 않으면, else {} 가 나와야함. 
 				// return;을 적절하게 잘 활용하면, 가독성이 생기고 코드가 효율적으로 작업될 수 있다.
 				}
+				
 				// num -1 번지부터 하나씩 당겨와서 채워준다. 덮어쓰기.
 				for(int i = num -1; i < meaningCount -1; i++) {
 					meaning[i] = meaning[i+1]; //한칸씩 땡겨옴
 				}
+			
 				// 마지막에 쓸모없는 데이터를 지움
 				meaning[meaningCount-1] = null; // 해도되고 안해도됨. 
 				// 제거 됐으면 뜻 개수를 하나 줄임
 				meaningCount--;
-			}
-			
 		}
+		
+		/** 기능 : 수정할 뜻의 번호와 수정할 뜻이 주어지면 뜻을 수정하고, 수정 여부를 알려주는 메소드
+		 * 매개변수 : 수정할 뜻의 번호, 수정할 뜻 => int meaningNum, String meaning
+		 * 리턴타입 : 수정했는지 안했는지 => boolean
+		 * 메소드명 : updateMeanting
+		 * @param meaningIndex
+		 * @param meaning2
+		 * @return
+		 */
+		public boolean updateMeaning(int meaningNum, String meaning) {
+			// 수정할 뜻의 번호가 잘못된 경우(1,2 인데, 0, -1, 3 등을 고르면)
+			if(meaningNum > meaningCount || meaningNum <= 0) {
+				return false;
+			}
+			// meaningNum는 1부터이고, 번지는 0부터이기 때문에 -1을 한다
+			this.meaning[meaningNum - 1] = meaning;
+			return true; // 수정 완료 후에는 true!
+		}
+
+		// title만 getter&setter 만듬
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		
+		
+			
+}
 
