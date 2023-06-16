@@ -63,7 +63,7 @@ public class Array {
 		if(max < min) { // 9 < 1
 			int tmp = max;
 			max = min; 
-			min = max; // 두 수를 바꿔줌(얕은 복사?)
+			min = tmp; // 두 수를 바꿔줌(얕은 복사?)
 		}
 
 		// 배열이 생성되어 있지 않으면(배열이 null이면) 메소드 종료
@@ -118,5 +118,28 @@ public class Array {
 		}
 		// 반복문이 끝날때까지 중복(return true)이 안되면 중복이 안됐다고 리턴 
 		return false;
+	}
+	
+	/** 기능 : 정수형 배열이 주어지면 오름차순으로 버블 정렬하는 메소드
+	 * 매개변수 : 정수형 배열 => int arr[]
+	 * 리턴타입 : (매개변수값, 정수형 배열)을 바꾸는 거라 필요없음 => void
+	 * 메소드명 : sort
+	 */
+	public static void sort(int arr[]) {
+		if(arr == null) {
+			return;
+			}
+	
+		for(int i = 0; i < arr.length -1; i++) {//마지막에 1만 남아서 굳이 비교한번더 안해도됨
+			for(int j = 0; j < arr.length -1-i; j++) { // 왜 마이너스 1??? 비교하는 수라?
+							  // 6개 - 01 12 23 34 45 / 56(X) 
+			if(arr[j] > arr[j+1]) {
+				int tmp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = tmp;
+				} 
+			}
+		}
+
 	}
 }
