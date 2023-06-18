@@ -12,22 +12,53 @@ public class _2_MethodPrintCharEx {
 		// ?????
 		// ^^^^^^^
 		
-		System.out.println("*****");
-		System.out.println("***");
-		System.out.println("?????");
-		System.out.println("^^^^^^^");
+		printString("*****");
+		printChar('*', 3);
+		System.out.println();
+		printChar('?', 5, '\n');
+		printChar('^', 7, '\n');
+		
 	}
-
 	
-	/** 매개변수 : int i, char 
-	 *	리턴타입 : 특수문자 => Char
-	 *	매소드명 : PrintChar 
+	/** 기능 : 문자열이 주어지면 주어진 문자열을 출력하고 줄바꿈하는 메소드 
+	 * 매개변수 : 
+	 * 리턴타입 : 
+	 * 매소드명 : printString
+	 */
+		 
+	//public static 리턴타입 메소드명(매개변수);
+	public static void printString(String str) {
+		System.out.println(str);
+	}
+		
+	/** 기능 : 문자와 개수가 주어지면 주어진 문자를 개수만큼 출력하는 메소드
+	 * 매개변수 : 문자, 개수 => , count
+	 * 리턴타입 : (출력) 없음 => void
+	 * 매소드명 : printChar
+	 */
+	
+	public static void printChar (char ch, int count) {
+		for(int i = 1; i <= count; i++) {
+			System.out.print(ch);
+		}
+	}
+	 
+	/** 기능 : 문자와 개수, 마지막 문자가 주어지면, 주어진 문자를 개수만큼 출력하고 마지막 문자를 출력하는 메소드 
+	 * 매개변수 : 문자, 개수, 마지막 문자 =>  char ch, int count, char lastCh
+	 * 리턴타입 : 마지막 문자 출력 => String
+	 * 매소드명 : printChar
 	 */
 	 
-	//public static 리턴타입 메소드명(매개변수);
-	
-	public static void PrintChar(String text) {
-		System.out.println(text);
+	public static String printChar(char ch, int count, char lastCh) {
+		String str = "";
+		for(int i = 1; i <= count; i++) {
+			System.out.print(ch);
+			str += ch;
+		}
+		System.out.print(lastCh);
+		str += lastCh;
+		return str;
 	}
+	
 	
 }

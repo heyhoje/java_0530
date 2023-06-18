@@ -10,28 +10,29 @@ public class _2_MethodMultipleEx {
 		
 		// System.out.println(MethodEvenNumberEx.isMultiple(4,2));
 		
-		int num1;
+		int num;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("input number : ");
-		num1 = sc.nextInt();
 		
-		if (isMultiple(num1, 6)) {
-			System.out.println("6의 배수");
-		}else if (isMultiple(num1, 2)) {
-			System.out.println("2의 배수");
-		}else if (isMultiple(num1, 3)) {
-			System.out.println("3의 배수");
+		System.out.println("정수를 입력하세요 : ");
+		num = sc.nextInt();
+		
+		if(isMultiple(num, 6)) {
+			System.out.println(num + "은 6의 배수");
+		}else if(isMultiple(num, 2)) {
+			System.out.println(num + "은 2의 배수");
+		}else if(isMultiple(num, 3)) {
+			System.out.println(num + "은 3의 배수");
 		}else {
-			System.out.println("2,3,6 의 배수가 아니다");
-		
+			System.out.println("2,3,6 의 배수가 아닙니다.");
 		}
+		
 		sc.close();
 	}
 	
 	/** 
 	 * 매개변수 : 정수 num => int num
-	 * 리턴타입 : 
-	 * 메소드명 : 
+	 * 리턴타입 : 배수인지 아닌지 => boolean
+	 * 메소드명 : isMultiple
 	 */
 	
 	public static boolean isMultiple(int num1, int num2) {
@@ -48,6 +49,6 @@ public class _2_MethodMultipleEx {
 //			System.out.println("3의 배수");
 //		}
 		
-	}
+}
 
 

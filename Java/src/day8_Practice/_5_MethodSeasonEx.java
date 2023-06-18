@@ -29,11 +29,15 @@ public class _5_MethodSeasonEx {
 			System.out.println("Wrong month");
 		}
 		
+		System.out.println("-------");
+		
 		String season = getSeason(month);
 		System.out.println(month + " is " + getSeason(month));
+		
 		sc.close();
 	}
 	
+	// 메소드1 : 월에 맞는 계절
 	/** 기능 : 월이 주어지면 주어지는 월에 맞는 계절을 알려주는 메소드
 	 * 매개변수 : 월 => int month
 	 * 리턴타입 : 계절 => String
