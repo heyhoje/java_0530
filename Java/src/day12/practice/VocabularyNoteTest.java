@@ -34,7 +34,7 @@ public class VocabularyNoteTest {
 		
 		System.out.println("----뜻 수정----");
 		note.updateMeaning("b", 2, "B");
-		note.updateMeaning("b", 3, "B"); // 3은 없기 떄문에 Wrong Number
+		note.updateMeaning("b", 3, "B"); // 3은 없기 때문에 Wrong Number
 		//note.print();
 		
 		System.out.println("----단어 수정----");
