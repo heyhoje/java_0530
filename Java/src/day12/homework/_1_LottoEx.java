@@ -22,13 +22,16 @@ public class _1_LottoEx {
 		// user : 6개ㅑ
 
 		// 1. 뽑아야할 숫자 7개, 6개를 랜덤으로 생성(중복x) 
-		int lotto[] = new int[6]; // 보너스도 숫자니까 7개 뽑는거지?ㅇㅇ
+		int lotto[] = new int[7]; // 보너스도 숫자니까 7개 뽑는거지?ㅇㅇ
 		//int bonus[] = new int[1];
 		int user[] = new int[6]; // lotto가 뽑은 숫자랑 몇개 같은지, 순서 상관없이
 		
 		int min = 1, max = 45; // 번호는 1부터 45까지 
-		int normal = 0; // 기본 6개
-		int bonus = 0; // 보;너스 1개
+		int bonus = lotto[6];
+		int lotto2[] = new int[6]; 
+		
+//		System.out.println(bonus);
+//		System.out.println(lotto2); // 그저 번호를 알고 싶었을 뿐인디, 주소값이 나와버리는듯...??
 		
 		// 콘솔창 입력
 		Scanner sc = new Scanner(System.in);
@@ -36,7 +39,8 @@ public class _1_LottoEx {
 		System.out.println("이번주 로또 번호 6개!");
 		Array.createRandomArray(min, max, lotto); 
 		Array.printArray(lotto);
-		System.out.println("보너스 번호");
+		System.out.println("보너스 번호 : " + bonus);
+		
 		// 마지막 나온 숫자를 보너스라고해?? 보너스만 따로 뽑아야할거같은데
 		//Array.createRandomArray(min, max, bonus); 
 		//Array.printArray(bonus);
