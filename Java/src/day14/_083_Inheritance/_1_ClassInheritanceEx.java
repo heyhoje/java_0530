@@ -2,6 +2,7 @@ package day14._083_Inheritance;
 
 import lombok.Data;
 
+@Data
 public class _1_ClassInheritanceEx {
 
 	public static void main(String[] args) {
@@ -44,16 +45,15 @@ public class _1_ClassInheritanceEx {
 
 }
 
+// 부모 클래스
 @Data
 class Phone {
-	protected String num = "010-1111-4444"; // 전화번호
+	private String num = "010-1111-4444"; // 전화번호
 	
 	// 전화 걸기 기능
 	public void call(String num) {
 		System.out.println(num); // 내가 전화를 거는 상대방 번호
 		System.out.println("Calling....");
-		
-		
 	}
 	
 	// 전화 받기
@@ -68,25 +68,11 @@ class Phone {
 	// public Phone (){} // 생성자가 하나도 없으면 컴파일 할때 기본 생성자가 자동으로 추가
 }
 
-@Data
+// 자식 클래스 / 부모클래스를 (is a 관계)상속받음
 class SmartPhone extends Phone{
 	Camera camera = new Camera(); // (has a) 포함관계, 스마트폰은 카메라를 가지고 있다.	
 	public void take() {
 		camera.take();
-	}
-	
-	// 오버라이딩
-	public void call(String num) {
-//		System.out.println(num); // 내가 전화를 거는 상대방 번호
-//		System.out.println("SmartPhone Calling....");
-		super.call(num);
-		System.out.println("SmartPhone!");
-	}
-	
-	// 메소드 오버로딩임
-	public void answer(String num1, String num2) {
-		System.out.println(num); // 나한테 전화를 건 상대방 번호
-		System.out.println("SmartPhone Answering...");
 	}
 	
 	public SmartPhone() {
@@ -98,9 +84,24 @@ class SmartPhone extends Phone{
 		// super(); // 에러 발생
 		super("");
 	}
+	
+	// 메소드 오버라이딩
+	@Override
+	public void call(String num) {
+//		System.out.println(num); // 내가 전화를 거는 상대방 번호
+//		System.out.println("SmartPhone Calling....");
+		super.call(num);
+		System.out.println("SmartPhone!");
+	}
+	
+	// 메소드 오버로딩임
+	public void answer(String num1, String num2) {
+		
+	}
+	
 }
 
-
+// 카메라 클래스 / (has a)포함관계
 class Camera {
 	public void take() {
 		System.out.println("take a picture!");
