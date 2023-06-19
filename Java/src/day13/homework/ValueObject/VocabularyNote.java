@@ -184,7 +184,7 @@ public class VocabularyNote {
 	 * 메소드명 : updateMeaning
 	 */
 	
-	public boolean updateMeaning(String title, int num, String meaning) {
+	public boolean updateMeaning(String title, int meaningIndex, String meaning) {
 		// 해당 단어가 어디있는지 찾기
 		int index = indexOf(title);
 		
@@ -193,7 +193,7 @@ public class VocabularyNote {
 			return false; //하고 끝
 		}
 		// 있으면,		뜻 수정하는 메소드...? 이것은 무엇
-		if(!wordList[index].updateMeaning(title, meaning)) {
+		if(!wordList[index].updateMeaning(meaningIndex, meaning)) {
 			// System.out.println("Wrong number");
 			return false;
 		}
@@ -241,4 +241,3 @@ public class VocabularyNote {
 	}
 	
 }
- 
