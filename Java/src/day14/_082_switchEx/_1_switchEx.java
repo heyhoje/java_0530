@@ -1,5 +1,7 @@
 package day14._082_switchEx;
 
+// 얘는 뭔소린지 모르겠음..... 
+
 public class _1_switchEx {
 
 	public static void main(String[] args) {
