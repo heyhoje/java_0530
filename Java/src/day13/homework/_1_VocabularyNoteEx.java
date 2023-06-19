@@ -101,13 +101,13 @@ public class _1_VocabularyNoteEx {
 	
 	/** 기능 : 메인메뉴를 선택
 	 * 매개변수 : int num
-	 * 리턴타입 : void??
+	 * 리턴타입 : String
 	 * 메소드명 : selectMain
 	 */
 	
 	/** 기능 : 서브메뉴를 선택
 	 * 매개변수 : int num
-	 * 리턴타입 : void??
+	 * 리턴타입 : String
 	 * 메소드명 : selectSub
 	 */
 }
