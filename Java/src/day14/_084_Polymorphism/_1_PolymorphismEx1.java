@@ -1,7 +1,5 @@
 package day14._084_Polymorphism;
 
-// 깃헙 보고 다시 채우자^^
-
 public class _1_PolymorphismEx1 {
 
 	public static void main(String[] args) {
@@ -49,6 +47,7 @@ class RemoteControl{
 	}
 }
 
+// 1. 같은 기능을 하는 매개변수를 각자 가지고 있음 
 class TV {
 	boolean power;
 	int channel;
@@ -93,7 +92,7 @@ class RemoteControl1 {
 	
 	public void turnOff(HomeAppliances appliance) {
 		appliance.turnOff();
-		System.out.println("전원이 Rj졌습니다.");
+		System.out.println("전원이 꺼졌습니다.");
 	}
 }
 
