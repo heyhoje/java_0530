@@ -1,6 +1,5 @@
 package day14._081_member.variable;
 
-// 에러뜨고 부터 필기 놓침
 // 클래스 멤버변수랑 객체 멤버변수도 모르겠음
 
 public class _1_Ex {
@@ -17,7 +16,11 @@ public class _1_Ex {
 		 */
 		
 		System.out.println(TestA.num2);
-		TestA a = new TestA(TestA.num2);
+		
+		TestA a = new TestA();
+		System.out.println(a.num);
+		
+		System.out.println(TestA.num2);
 	}
 
 }
@@ -28,8 +31,10 @@ class TestA {
 	{
 		num = 2;
 	}
+	
 	public TestA() { // 생성자에서 초기화
 		num = 3;
+		num2 = 3;
 	}
 	
 	static int num2 = 1;
