@@ -23,7 +23,7 @@ public class _1_ClassInheritanceEx {
 		SmartPhone phone1 = new SmartPhone();
 		phone1.call("010-1234-5678");
 		phone1.answer("02-123-4567");
-		//System.out.println(phone1.getNum);
+		System.out.println(phone1.getNum);
 		phone1.take();
 		
 		System.out.println("--------");
