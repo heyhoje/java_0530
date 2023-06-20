@@ -212,7 +212,7 @@ public class VocabularyNote {
 		int index = indexOf(title);
 		
 		if(index == -1) {
-			System.out.println("No words found");
+			//System.out.println("No words found");
 			return false;
 		}
 		
@@ -220,7 +220,7 @@ public class VocabularyNote {
 		return true;
 	}
 	
-	
+	// 메소드7 : 단어삭제
 	/** 기능 : 단어와 삭제할 뜻의 번호가 주어지면, 뜻을 삭제하고, 삭제여부를 알려주는 메소드
 	 * 매개변수 : 단어와 뜻 번호 => String title, int num
 	 * 리턴타입 : 뜻 삭제 여부 => boolean

@@ -86,7 +86,9 @@ public class _5_ArrayMethodEx1 {
   	
 	
 	System.out.println("----------");
-	
+	}	
+
+
 	public static void test1(int arr[]) {
 		// 기존 배열을 버리고 새로운 배열을 만듬
 		// => main에서 연결되었던 배열과 연결이 끊김
@@ -112,10 +114,7 @@ public class _5_ArrayMethodEx1 {
 			tmp[i] = arr1[i];
 			arr1[i] = arr2[i];
 			arr2[i] = tmp[i];
-			
-			
 		}
-		
 	}
 	
 	/** 두 배열을 교환하는 메소드1 : 교환이 안됨*/
@@ -136,7 +135,6 @@ public class _5_ArrayMethodEx1 {
 		int tmp = num1;
 		num1 = num2;
 		num2 = tmp;
-		
 	}
 
 }

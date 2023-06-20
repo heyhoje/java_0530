@@ -31,7 +31,7 @@ public class _1_PolymorphismEx1 {
 	}
 
 }
-
+//�ѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤ�
 class RemoteControl{
 	public void turnOn(TV tv) {
 		tv.turnOn();
@@ -74,6 +74,7 @@ class Radio {
 	}
 }
 
+//�ѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤѤ�
 class HomeAppliances{
 	boolean power;
 	void turnOn() {
@@ -83,7 +84,6 @@ class HomeAppliances{
 		power = false;
 	}
 }
-
 class RemoteControl1 {
 	public void turnOn(HomeAppliances appliance) {
 		appliance.turnOn();
