@@ -2,7 +2,6 @@ package day14._083_Inheritance;
 
 import lombok.Data;
 
-@Data
 public class _1_ClassInheritanceEx {
 
 	public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class _1_ClassInheritanceEx {
 		SmartPhone phone1 = new SmartPhone();
 		phone1.call("010-1234-5678");
 		phone1.answer("02-123-4567");
-		System.out.println(phone1.getNum);
+		System.out.println(phone1.getNum());
 		phone1.take();
 		
 		System.out.println("--------");
@@ -50,6 +49,14 @@ public class _1_ClassInheritanceEx {
 class Phone {
 	private String num = "010-1111-4444"; // 전화번호
 	
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
+	}
+
 	// 전화 걸기 기능
 	public void call(String num) {
 		System.out.println(num); // 내가 전화를 거는 상대방 번호
@@ -64,6 +71,8 @@ class Phone {
 	
 	public Phone(String num) {
 		this.num = num;
+		
+		
 	} 
 	// public Phone (){} // 생성자가 하나도 없으면 컴파일 할때 기본 생성자가 자동으로 추가
 }
