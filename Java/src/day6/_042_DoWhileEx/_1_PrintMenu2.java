@@ -2,7 +2,7 @@ package day6._042_DoWhileEx;
 
 import java.util.Scanner;
 
-public class _1_PringMenu2 {
+public class _1_PrintMenu2 {
 
 	public static void main(String[] args) {
 		/* 1. 다음과 같은 메뉴를 출력하고 프로그램 종료를 선택하기 전까지 반복적으로 실행되는 코드를 작성하세요.
