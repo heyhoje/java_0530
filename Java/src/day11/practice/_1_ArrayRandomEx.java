@@ -1,4 +1,4 @@
-package day11_practice;
+package day11.practice;
 
 public class _1_ArrayRandomEx {
 
