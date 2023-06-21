@@ -10,6 +10,8 @@ public class ShopManager {
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
 	private Product list[] = new Product[10]; // 제품 리스트
 	private int count = 0; // 저장된 제품 개수
+	private Customer customerp[ = new Customer[10]; // 최대 10개
+	private int customerCount = 0; //저장된 
 	
 	public void run () {
 		// 멤버변수 / 기능 
@@ -100,8 +102,13 @@ public class ShopManager {
 		}
 
 		private void printSales() {
-			// TODO Auto-generated method stub
+			// 매출 내역 출력
+			for(int i = 0; i < salesCount; i++) {
+				saleHistory[i].print();
+			}
 			
+			// 누적 매출액 출력
+			System.out.println("누적 매출액 : " + totalPrice);
 		}
 		
 		// 메소드5 : 제품 조회
@@ -193,9 +200,21 @@ public class ShopManager {
 		}
 		
 		private void sell() {
-			
+			// 제픔명 입력
+			// 제품 개수 이력
+			// 고객정
 		}
 		
+		
+		
+		private int indexOfCustomer(String phoneNumber) {
+			for (int i = 0; i < customerCount; i++) {
+				// 고객의 번호가 같으면
+				if(customerList[i].getphoneNumber().equals(phoneNumber))
+					return i;
+			}
+			
+		}
 		// 메소드3 : 제품 판매 기능(제품명, 재고count)
 		// 메소드4 : 새 제품 추가/입고(count++)
 		// 메소드5 : 제품 정보 조회(제품명, 가격, 재고)
