@@ -22,6 +22,14 @@ public class Product {
 		this.category = category;
 	}	
 	
+	public Product(Product product) {
+		this.name = product.name;
+		this.modelName = product.modelName;
+		this.price = product.price;
+		this.amount = product.amount;
+		this.category = product.category;
+	}
+	
 	// 메소드
 	// 메소드1 : 제품 입고(수량 변경)
 	/** 기능 : 제품 입고 기능 => 현재 수량에 주어진 수량을 누정 */
@@ -54,7 +62,9 @@ public class Product {
 		System.out.println("분류 : " + category);
 		System.out.println("재고 : " + amount);
 		System.out.println("가격 : " + price);
-	}
+	} 
+	
+	
 	/** 기능 : 제품명으로 제품 조회
 	 * 
 	 */

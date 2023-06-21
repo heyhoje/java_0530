@@ -4,14 +4,21 @@ import java.util.Scanner;
 
 import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product; //import안해서. product랑 list[] 에러 떴었음
+import day15.practice.shop.vo.Sales;
 
 public class ShopManager {
 	
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
 	private Product list[] = new Product[10]; // 제품 리스트
 	private int count = 0; // 저장된 제품 개수
-	private Customer customerp[ = new Customer[10]; // 최대 10개
-	private int customerCount = 0; //저장된 
+	
+	private Customer customerList[] = new Customer[10]; // 최대 10명의 고객 관리
+	private int customerCount = 0; //저장된 고객 수
+	
+	private Sales salesHistory[] = new Sales[100]; // 판매 기록
+	private int salesCount; // 기록된 판매수
+	private int totalPrice;
+	
 	
 	public void run () {
 		// 멤버변수 / 기능 
@@ -22,8 +29,10 @@ public class ShopManager {
 		// 반복 : 선택한 메뉴가 종료가 아닐때까지 & 반드시 한번은 실행됨
 		do {// 1. 메뉴 출력
 			printMenu();
+			
 			// 2. 메뉴 선택
 			menu = sc.nextInt();
+			
 			// 3. 메뉴에 따른 기능 실행
 			runMenu(menu);
 				
@@ -94,17 +103,34 @@ public class ShopManager {
 		
 		// 메소드4 : 고객등록
 		private void registerCustomer() {
-			Customer customer = new Customer("홍길동", "010-1234-5678");
-			customer.print();
-			customer = new Customer("임꺽정", "010-1111-5555");
-			customer.print();
+			// 고객 정보(이름, 전화번호)를 입력
+			System.out.print("이름 : ");
+			String name = sc.next();
+			System.out.println("번호 : ");
+			String phoneNumber = sc.next();
 			
+			// (고객 리스트에) 고객을 등록
+			// 이미 등록된 전화번호이면 등록x
+			for (int i = 0; i < customerCount; i++) {
+				// customerList[i] : 고객 리스트에서 i번지에 있는 고객 정보
+				// customerList[i].getPhoneNumber() : i번지 고객의 전화번호
+				// i번지 고객의 전화번호와 등록하려는 고객의 전화번호가 같으면 등록 실패
+				if(customerList[i].getPhoneNumber().equals(phoneNumber)) {
+					System.out.println("등록된 번호! 고객 등록 실패!");
+					return;
+				}
+			}
+			// 새 전화번호이면 등록
+			// 입력받은 고객 정보를 이용하여 고개 객체를 생성한 후, 마지막 고객 다음에 새 고객을 추가
+			// 등록된 고객의 수를 증가
+			customerList[customerCount] = new Customer(name, phoneNumber);
+			customerCount++;
 		}
-
+			
 		private void printSales() {
 			// 매출 내역 출력
 			for(int i = 0; i < salesCount; i++) {
-				saleHistory[i].print();
+				salesHistory[i].print();
 			}
 			
 			// 누적 매출액 출력
@@ -113,15 +139,14 @@ public class ShopManager {
 		
 		// 메소드5 : 제품 조회
 		private void printProduct() {
-			//검색핧 제품을 입력
+			//검색할 제품을 입력
 			System.out.println("제품명 : ");
 			sc.nextLine(); // 엔터. 이전 입력에서 엔터를 쳤기 때문에 엔터 제거
 			String name = sc.nextLine();
 			
-			// 입력한 검색어 맞는 제품을 출력
-			// 등록된 제품들 중에 검색어와 일치하는 제품이 어디있는지 확인
-			int index = indexOf(name);
-			
+			// 입력한 검색어와 맞는 제품을 출력
+			int index = indexOf(name);// 등록된 제품들 중에 검색어와 일치하는 제품이 어디있는지 확인
+
 			// 제품이 있으면 제품 정보를 출력
 			if(index >= 0) {
 				list[index].print();
@@ -166,6 +191,7 @@ public class ShopManager {
 				System.out.println("제품 리스트 다참");
 				return;
 			}
+			
 			// 모델명 입력
 			System.out.println("새 제품 등록");
 			System.out.println("모델명 : ");
@@ -201,8 +227,53 @@ public class ShopManager {
 		
 		private void sell() {
 			// 제픔명 입력
-			// 제품 개수 이력
-			// 고객정
+			System.out.print("제품명 : ");
+			sc.nextLine();
+			String name = sc.nextLine();
+			
+			// 제품 개수 입력
+			System.out.print("수량 : ");
+			int amount = sc.nextInt();
+			
+			// 고객 정보 입력
+			System.out.print("번호 : ");
+			String phoneNumber = sc.next();
+			
+			// 있는 제품인지 확인
+			int index = indexOf(name);
+			if (index < 0) {
+				System.out.println("제품명 오류!");
+				return;
+			}
+			if (amount <= 0) {
+				System.out.println("제품 수량 오류!");
+				return;
+			}
+			
+			// 있는 고객인지 확인
+			int customerIndex = indexOfCustomer(phoneNumber);
+			if(customerIndex < 0) {
+				System.out.println("전화번호 오류!");
+				return;
+			}
+			
+			// 판매 내역에 추가
+			// 제품 정보
+			// 복사 생성자를 이용해서 제품 정보를 복사(깊은 복사)
+			Product product = new Product(list[index]);
+			product.setAmount(amount);
+			
+			// 고객 정보
+			Customer customer = customerList[customerIndex];
+			
+			Sales sales = new Sales(customer, product);
+			salesHistory[salesCount++] = sales; 
+			
+			// 판매된 개수만큼 재고량에서 뺴줘야함
+			list[index].release(amount);
+			
+			// 매출 금액을 추가
+			totalPrice += sales.getTotalPrice();
 		}
 		
 		
@@ -210,10 +281,10 @@ public class ShopManager {
 		private int indexOfCustomer(String phoneNumber) {
 			for (int i = 0; i < customerCount; i++) {
 				// 고객의 번호가 같으면
-				if(customerList[i].getphoneNumber().equals(phoneNumber))
+				if(customerList[i].getPhoneNumber().equals(phoneNumber))
 					return i;
 			}
-			
+			return -1;
 		}
 		// 메소드3 : 제품 판매 기능(제품명, 재고count)
 		// 메소드4 : 새 제품 추가/입고(count++)

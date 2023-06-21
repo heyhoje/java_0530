@@ -1,5 +1,8 @@
 package day15.practice.shop.vo;
 
+import lombok.Data;
+
+@Data
 public class Customer {
 	// 멤버변수(고객관리와 관련된 고객 정보)
 	// 이름, 전화번호, 주소
