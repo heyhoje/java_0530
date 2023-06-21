@@ -32,7 +32,8 @@ public class _3_DivisorEx {
 		num = sc.nextInt();
 		
 	
-		for(int i = 0; i <= num; i++) {
+		for(int i = 1; i <= num; i++) { // i는 0부터가 아니라, 1부터여야 한다(정수는 0으로 나눌수 없기 때문에)
+			// Exception in thread "main" java.lang.ArithmeticException: / by zero 
 			if(num % i == 0) {
 				//System.out.println(i);// 출력부분을 배열을 저장하는 부분으로
 				divisor[count] = i; // 새로운 변수, count번지부터
