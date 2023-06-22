@@ -5,8 +5,9 @@ import java.util.Scanner;
 import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product; //import안해서. product랑 list[] 에러 떴었음
 import day15.practice.shop.vo.Sales;
+import day17.interfaceEx.RunInterface;
 
-public class ShopManager {
+public class ShopManager implements RunInterface{
 	
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
 	private Product list[] = new Product[10]; // 제품 리스트

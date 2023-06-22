@@ -2,10 +2,11 @@ package day13.homework.controler;
 
 import java.util.Scanner;
 import day13.homework.ValueObject.VocabularyNote;
+import day17.interfaceEx.RunInterface;
 
 // 강사 깃헙 보고 비교&추가수정 필요
 
-public class VocabularyNoteController {
+public class VocabularyNoteController implements RunInterface {
 
 	//import가 필요한 녀석들... 왜 번거롭게해...?
 	private Scanner sc = new Scanner(System.in); // 밑에 많이 쓰이니까 멤버로
