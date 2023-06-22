@@ -1,0 +1,300 @@
+package day17.practice.controller;
+
+// 230622 영상복습 꼭봐라....ㅂㄷㅂㄷ
+// shopService가 뭔가 안되서, 그 뒤에 메소드가 자동추가 Override 안되고 수기 추가함.... 
+
+import java.util.Scanner;
+
+// 15 >> 17로 ctrl+shift_o 해서 바꿈
+
+import day17.practice.vo.Customer;
+import day17.practice.vo.Product;
+import day17.practice.vo.Sales;
+
+public class ShopController {
+	
+	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
+	private Product list[] = new Product[10]; // 제품 리스트
+	private int count = 0; // 저장된 제품 개수
+	
+	private Customer customerList[] = new Customer[10]; // 최대 10명의 고객 관리
+	private int customerCount = 0; //저장된 고객 수
+	
+	private Sales salesHistory[] = new Sales[100]; // 판매 기록
+	private int salesCount; // 기록된 판매수
+	private int totalPrice;
+	
+	
+	public void run () {
+		// 멤버변수 / 기능 
+		System.out.println("프로그램을 시작!!");
+		
+		int menu = -1;
+		final int EXIT = 6;
+		// 반복 : 선택한 메뉴가 종료가 아닐때까지 & 반드시 한번은 실행됨
+		do {// 1. 메뉴 출력
+			printMenu();
+			
+			// 2. 메뉴 선택
+			menu = sc.nextInt();
+			
+			// 3. 메뉴에 따른 기능 실행
+			runMenu(menu);
+				
+		}while(menu != EXIT);
+		
+		System.out.println("프로그램 종료!!");
+		
+		sc.close();
+	}
+	
+	// 메소드1 : 메인메뉴 출력
+		/** 기능 : 메뉴를 출력하는 메소드
+		 * 메소드명 : printMenu
+		 */
+		private void printMenu() {
+			System.out.println("----------");
+			System.out.println("메뉴입니다");
+			System.out.println("1. 제품 판매");
+			System.out.println("2. 제품 입고");
+			System.out.println("3. 제품 조회");
+			System.out.println("4. 매출 조회");
+			System.out.println("5. 고객 등록");
+			System.out.println("6. 프로그램 종료");
+			System.out.println("----------");
+			System.out.print("메뉴를 선택하세요 : ");
+		}
+			
+		// 메소드2 : 메뉴 기능 실행
+		/** 기능 : 메뉴에 따른 기능을 실행하는 메소드
+		 * 매개변수 : 메뉴 => int menu
+		 * 리턴타입 : (안에서 실행) 없음 => void
+		 * 메소드명 : runMenu
+		 */
+		private void runMenu(int menu) {
+			// sysout("menu+선택")
+			switch(menu) {
+			case 1: 
+				// 제픔명 입력
+				System.out.print("제품명 : ");
+				sc.nextLine();
+				String name = sc.nextLine();
+				
+				// 제품 개수 입력
+				System.out.print("수량 : ");
+				int amount = sc.nextInt();
+				
+				// 고객 정보 입력
+				System.out.print("번호 : ");
+				String phoneNumber = sc.next();
+				
+				int salesCount = shopService.sell(
+						list, count, // 제품 리스트 정보
+						customerList, customerCount, // 고객 리스트 정보
+						salesHistory, this.salesCount, // 판매 내역 정보
+						name, amount, phoneNumber
+					);
+				if(salesCount == -1) {
+					System.out.println("제품 판매 실패!");
+				}else {
+					System.out.println("제품 판매 성공!");
+					this.salesCount = salesCount;
+				}
+				break;
+				
+			case 2: 
+				// 입고할 제품 정보를 입력받아 제품 객체로 생성하는 코드 작성
+				Product product = inputStoreProduct();
+				// 제품 리스트와 제품 수, 입고된 제품을 주고, 제품 입고를 관리하라고 시킴
+				// 리턴값을 왜 count에 저장해야할까요?
+				// (새 제품이 입고된 경우 제품 리스트에 추가되고, 제품수가 1증가 해야하기 떄문)
+				count = shopService.store(list, count, product);
+				// list; // 바뀜(참조변수는 주소를 공유. 밖에도 바뀜)
+				// count; // 밖에선 안바뀜(), 그래서 return값을 알려줘야함
+				break;
+			case 3:
+				// 제품명을 입력
+				System.out.print("제품명 : ");
+				sc.nextLine();
+				String search = sc.nextLine();
+				
+				// 제품을 검색해서 출력
+				shopService.printProduct(list, count, search);
+				break;
+			case 4: 
+				shopService.printSales(salesHistory, this.salesCount);
+				break;
+				
+			case 5:
+				// 입력을 받고, 추가하고, 
+				Customer customer = inputRegisterCustomer();
+		
+				int Count = shopService.registerCustomer(customerList, customerCount, customer);
+				if(count == -1) {
+					System.out.println("고객 등록 실패!");
+				}else {
+					System.out.println("고객 등록 성공!");
+					customerCount = count;
+				}
+				break;
+			default:
+				System.out.println("잘못된 메뉴입니다.");
+
+			}
+		}
+		
+		// 메소드4 : 고객등록
+		private Customer inputRegisterCustomer() {
+			// 고객 정보(이름, 전화번호)를 입력
+			System.out.print("이름 : ");
+			String name = sc.next();
+			System.out.println("번호 : ");
+			String phoneNumber = sc.next();
+			
+			return new Customer(name, phoneNumber);
+			// 아래 두줄을 줄여 쓴것이 위이다!
+//			Customer customer = new Customer(name, phoneNumber);
+//			return customer
+		}
+			
+		private void printSales() {
+			// 매출 내역 출력
+			for(int i = 0; i < salesCount; i++) {
+				salesHistory[i].print();
+			}
+			
+			// 누적 매출액 출력
+			System.out.println("누적 매출액 : " + totalPrice);
+		}
+		
+		// 메소드3 : 입고(제품명, 수량, 가격, 분류)
+		private Product inputStoreProduct() {// store > inputStoreProduct, 리턴타입 Product
+			// 입고할 제품명 입력
+			System.out.print("제품명 : ");
+			sc.nextLine(); // *
+			String name = sc.nextLine();
+
+			// 입고할 제품 수량
+			System.out.println("수량 : ");
+			int amount = sc.nextInt();
+			
+			if(amount < 0) { // 예외처리, 안정적으로 하기위해
+				System.out.println("입고 수량 오류!");
+				return null; // 객체가 없음 null > 뭔가 잘못됐다!!는 뜻
+			}
+			
+			int index = indexOf(name);
+			
+			if(index != -1) {
+				Product product = new Product(list[index]);
+				product.setAmount(amount); // 기존정보 가져오고 수량만 바꿈
+				return product;
+			}
+			
+			if(count == list.length) {
+				System.out.println("제품 리스트 다참");
+				return null;
+			}
+			
+			// 모델명 입력
+			System.out.println("새 제품 등록");
+			System.out.println("모델명 : ");
+			sc.nextLine(); //* nextLine 공백 처리하려고
+			String modelName = sc.nextLine();
+			// 가격을 입력
+			System.out.println("가격 : ");
+			int price = sc.nextInt();
+			// 분류 입력
+			System.out.println("분류 : ");
+			String category = sc.next();
+
+			Product product = new Product(name, modelName, price,
+					amount, category);
+			
+			return product;
+		}
+
+		// 메소드 3.5 : 제품 위치 찾기
+		/** 기능 : 제품 리스트에 제품명과 일치하는 제품이 있으면 번지를 없으면 -1을 알려주는 메소드
+		 * 매개변수 : 제품명 => String name
+		 * 리턴타입 : 제품이 있는 번지나 -1 => 정수 => int
+		 * 메소드명 : indexOf
+		 */
+		public int indexOf(String name) {
+			for(int i = 0; i < count; i++) {
+				if(list[i].getName().equals(name)){
+					// 제품 정보에서 i정보, 이름을 가져와서 둘이 비교???
+					return i;
+				} 
+			}
+			return -1;
+		}
+		
+		private void sell() {
+			// 제픔명 입력
+			System.out.print("제품명 : ");
+			sc.nextLine();
+			String name = sc.nextLine();
+			
+			// 제품 개수 입력
+			System.out.print("수량 : ");
+			int amount = sc.nextInt();
+			
+			// 고객 정보 입력
+			System.out.print("번호 : ");
+			String phoneNumber = sc.next();
+			
+			// 있는 제품인지 확인
+			int index = indexOf(name);
+			if (index < 0) {
+				System.out.println("제품명 오류!");
+				return;
+			}
+			if (amount <= 0) {
+				System.out.println("제품 수량 오류!");
+				return;
+			}
+			
+			// 있는 고객인지 확인
+			int customerIndex = indexOfCustomer(phoneNumber);
+			if(customerIndex < 0) {
+				System.out.println("전화번호 오류!");
+				return;
+			}
+			
+			// 판매 내역에 추가
+			// 제품 정보
+			// 복사 생성자를 이용해서 제품 정보를 복사(깊은 복사)
+			Product product = new Product(list[index]);
+			product.setAmount(amount);
+			
+			// 고객 정보
+			Customer customer = customerList[customerIndex];
+			
+			Sales sales = new Sales(customer, product);
+			salesHistory[salesCount++] = sales; 
+			
+			// 판매된 개수만큼 재고량에서 뺴줘야함
+			list[index].release(amount);
+			
+			// 매출 금액을 추가
+			totalPrice += sales.getTotalPrice();
+		}
+		
+		
+		
+		private int indexOfCustomer(String phoneNumber) {
+			for (int i = 0; i < customerCount; i++) {
+				// 고객의 번호가 같으면
+				if(customerList[i].getPhoneNumber().equals(phoneNumber))
+					return i;
+			}
+			return -1;
+		}
+		// 메소드3 : 제품 판매 기능(제품명, 재고count)
+		// 메소드4 : 새 제품 추가/입고(count++)
+		// 메소드5 : 제품 정보 조회(제품명, 가격, 재고)
+		// 메소드6 : 판매 매출 조회(가격 * 판매량)
+		// 메소드7 : 고객 추가 및 관리(고객명, 전화번호, 주소, 적립된 포인트 등)
+
+}
