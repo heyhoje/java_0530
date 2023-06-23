@@ -6,7 +6,8 @@ import lombok.Data;
 public class _1_ObjectEx {
 
 	// 1. toString : 중요하진 않지만, 유용함
-	// 2. equals() : 진짜 중요! 
+	// 2. equals() : 진짜 중요! 필수!
+	// 4. Clone() 복사 : 알아두면 좋음
 	
 	public static void main(String[] args) throws CloneNotSupportedException { // +클론 예외처리
 		System.out.println("-----pt1-----");
