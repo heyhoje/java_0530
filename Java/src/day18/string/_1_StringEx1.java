@@ -47,10 +47,10 @@ public class _1_StringEx1 {
 		// 6. toUpperCase : 대문자로
 		System.out.println(str + " : 소문자 : " + str.toUpperCase());
 		
-		System.out.println("\n\t\t-------------------");
-		String str4 = "\n\t\tabc\t\tdef\t\n";
 		
 		// 7. .trim() : 시작앞(a) 전 공백/마지막뒤(f) 후 공백을 지워줌(사이에 있는 공백은 처리 못함)
+		System.out.println("\n\t\t-------------------");
+		String str4 = "\n\t\tabc\t\tdef\t\n";
 		System.out.println(str4.trim());
 		System.out.println(str4.replace(" ",""));
 		
