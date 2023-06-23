@@ -50,9 +50,9 @@ public class _1_StringEx1 {
 		
 		// 7. .trim() : 시작앞(a) 전 공백/마지막뒤(f) 후 공백을 지워줌(사이에 있는 공백은 처리 못함)
 		System.out.println("\n\t\t-------------------");
-		String str4 = "\n\t\tabc\t\tdef\t\n";
+		String str4 = "\n\t\tabc\t\t  def\t\n";
 		System.out.println(str4.trim());
-		System.out.println(str4.replace(" ",""));
+		System.out.println(str4.replaceAll("[\t\n ]",""));
 		
 		// 8. split : 구분자를 기준으로 문자열을 추출해서 순서대로 배열에 저장
 		String str5 = "사과,배,포도";
