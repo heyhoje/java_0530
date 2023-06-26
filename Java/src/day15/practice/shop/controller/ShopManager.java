@@ -8,6 +8,8 @@ import day15.practice.shop.vo.Sales;
 import day17.interfaceEx.RunInterface;
 
 public class ShopManager implements RunInterface{
+						 // day17. implements RunInterface 추가
+						 // 이미 run이라는 메소드가 구현되어있기 때문에 overriding안해도됨
 	
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
 	private Product list[] = new Product[10]; // 제품 리스트
@@ -270,7 +272,7 @@ public class ShopManager implements RunInterface{
 			Sales sales = new Sales(customer, product);
 			salesHistory[salesCount++] = sales; 
 			
-			// 판매된 개수만큼 재고량에서 뺴줘야함
+			// 판매된 개수만큼 재고량에서 빼줘야함
 			list[index].release(amount);
 			
 			// 매출 금액을 추가

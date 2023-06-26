@@ -7,6 +7,8 @@ import day17.interfaceEx.RunInterface;
 // 강사 깃헙 보고 비교&추가수정 필요
 
 public class VocabularyNoteController implements RunInterface {
+									// day17. implements RunInterface 추가
+	 								// 이미 run이라는 메소드가 구현되어있기 때문에 overriding안해도됨
 
 	//import가 필요한 녀석들... 왜 번거롭게해...?
 	private Scanner sc = new Scanner(System.in); // 밑에 많이 쓰이니까 멤버로
@@ -119,7 +121,7 @@ public class VocabularyNoteController implements RunInterface {
 		
 		// 추가할 뜻을 입력
 		System.out.print("뜻 : ");
-		String meaning = sc.nextLine();// 뜻은 여러 단어로 설명, 공백이 포함될 수 있기 떄문
+		String meaning = sc.nextLine();// 뜻은 여러 단어로 설명, 공백이 포함될 수 있기 때문
 		
 		// 단어장에 추가 ->note 멤버변수로 만듬
 		int result = note.insert(title, meaning);
