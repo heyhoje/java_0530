@@ -1,4 +1,4 @@
-package day11._07_array;
+package day11._071_array;
 
 // system.arraycopy(arr1, 복사할 첫번째 위치, arr2, 붙여넣기할 첫번째 위치, 복사할 개수)
 

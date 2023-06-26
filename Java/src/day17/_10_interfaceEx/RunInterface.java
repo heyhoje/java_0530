@@ -1,4 +1,4 @@
-package day17.interfaceEx;
+package day17._10_interfaceEx;
 
 // RunInterface를 퍼블릭으로 만들고 싶음!
 // => 파일명과 클래스명이 같아야함(그래서 새 클래스로 분리한거였다)

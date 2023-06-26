@@ -5,7 +5,7 @@ import java.util.Scanner;
 import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product; //import안해서. product랑 list[] 에러 떴었음
 import day15.practice.shop.vo.Sales;
-import day17.interfaceEx.RunInterface;
+import day17._10_interfaceEx.RunInterface;
 
 public class ShopManager implements RunInterface{
 						 // day17. implements RunInterface 추가

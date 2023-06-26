@@ -1,4 +1,4 @@
-package day17.object;
+package day17._111_object;
 
 import java.util.Objects;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package day16.abstractEx;
+package day16._09_abstractEx;
 
 public class _1_AbstractEx {
 

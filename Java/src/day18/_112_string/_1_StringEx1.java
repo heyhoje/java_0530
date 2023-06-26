@@ -1,4 +1,4 @@
-package day18.string;
+package day18._112_string;
 
 // String은 많이 쓰이지만, 외울필요는 없고 필요할때마다 찾아서 쓰면 됨.
 

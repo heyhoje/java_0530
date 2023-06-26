@@ -1,4 +1,4 @@
-package day17.interfaceEx;
+package day17._10_interfaceEx;
 
 import day13.homework.controler.VocabularyNoteController;
 import day15.practice.shop.controller.ShopManager;
