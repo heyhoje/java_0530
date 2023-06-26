@@ -5,6 +5,9 @@ package day17.practice.controller;
 
 import java.util.Scanner;
 
+import day17.practice.service.ShopService;
+import day17.practice.service.ShopServiceImp;
+
 // 15 >> 17로 ctrl+shift_o 해서 바꿈
 
 import day17.practice.vo.Customer;
@@ -22,7 +25,11 @@ public class ShopController {
 	
 	private Sales salesHistory[] = new Sales[100]; // 판매 기록
 	private int salesCount; // 기록된 판매수
-	private int totalPrice;
+	private int totalPrice; // 매출 금액
+	
+	private ShopService shopService= new ShopServiceImp(); // 방금 만든 service 하나 추가! 
+	// <- import하니까 shopService.메소드() 오류건 사라짐
+	// 그러고나서 override 안됐던 메소드들이 다 오류로 떠오름
 	
 	
 	public void run () {
@@ -102,15 +109,15 @@ public class ShopController {
 				}
 				break;
 				
-			case 2: 
+			case 2: // [입고  관리]
 				// 입고할 제품 정보를 입력받아 제품 객체로 생성하는 코드 작성
 				Product product = inputStoreProduct();
 				// 제품 리스트와 제품 수, 입고된 제품을 주고, 제품 입고를 관리하라고 시킴
 				// 리턴값을 왜 count에 저장해야할까요?
-				// (새 제품이 입고된 경우 제품 리스트에 추가되고, 제품수가 1증가 해야하기 떄문)
+				// (새 제품이 입고된 경우 제품 리스트에 추가되고, 제품수가 1증가 해야하기 때문)
 				count = shopService.store(list, count, product);
-				// list; // 바뀜(참조변수는 주소를 공유. 밖에도 바뀜)
-				// count; // 밖에선 안바뀜(), 그래서 return값을 알려줘야함
+				// list; // 바뀜(참조변수는 주소를 공유. 안에서 내용이 바뀌면 밖에도 바뀔 수 있음)
+				// count; // 기본자료형은 밖에선 안바뀜(), 그래서 return값을 알려줘야함
 				break;
 			case 3:
 				// 제품명을 입력
@@ -143,6 +150,58 @@ public class ShopController {
 			}
 		}
 		
+//		System.out.println("-----메소드 재정렬-----");
+		
+		// 메소드1 : 입고(제품명, 수량, 가격, 분류)
+		private Product inputStoreProduct() {// store > inputStoreProduct, 리턴타입 Product
+			// 입고할 제품명 입력
+			System.out.print("제품명 : ");
+			sc.nextLine(); // *
+			String name = sc.nextLine();
+				// 입고할 제품 수량
+			System.out.println("수량 : ");
+			int amount = sc.nextInt();
+			
+			if(amount < 0) { // 예외처리, 안정적으로 하기위해
+				System.out.println("입고 수량 오류!");
+				return null; // 객체가 없음 null > 뭔가 잘못됐다!!는 뜻
+			}
+			
+			int index = indexOf(name);
+		
+			if(index != -1) { // 기존정보가 있음
+				Product product = new Product(list[index]);
+				product.setAmount(amount); // 기존정보 가져오고 수량만 바꿈
+				// new Product(name, "", 0, amount, "");
+				// 복사생성자 말고, 매개변수 긴 Product로 가져옴
+				// (모델이름, 가격, 카테고리이름 알필요없음/이름과 수량만)
+				return product;
+			}
+					
+			if(count == list.length) { // 리스트가 다 차면, 
+				System.out.println("제품 리스트 다참");
+				return null;
+			}
+					
+			// 모델명 입력
+			System.out.println("새 제품 등록");
+			System.out.println("모델명 : ");
+			sc.nextLine(); //* nextLine 공백 처리하려고
+			String modelName = sc.nextLine();
+			// 가격을 입력
+			System.out.println("가격 : ");
+			int price = sc.nextInt();
+			// 분류 입력
+			System.out.println("분류 : ");
+			String category = sc.next();
+				// 직접 입고 -> '입고에 필요한 정보'만 받아서 '제품으로 하나' 만들어줌.
+			
+			Product product = new Product(name, modelName, price,
+					amount, category);
+			
+			return product;
+		}
+		
 		// 메소드4 : 고객등록
 		private Customer inputRegisterCustomer() {
 			// 고객 정보(이름, 전화번호)를 입력
@@ -167,52 +226,7 @@ public class ShopController {
 			System.out.println("누적 매출액 : " + totalPrice);
 		}
 		
-		// 메소드3 : 입고(제품명, 수량, 가격, 분류)
-		private Product inputStoreProduct() {// store > inputStoreProduct, 리턴타입 Product
-			// 입고할 제품명 입력
-			System.out.print("제품명 : ");
-			sc.nextLine(); // *
-			String name = sc.nextLine();
-
-			// 입고할 제품 수량
-			System.out.println("수량 : ");
-			int amount = sc.nextInt();
-			
-			if(amount < 0) { // 예외처리, 안정적으로 하기위해
-				System.out.println("입고 수량 오류!");
-				return null; // 객체가 없음 null > 뭔가 잘못됐다!!는 뜻
-			}
-			
-			int index = indexOf(name);
-			
-			if(index != -1) {
-				Product product = new Product(list[index]);
-				product.setAmount(amount); // 기존정보 가져오고 수량만 바꿈
-				return product;
-			}
-			
-			if(count == list.length) {
-				System.out.println("제품 리스트 다참");
-				return null;
-			}
-			
-			// 모델명 입력
-			System.out.println("새 제품 등록");
-			System.out.println("모델명 : ");
-			sc.nextLine(); //* nextLine 공백 처리하려고
-			String modelName = sc.nextLine();
-			// 가격을 입력
-			System.out.println("가격 : ");
-			int price = sc.nextInt();
-			// 분류 입력
-			System.out.println("분류 : ");
-			String category = sc.next();
-
-			Product product = new Product(name, modelName, price,
-					amount, category);
-			
-			return product;
-		}
+		
 
 		// 메소드 3.5 : 제품 위치 찾기
 		/** 기능 : 제품 리스트에 제품명과 일치하는 제품이 있으면 번지를 없으면 -1을 알려주는 메소드
@@ -274,7 +288,7 @@ public class ShopController {
 			Sales sales = new Sales(customer, product);
 			salesHistory[salesCount++] = sales; 
 			
-			// 판매된 개수만큼 재고량에서 뺴줘야함
+			// 판매된 개수만큼 재고량에서 빼줘야함
 			list[index].release(amount);
 			
 			// 매출 금액을 추가
