@@ -5,7 +5,7 @@ import java.util.Scanner;
 import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product; //import¾ÈÇØ¼­. product¶û list[] ¿¡·¯ ¶¹¾úÀ½
 import day15.practice.shop.vo.Sales;
-import day17.interfaceEx.RunInterface;
+import day17._10_interfaceEx.RunInterface;
 
 public class ShopManager implements RunInterface{
 	

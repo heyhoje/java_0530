@@ -1,4 +1,4 @@
-package day11._07_array;
+package day11._071_array;
 
 // tmpArr 호출하는데서 놓침 
 // 그냥 난장판임... 깃헙 봐도 쓸게 너무 많아서 골라내기 어렵겠는걸? 이해는 될까? 

@@ -1,4 +1,4 @@
-package day18.string;
+package day18._112_string;
 
 import java.util.StringTokenizer;
 

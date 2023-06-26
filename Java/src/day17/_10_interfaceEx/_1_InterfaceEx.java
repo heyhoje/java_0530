@@ -1,4 +1,4 @@
-package day17.interfaceEx;
+package day17._10_interfaceEx;
 
 // 깃헙 보고 내용 추가 및 이해 필요!!!!!!
 

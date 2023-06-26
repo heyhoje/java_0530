@@ -1,4 +1,4 @@
-package day11._07_array;
+package day11._071_array;
 
 public class _2_ForEx {
 

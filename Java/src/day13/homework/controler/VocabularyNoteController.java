@@ -2,7 +2,7 @@ package day13.homework.controler;
 
 import java.util.Scanner;
 import day13.homework.ValueObject.VocabularyNote;
-import day17.interfaceEx.RunInterface;
+import day17._10_interfaceEx.RunInterface;
 
 // 강사 깃헙 보고 비교&추가수정 필요
 

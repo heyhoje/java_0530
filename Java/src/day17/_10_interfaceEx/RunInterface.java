@@ -1,4 +1,4 @@
-package day17.interfaceEx;
+package day17._10_interfaceEx;
 
 public interface RunInterface {
 	/*public final static */ int NUM = 10;//클래스 상수=>클래스를 이용하여 호출
