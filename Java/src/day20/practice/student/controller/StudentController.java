@@ -37,8 +37,8 @@ public class StudentController implements Program {
 	public void printMenu() {
 		System.out.println("메뉴");
 		System.out.println("1. 학생 추가");
-		System.out.println("2. 학생 삭제");
-		System.out.println("3. 학생 수정");
+		System.out.println("2. 학생 수정");
+		System.out.println("3. 학생 삭제");
 		System.out.println("4. 프로그램 종료");
 		System.out.print("메뉴를 선택하세요 : ");
 	}
@@ -125,6 +125,7 @@ public class StudentController implements Program {
 		}
 		list.get(index).update(grade, classNum, number, name); // 어려웡어어어어엉ㅇㅇㅇ
 		//ㄴ주소를 아니까 바로 바꿔버림 // create 해서 StudentC 클래스에 생성자 입력(this.)
+		System.out.println("업데이트 성공");
 	}
 
 	private void insertStudent() {
