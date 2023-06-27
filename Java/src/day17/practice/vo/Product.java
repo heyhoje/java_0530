@@ -1,6 +1,7 @@
 package day17.practice.vo;
 
 import lombok.Data;
+//230627 다보고 다 채웠다리
 
 @Data
 public class Product {

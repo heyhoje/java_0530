@@ -1,6 +1,7 @@
 package day17.practice.vo;
 
 //230622 영상복습 꼭봐라....ㅂㄷㅂㄷ
+//230627 다보고 다 채웠다리
 
 import lombok.Data;
 
@@ -30,13 +31,14 @@ public class Customer {
 		generateCustomerId(); // customerId 발급이 완료.
 	}
 	
-	// 생성자 1.2
-	public Customer(Customer customer) {// 복사생성자 추가	
+	// 생성자 1.2  // 복사생성자 추가	
+	public Customer(Customer customer) {
 		this.name = customer.name;
 		this.phoneNumber = customer.phoneNumber;
 		this.customerId = customer.customerId;
 		
-		// 복사생성자 통해서 ~ 하면은 고객id가 순차적으로 1씩 증가합니다.
+		// 원래 생성자에 generateCustomerId(고객번호발급)이 있는데,
+		// 발급받는거 대신에 복사생성자 이용해서 직접 복사를 해주면은 고객id가 순차적으로 1씩 증가합니다.
 	}
 	
 	// 메소드

@@ -3,6 +3,7 @@ package day17.practice.run;
 import day17.practice.controller.ShopController;
 
 //230622 영상복습 꼭봐라....ㅂㄷㅂㄷ
+//230627 다보고 다 채웠다리
 
 public class Run {
 

@@ -1,10 +1,12 @@
 package day17.practice.controller;
 
 // 230622 영상복습 꼭봐라....ㅂㄷㅂㄷ
-// shopService가 뭔가 안되서, 그 뒤에 메소드가 자동추가 Override 안되고 수기 추가함.... 
+// shopService가 뭔가 안되서, 그 뒤에 메소드가 자동추가 Override 안되고 수기 추가함....
+//230627 다보고 다 채웠다리
 
 import java.util.Scanner;
 
+import day17._10_interfaceEx.RunInterface;
 import day17.practice.service.ShopService;
 import day17.practice.service.ShopServiceImp;
 
@@ -14,7 +16,7 @@ import day17.practice.vo.Customer;
 import day17.practice.vo.Product;
 import day17.practice.vo.Sales;
 
-public class ShopController {
+public class ShopController implements RunInterface {
 	
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
 	private Product list[] = new Product[10]; // 제품 리스트
@@ -25,7 +27,6 @@ public class ShopController {
 	
 	private Sales salesHistory[] = new Sales[100]; // 판매 기록
 	private int salesCount; // 기록된 판매수
-	private int totalPrice; // 매출 금액
 	
 	private ShopService shopService= new ShopServiceImp(); // 방금 만든 service 하나 추가! 
 	// <- import하니까 shopService.메소드() 오류건 사라짐
@@ -81,7 +82,7 @@ public class ShopController {
 		private void runMenu(int menu) {
 			// sysout("menu+선택")
 			switch(menu) {
-			case 1: 
+			case 1: // [제품 판매]
 				// 제픔명 입력
 				System.out.print("제품명 : ");
 				sc.nextLine();
@@ -91,7 +92,7 @@ public class ShopController {
 				System.out.print("수량 : ");
 				int amount = sc.nextInt();
 				
-				// 고객 정보 입력
+				// 고객 정보(전화번호) 입력
 				System.out.print("번호 : ");
 				String phoneNumber = sc.next();
 				
@@ -99,7 +100,8 @@ public class ShopController {
 						list, count, // 제품 리스트 정보
 						customerList, customerCount, // 고객 리스트 정보
 						salesHistory, this.salesCount, // 판매 내역 정보
-						name, amount, phoneNumber
+						// 기본 정보들을 관리하기 위해 필요한 것들
+						name, amount, phoneNumber // 실제 제품 판매정보를 확인하기 위해 필요
 					);
 				if(salesCount == -1) {
 					System.out.println("제품 판매 실패!");
@@ -119,7 +121,8 @@ public class ShopController {
 				// list; // 바뀜(참조변수는 주소를 공유. 안에서 내용이 바뀌면 밖에도 바뀔 수 있음)
 				// count; // 기본자료형은 밖에선 안바뀜(), 그래서 return값을 알려줘야함
 				break;
-			case 3:
+				
+			case 3: // [제품 조회]
 				// 제품명을 입력
 				System.out.print("제품명 : ");
 				sc.nextLine();
@@ -128,14 +131,16 @@ public class ShopController {
 				// 제품을 검색해서 출력
 				shopService.printProduct(list, count, search);
 				break;
-			case 4: 
-				shopService.printSales(salesHistory, this.salesCount);
+				
+			case 4: // [매출 조회]
+				shopService.printSales(salesHistory, this.salesCount); //왜 얘만 또 this 붙여????
 				break;
 				
-			case 5:
-				// 입력을 받고, 추가하고, 
+			case 5: // [고객 등록]
+				// 고객 정보를 입력을 받아 고객 객체로 생성 추가하고, 
 				Customer customer = inputRegisterCustomer();
-		
+				
+				// 고객 리스트, 고객수, 등록된 고객정보를 주고 관리하라고 시킴. 추가함.
 				int Count = shopService.registerCustomer(customerList, customerCount, customer);
 				if(count == -1) {
 					System.out.println("고객 등록 실패!");
@@ -202,7 +207,7 @@ public class ShopController {
 			return product;
 		}
 		
-		// 메소드4 : 고객등록
+		// 메소드4 : 고객 정보를 입력받아 객체로 전달?
 		private Customer inputRegisterCustomer() {
 			// 고객 정보(이름, 전화번호)를 입력
 			System.out.print("이름 : ");
@@ -213,19 +218,8 @@ public class ShopController {
 			return new Customer(name, phoneNumber);
 			// 아래 두줄을 줄여 쓴것이 위이다!
 //			Customer customer = new Customer(name, phoneNumber);
-//			return customer
+//			return customer; 
 		}
-			
-		private void printSales() {
-			// 매출 내역 출력
-			for(int i = 0; i < salesCount; i++) {
-				salesHistory[i].print();
-			}
-			
-			// 누적 매출액 출력
-			System.out.println("누적 매출액 : " + totalPrice);
-		}
-		
 		
 
 		// 메소드 3.5 : 제품 위치 찾기
@@ -244,67 +238,6 @@ public class ShopController {
 			return -1;
 		}
 		
-		private void sell() {
-			// 제픔명 입력
-			System.out.print("제품명 : ");
-			sc.nextLine();
-			String name = sc.nextLine();
-			
-			// 제품 개수 입력
-			System.out.print("수량 : ");
-			int amount = sc.nextInt();
-			
-			// 고객 정보 입력
-			System.out.print("번호 : ");
-			String phoneNumber = sc.next();
-			
-			// 있는 제품인지 확인
-			int index = indexOf(name);
-			if (index < 0) {
-				System.out.println("제품명 오류!");
-				return;
-			}
-			if (amount <= 0) {
-				System.out.println("제품 수량 오류!");
-				return;
-			}
-			
-			// 있는 고객인지 확인
-			int customerIndex = indexOfCustomer(phoneNumber);
-			if(customerIndex < 0) {
-				System.out.println("전화번호 오류!");
-				return;
-			}
-			
-			// 판매 내역에 추가
-			// 제품 정보
-			// 복사 생성자를 이용해서 제품 정보를 복사(깊은 복사)
-			Product product = new Product(list[index]);
-			product.setAmount(amount);
-			
-			// 고객 정보
-			Customer customer = customerList[customerIndex];
-			
-			Sales sales = new Sales(customer, product);
-			salesHistory[salesCount++] = sales; 
-			
-			// 판매된 개수만큼 재고량에서 빼줘야함
-			list[index].release(amount);
-			
-			// 매출 금액을 추가
-			totalPrice += sales.getTotalPrice();
-		}
-		
-		
-		
-		private int indexOfCustomer(String phoneNumber) {
-			for (int i = 0; i < customerCount; i++) {
-				// 고객의 번호가 같으면
-				if(customerList[i].getPhoneNumber().equals(phoneNumber))
-					return i;
-			}
-			return -1;
-		}
 		// 메소드3 : 제품 판매 기능(제품명, 재고count)
 		// 메소드4 : 새 제품 추가/입고(count++)
 		// 메소드5 : 제품 정보 조회(제품명, 가격, 재고)

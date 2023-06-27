@@ -1,6 +1,7 @@
 package day17.practice.vo;
 
 import lombok.Data;
+//230627 다보고 다 채웠다리
 
 @Data
 // 판매 내역 : 누가 어떤 제품을 샀는지 관리하는 클래스
