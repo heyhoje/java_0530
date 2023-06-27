@@ -12,7 +12,7 @@ public class ShopManager implements RunInterface{
 						 // 이미 run이라는 메소드가 구현되어있기 때문에 overriding안해도됨
 	
 	private Scanner sc = new Scanner(System.in); // 스캐너를 멤버로 가지고 있으면 매번 생성하지 않아도됨
-	private Product list[] = new Product[10]; // 제품 리스트
+	private Product list[] = new Product[10]; // 제품 리스트 / 저장할 수 있는 개수
 	private int count = 0; // 저장된 제품 개수
 	
 	private Customer customerList[] = new Customer[10]; // 최대 10명의 고객 관리
