@@ -1,5 +1,7 @@
 package day19._114_math;
 
+import java.lang.Math;
+
 public class MathEx {
 
 	public static void main(String[] args) {

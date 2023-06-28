@@ -1,6 +1,7 @@
 package day6.practice;
 
 import java.util.Scanner;
+import java.lang.*;
 
 public class _5_UpDown2_DoWhile {
 
