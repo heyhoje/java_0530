@@ -1,4 +1,4 @@
-package day22.lambda;
+package day22._131_lambda;
 
 import java.util.function.Consumer;
 
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 //consumer.accept
-public class _132_FunctionalInterfaceEx {
+public class _2_FunctionalInterfaceEx {
 
 	public static void main(String[] args) {
 		Consumer<String> consumer = s-> System.out.println(s);

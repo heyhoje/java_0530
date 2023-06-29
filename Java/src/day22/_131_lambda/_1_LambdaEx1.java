@@ -1,6 +1,6 @@
-package day22.lambda;
+package day22._131_lambda;
 
-public class _131_LambdaEx1 {
+public class _1_LambdaEx1 {
 
 	public static void main(String[] args) {
 		InterfaceA a = new InterfaceA() {

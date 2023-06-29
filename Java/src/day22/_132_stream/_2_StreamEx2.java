@@ -1,4 +1,4 @@
-package day22.stream;
+package day22._132_stream;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class _133_StreamEx2 {
+public class _2_StreamEx2 {
 
 	public static void main(String[] args) {
 		List<Student> list = Arrays.asList(

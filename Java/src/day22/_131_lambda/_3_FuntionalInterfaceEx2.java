@@ -1,4 +1,4 @@
-package day22.lambda;
+package day22._131_lambda;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 // Supplier, Function, Operator, Predicate
-public class _132_FuntionalInterfaceEx2 {
+public class _3_FuntionalInterfaceEx2 {
 
 	public static void main(String[] args) {
 		// Supplier 인터페이스

@@ -1,10 +1,10 @@
-package day22.stream;
+package day22._132_stream;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class _133_StreamEx {
+public class _1_StreamEx {
 
 	public static void main(String[] args) {
 		Integer arr[] = {1, 2, 3, 4, 5};
