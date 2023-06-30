@@ -1,4 +1,4 @@
-package day19._12_exception;
+package day19._14_exception;
 
 // 230626 월 집중이 힘드네 졸리네 
 public class _1_ExceptionEx {

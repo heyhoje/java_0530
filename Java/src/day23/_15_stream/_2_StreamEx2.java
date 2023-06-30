@@ -1,4 +1,4 @@
-package day23._151_stream;
+package day23._15_stream;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,9 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 // 입출력도 테스트 끝나고 다시 해야겠다 ^^^^^^^^^^ 
+// 문자 입출력 스트림
 public class _2_StreamEx2 {
 
 	public static void main(String[] args) {
+		// 파일에 문자들을 씀
 		try(FileWriter fw = new FileWriter("test.txt")){
 			for(int i = 0; i < 5; i++) {
 				fw.write("안녕합시다" + i + "\n");

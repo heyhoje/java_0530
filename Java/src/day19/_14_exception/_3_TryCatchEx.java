@@ -1,4 +1,4 @@
-package day19._12_exception;
+package day19._14_exception;
 
 public class _3_TryCatchEx {
 
