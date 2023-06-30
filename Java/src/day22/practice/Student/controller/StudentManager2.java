@@ -1,15 +1,19 @@
-package day22.practice.controller;
+package day22.practice.Student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
-import day22.practice.vo.Student;
+import day22.practice.Student.vo.Student;
 
-public class StudentManager implements Program{
+// 람다식으로 작업해보기
+// 람다식 우선순위를 미루더라도, 나중에 꼭 공부해보기
+
+public class StudentManager2 implements Program{
 
 	
-	// private StudentManager student = new StudentManager();
+	// private StudentManager2 student = new StudentManager2(); // 자기자신을 생성하면 안됨.
 	
 	private List<Student> list = Arrays.asList(
 			new Student(1,1,1,"Hong"),
@@ -37,7 +41,6 @@ public class StudentManager implements Program{
 		
 		sc.close();
 	}
-	
 	@Override
 	public void printMenu() {
 		System.out.println("1. 학년 전체 출력");
@@ -50,30 +53,32 @@ public class StudentManager implements Program{
 
 	@Override
 	public void runMenu(int menu) {
-		int grade = 1, classNum =1, num =1;
 		switch(menu) {
 		case 1: //학생 전체 출력
-			printAll();
+			print(s->true);
 			break;
+			
+		// 람다식 안에는 지역변수를 쓸수있지만, 상수만 쓸 수 있다. 
+		//final을 붙여서 상수화 하면 쓸 수 있음
 			
 		case 2: // 학생 학년 출력
 			// 검색할 학년 입력
 			System.out.println("grade : ");
-			grade = sc.nextInt();
+			final int grade1 = sc.nextInt();
 			
-			printGrade(grade);
+			print(s->s.getGrade() == grade1); // 학생정보가 주어지면 true
 			break;
 			
 		case 3: // 학생 검색 출력
 			// 검색할 학년, 반, 번호 입력
 			System.out.print("grade : ");
-			grade = sc.nextInt();
+			final int grade2 = sc.nextInt();
 			System.out.print("class : ");
-			classNum = sc.nextInt();
+			final int classNum2 = sc.nextInt();
 			System.out.print("number : ");
-			num = sc.nextInt();
+			final int num2 = sc.nextInt();
 			
-			printSearch(grade, classNum, num);
+			print(s->s.equals(new Student(grade2, classNum2, num2, "")));
 			break;
 			
 		case 4: 
@@ -84,32 +89,11 @@ public class StudentManager implements Program{
 		}		
 	}
 	
-	// 메소드1 : 학생 전체 정보 출력
-	private void printAll() {
+	private void print(Predicate<Student> p) {
 		for(Student tmp : list) {
-			System.out.println(tmp);
-		}
-	}
-	
-	// 메소드2 : 학생 학년 출력
-		private void printGrade(int grade) {
-			for(Student tmp : list) {
-				if(tmp.getGrade() == grade) {
+			if(p.test(tmp)) {
 				System.out.println(tmp);
-				}
 			}
-		}
-		
-	// 메소드3 : 학생 검색 출력	
-	private void printSearch(int grade, int classNum, int num) {
-		for(Student tmp : list) {
-//			if(grade == tmp.getGrade() 
-//				&& classNum == tmp.getClassNum() 
-//				&& num == tmp.getNum()) 
-			if (tmp.equals(new Student(grade, classNum, num, ""))) {
-				//Student 에서 equals설정하고 입력하면 한줄로 끝낼 수 있따
-			System.out.println(tmp);
-			}
-		}
+		}		
 	}
 }

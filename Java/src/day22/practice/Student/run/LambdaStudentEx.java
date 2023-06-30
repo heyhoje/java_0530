@@ -1,6 +1,6 @@
-package day22.practice.run;
+package day22.practice.Student.run;
 
-import day22.practice.controller.StudentManager;
+import day22.practice.Student.controller.StudentManager;
 
 public class LambdaStudentEx {
 
