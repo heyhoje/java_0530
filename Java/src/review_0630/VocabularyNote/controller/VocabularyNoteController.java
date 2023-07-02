@@ -52,7 +52,7 @@ public class VocabularyNoteController {
 		System.out.println("3. 단어 수정");
 		System.out.println("4. 단어 출력");
 		System.out.println("5. 프로그램 종료");
-		System.out.print("메뉴를 선택하세요 : ");
+		System.out.println("메뉴를 선택하세요 : ");
 		System.out.println("===========");
 		
 	}
@@ -90,10 +90,13 @@ public class VocabularyNoteController {
 		switch(result) {
 		case 1: 
 			System.out.println("단어 추가 성공!");
+			break;
 		case -1: 
 			System.out.println("뜻 추가 성공!");
+			break;
 		case 0:
 			System.out.println("단어 추가 실패ㅠ");
+			break;
 			
 		}
 	}

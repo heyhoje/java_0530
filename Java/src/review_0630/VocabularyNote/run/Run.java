@@ -1,6 +1,6 @@
 package review_0630.VocabularyNote.run;
 
-import day13.homework.controler.VocabularyNoteController;
+import review_0630.VocabularyNote.controller.VocabularyNoteController;
 
 public class Run {
 	
