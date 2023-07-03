@@ -1,4 +1,4 @@
-package day24._16_thread;
+package day24._161_thread;
 
 public class _2_ThreadEx2 {
 
