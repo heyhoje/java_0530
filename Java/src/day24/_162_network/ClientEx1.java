@@ -15,43 +15,42 @@ public class ClientEx1 {
 		
 		// 1. 소캣 생성
 		// socket = new Socket();
-		// 2. 연결 요청
-		try(Socket socket = new Socket();) { 
-			// try에다 뭘 넣으면 socket.close(); 닫기를 안해도됨. 그 뭐를 뭐라고 하죠????  
-			// +예외처리
+
+		// try에다 뭘 넣으면 socket.close(); 닫기를 안해도됨. 그 뭐를 뭐라고 하죠????  
+		// + socket 예외처리
+		try(Socket socket = new Socket();){
+			// 2. 연결요청
 			socket.connect(new InetSocketAddress(port));
-			System.out.println("[Connet!]");
+			System.out.println("[Connect!]");
+			
 			// 3. 작업
-			// 서버에 데이터 전송을 위해 OutputStream 생성
+			// 1) 서버에 데이터 전송을 위해 OutputStream 생성
 			OutputStream os = socket.getOutputStream();
-			String str = sc.nextLine(); // 보내려는 데이터
-			byte[] bytes = str.getBytes(); //Hi를 바이트로 변환 / 아웃풋은 바이트 단위로 보내야한대요 왜죠
+			String str = sc.nextLine();// 보내려는 데이터
+			byte [] bytes = str.getBytes();//Hi를 바이트로 변환 / 아웃풋은 바이트 단위로 보내야한대요 왜죠
 			os.write(bytes);
-			os.flush(); // 서버에 전송할 수 있도록 다 밀어줌
+			os.flush();// 서버에 전송할 수 있도록 다 밀어줌
 			
 			os.close();
 			
-			// 클라이언트는 전송하고 끝- 
+			// 클라이언트는 전송하고 끝-
 			
-			//  2) 서버에서 받기
+			// 2) 서버에서 데이터를 받기 위해 InputStream 생성
 			InputStream is = socket.getInputStream();
 			//is.read(bytes);
-			bytes = new byte[1024]; // 해당 부분을 추가해야 한다는데 이유 이해안됨
+			bytes = new byte[1024]; // 해당 부분을 추가해야 한다는데 이유 이해안됨. 공간이 작으면 글자가 덮어쓰기되서???
 			int readCount = is.read(bytes);
 			str = new String(bytes);
 			System.out.println("server : " + str);
 			
-			is.close();
-			os.close();
+			//is.close();
 			
-			
-		} catch (IOException e) {
-			System.out.println("[Connection refused!]");
-			//e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 		}
 	}
-
 }
 
 
 // 나 서버랑 클라이언트랑 동시 작동하는거 모르겠다@.@
+// 나도코딩 들으면 이해될까? ㅠ
