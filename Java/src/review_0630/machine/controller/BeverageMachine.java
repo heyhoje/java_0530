@@ -97,7 +97,10 @@ public class BeverageMachine {
 		case FANTA:
 			// 왜 나오는지 모르겠지만 generate가 나옴
 			generate(selectBeverage); // 없다고 에러뜨니까 또 메소드 만들러 가줘야함
-			//System.out.println("음료가 나왔습니다");
+			System.out.println(list[selectBeverage].getName()+"음료가 나왔습니다");
+			System.out.println("잔돈은 " + (this.money) + "원 입니다");
+			// (this.money - COKE.getPrice)
+			// (money - beverage.getPrice)
 			break;
 		default: 
 			System.out.println("잘못 선택했습니다.");
@@ -145,6 +148,7 @@ public class BeverageMachine {
 		case SPRITE:
 		case FANTA:
 			// 콜라, 사이다, 환타의 재고를 확인하러 간다. 
+			System.out.println(selectBeverage + "를 " + amount + "개 입고했습니다. ");
 			store(selectBeverage, amount);
 			break;
 		default: 
