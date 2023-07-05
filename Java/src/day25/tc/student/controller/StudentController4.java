@@ -1,5 +1,13 @@
 package day25.tc.student.controller;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,8 +24,10 @@ public class StudentController4 {
 	Scanner sc = new Scanner(System.in);
 	private final static int EXIT = 3;
 	
-	public void run() {
+	public void run() throws ClassNotFoundException {
 		int menu;
+		String fileName = "src/day25/tc.student/student.txt";
+		load(fileName);
 		do {
 			// 메뉴 출력
 			printMenu();
@@ -30,9 +40,51 @@ public class StudentController4 {
 			runMenu(menu);
 			
 		}while(menu != EXIT);
+		save(fileName);
 		sc.close();
 	}
 	
+	private void save(String fileName) {
+		// 학생 정보를 저장 => 리스트 => 하나씩 꺼내서 저장
+		// 저장 => (코드 -> 파일) OutputStream
+		// 객체단위로 저장 => objectOutputStream
+		try(
+			FileOutputStream fos = new FileOutputStream(fileName);
+				// 절대경로 : D:\\.student / 상대정보(프로젝트 기준)
+			ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				// 모든 보조스트림은 기반스트림이 필요하다
+				for(Student tmp : list) {
+					oos.writeObject(tmp);
+					//public class Student implements Serializable {
+					//** add generated sirialversionUID
+				}
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+	}
+
+	private void load(String fileName) throws ClassNotFoundException {
+		try(ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(fileName))){
+			while(true) {
+				try {
+					Student tmp = (Student)ois.readObject();
+					list.add(tmp);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+			// 예외를 이용해서 파일읽기를 마무리 / IOException이 부모클래스라 위에 배치
+		} catch(EOFException e) {
+			System.out.println("불러오기 완료");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		System.out.println(list);
+	}
+	
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	private void printMenu() { // 매개변수 : 고정된 내용 => 없음
 		System.out.println("메뉴");
 		System.out.println("1. 학생등록");

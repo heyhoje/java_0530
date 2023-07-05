@@ -1,11 +1,17 @@
 package day25.tc.student.vo;
 
+import java.io.Serializable;
+
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
 
 //@AllArgsConstructor
 //@Data
-public class Student {
+public class Student implements Serializable {
+	
+	/** add generated sirialversionUID
+	 */
+	private static final long serialVersionUID = -3893767269811563720L;
 	
 	// 클래스 안에서 선언된 변수 = 멤버변수
 	// 1. 멤버변수
