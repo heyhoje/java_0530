@@ -17,8 +17,8 @@ import lombok.Data;
 public class _4_SerializableEx1 {
 
 	public static void main(String[] args) {
-		Student std1 = new Student(1, 1, 1, "Hong");
-		Student std2 = new Student(1, 1, 2, "Lim");
+		Student std1 = new Student(1, 1, 1, "Hong", "901205-1234567");
+		Student std2 = new Student(1, 1, 2, "Lim", "000501-2546871");
 		
 		try(
 			FileOutputStream fos = new FileOutputStream("student.txt");
