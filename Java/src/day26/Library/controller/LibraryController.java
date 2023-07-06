@@ -227,7 +227,7 @@ public class LibraryController {
 //		// 대출 가능으로 상태 변경
 	
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-	// save&load - vo클래스 Serializable 해줘야함!
+	// save&load - vo클래스 Serializable 해줘야됨
 	private void saveLoan(String fileName){
 		try(
 			FileOutputStream fos = new FileOutputStream(fileName);
