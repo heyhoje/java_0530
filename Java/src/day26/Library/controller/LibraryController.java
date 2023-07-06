@@ -30,7 +30,11 @@ public class LibraryController {
 	public void run() {
 		int menu;
 		String bookFileName = "src/day26/Library/book.txt";
+		String loanFileName = "src/day26/Library/loan.txt";
+		
 		loadBook(bookFileName);
+		loadLoan(loanFileName);
+
 		do {
 			// 메뉴 출력
 			System.out.println("===========");
@@ -45,6 +49,8 @@ public class LibraryController {
 			
 		}while(menu != EXIT);
 		saveBook(bookFileName);
+		saveLoan(loanFileName);
+
 		sc.close();
 	}
 
@@ -94,6 +100,12 @@ public class LibraryController {
 		// * 입력 정보를 이용하여 도서 객체를 생성
 		Book book = new Book(num, title, author, isbn);
 		
+		// 도서번호 중복 체크
+		if(bookList.contains(book)) {
+			System.out.println("이미 등록된 도서 번호 입니다. 확인해주세요.");
+			return;
+		}
+		
 		// * 도서 리스트에 도서 객체를 추가
 		bookList.add(book);
 		// System.out.println(bookList); // 테스트용 보여주기
@@ -137,7 +149,7 @@ public class LibraryController {
 		// 올바르지않으면(없는 도서 번호이거나, 대출중인 도서인 경우)
 		// 대출할 수 없다고 출력
 		if(!possible) {
-			System.out.println("대출할 수 없습니다.");
+			System.out.println("대출중이거나 없는 도서입니다.");
 			return;
 		}
 		// 올바르면 대출을 진행
@@ -151,10 +163,12 @@ public class LibraryController {
 		loanList.add(lb);
 		bookList.get(index).loanBook();// 도서에 대출했다고 수정
 		// 대출일을 출력
+		System.out.println("대출 완료!");
+		
 		System.out.println("대출일 : " + lb.getLoanDateStr());
 		// (반납예정일도 출력)
-		
-		
+		System.out.println("반납일 : " + lb.getEstimatedDateStr());
+		System.out.println(loanList);
 //		sc.nextLine();
 		// 빌리려는 도서 번호 입력
 //		System.out.print("대출할 도서 번호 : ");
@@ -170,27 +184,64 @@ public class LibraryController {
 	}
 	
 	private void returnBook() {
-		sc.nextLine(); // 위에 한번만 엔터에의한 공백 없애주면됨.
+		sc.nextLine(); // 위에 한번만 엔터에 의한 공백 없애주면됨.
+		// 반납도서 번호를 입력
 		System.out.println("반납할 도서 번호 : ");
 		String num = sc.nextLine();
 		
-		boolean possible 
-		= bookList
-			.stream()
-			.filter(b->b.isLoan() && b.getNum().equals(num));
+		// 대출한 도서가 아니면 반납x
+		int index = bookList.indexOf(new Book(num, null, null, null));
+		if(index == -1) {
+			System.out.println("대출한 도서가 아닙니다.");
+			return;
+		}
+		// 맞으면 반납
+		// 반납한 도서의 상태를 대출 가능으로 수정
+		Book returnBook = bookList.get(index);
+		returnBook.returnBook(); // loan = false 로 바뀌어서 대출 가능 상태가 됨
+		
+		// 대출열람 리스트에서 대출한 도서의 반납일을 오늘 날짜로 수정
+		// 반납한 도서의 대출 열람을 찾아야 함
+		int lbIndex = loanList.lastIndexOf(new LoanBrowsing(returnBook, null, 14));// 리스트는 순서를 보장. 마지막 인덱스가 마지막 대출기록
+		LoanBrowsing tmpLb = loanList.get(lbIndex);
+		tmpLb.setReturnDate(new Date());
+		
+		System.out.println("반납 완료!");
+		System.out.println("대출일 : " + tmpLb.getLoanDateStr());
+		System.out.println("반납일 : " + tmpLb.getReturnDateStr());
+	}
 		
 //		sc.nextLine();
 //		// 반납하려는 도서 번호 입력
 //		System.out.print("반납할 도서 번호 : ");
 //		String chNum = sc.nextLine();
 //		
+//		boolean possible 
+//		= bookList
+//		.stream()
+//		.filter(b->b.isLoan() && b.getNum().equals(num));
+		
 //		System.out.println("반납이 완료 되었습니다.");
 //
 //		// 대출 가능으로 상태 변경
-	}
 	
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
+	private void saveLoan(String fileName){
+		try(
+				FileOutputStream fos = new FileOutputStream(fileName);
+					// 절대경로 : D:\\.student / 상대정보(프로젝트 기준)
+				ObjectOutputStream oos = new ObjectOutputStream(fos)){
+					// 모든 보조스트림은 기반스트림이 필요하다
+					for(LoanBrowsing tmp : loanList) { // *saveBook 에서 반복문만 변경
+						oos.writeObject(tmp);
+						//public class Student implements Serializable {
+						//** add generated sirialversionUID
+					}
+			} catch (IOException e) {
+				e.printStackTrace();
+				}		
+		}
 	private void saveBook(String fileName) {
 		try(
 			FileOutputStream fos = new FileOutputStream(fileName);
@@ -207,6 +258,27 @@ public class LibraryController {
 			}		
 	}
 
+	private void loadLoan(String fileName) {
+		try(ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(fileName))){
+			while(true) {
+				try {
+					LoanBrowsing tmp = (LoanBrowsing)ois.readObject();
+					loanList.add(tmp);
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+			// 예외를 이용해서 파일읽기를 마무리 / IOException이 부모클래스라 위에 배치
+		} catch(EOFException e) {
+			System.out.println("불러오기 완료");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+		
 	private void loadBook(String fileName) {
 		try(ObjectInputStream ois 
 				= new ObjectInputStream(new FileInputStream(fileName))){
@@ -225,7 +297,8 @@ public class LibraryController {
 			System.out.println("불러오기 완료");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
+		
 		System.out.println(bookList);		
 	}
 }
