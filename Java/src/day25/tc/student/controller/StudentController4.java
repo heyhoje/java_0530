@@ -26,6 +26,7 @@ public class StudentController4 {
 	
 	public void run() throws ClassNotFoundException {
 		int menu;
+		
 		String fileName = "src/day25/tc.student/student.txt";
 		load(fileName);
 		do {
@@ -47,7 +48,7 @@ public class StudentController4 {
 	private void save(String fileName) {
 		// 학생 정보를 저장 => 리스트 => 하나씩 꺼내서 저장
 		// 저장 => (코드 -> 파일) OutputStream
-		// 객체단위로 저장 => objectOutputStream
+		// 객체단위로 저장 => objectOutputStream (<- day23.15_stream_4_SerializableEx 코드 참고)
 		try(
 			FileOutputStream fos = new FileOutputStream(fileName);
 				// 절대경로 : D:\\.student / 상대정보(프로젝트 기준)
