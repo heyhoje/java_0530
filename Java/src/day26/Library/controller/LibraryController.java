@@ -81,9 +81,9 @@ public class LibraryController {
 		
 		}
 	}
-
+	
+	// 메소드1 : 도서 등록
 	public void insertBook() {
-		System.out.println("도서 등록 기능 구현");
 		sc.nextLine(); // 위에 한번만 엔터에의한 공백 없애주면됨.
 		// 도서 정보 입력
 		System.out.print("도서 번호 : ");
@@ -111,7 +111,7 @@ public class LibraryController {
 		// System.out.println(bookList); // 테스트용 보여주기
 	}
 
-	
+	// 메소드2 : 도서 대출
 	private void loanBook() {
 		// 1. 빌릴 수 있는 도서 목록
 		
@@ -183,6 +183,7 @@ public class LibraryController {
 //		
 	}
 	
+	// 메소드3 : 도서 반납
 	private void returnBook() {
 		sc.nextLine(); // 위에 한번만 엔터에 의한 공백 없애주면됨.
 		// 반납도서 번호를 입력
@@ -226,21 +227,21 @@ public class LibraryController {
 //		// 대출 가능으로 상태 변경
 	
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
+	// save&load - vo클래스 Serializable 해줘야함!
 	private void saveLoan(String fileName){
 		try(
-				FileOutputStream fos = new FileOutputStream(fileName);
-					// 절대경로 : D:\\.student / 상대정보(프로젝트 기준)
-				ObjectOutputStream oos = new ObjectOutputStream(fos)){
-					// 모든 보조스트림은 기반스트림이 필요하다
-					for(LoanBrowsing tmp : loanList) { // *saveBook 에서 반복문만 변경
-						oos.writeObject(tmp);
-						//public class Student implements Serializable {
-						//** add generated sirialversionUID
-					}
-			} catch (IOException e) {
-				e.printStackTrace();
-				}		
+			FileOutputStream fos = new FileOutputStream(fileName);
+				// 절대경로 : D:\\.student / 상대정보(프로젝트 기준)
+			ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				// 모든 보조스트림은 기반스트림이 필요하다
+				for(LoanBrowsing tmp : loanList) { // *saveBook 에서 반복문만 변경
+					oos.writeObject(tmp);
+					//public class Student implements Serializable {
+					//** add generated sirialversionUID
+				}
+		} catch (IOException e) {
+			e.printStackTrace();
+			}		
 		}
 	private void saveBook(String fileName) {
 		try(
