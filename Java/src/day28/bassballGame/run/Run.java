@@ -8,5 +8,4 @@ public class Run {
 		GameController gc = new GameController();
 		gc.run();
 	}
-
 }

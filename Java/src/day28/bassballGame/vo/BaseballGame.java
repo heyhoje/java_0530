@@ -38,7 +38,7 @@ public class BaseballGame {
 		Random random = new Random();
 		Set<Integer> set = new HashSet<>();
 		// 랜덤한 수를 size개만큼 set에 추가(set은 알아서 중복을 제거해줌)
-		while(set.size() < 3) {
+		while(set.size() < size) {
 			set.add(random.nextInt(max - min + 1) + min); // 0이상 지정된 값 미만의 정수
 		}
 		// 중복되지 않게 처리된 set을 List에 저장
@@ -49,7 +49,7 @@ public class BaseballGame {
 		return true;
 	}
 	
-	// 스트라이크 개수
+	// 메소드2 : 스트라이크 개수
 	public int getStrike() {
 		int count = 0; 
 		for(int i = 0; i < com.size(); i++) {
@@ -57,10 +57,10 @@ public class BaseballGame {
 				count++;
 			}
 		}
-		return 0;
+		return count;
 	}
 	
-	// 볼 개수
+	// 메소드3 : 볼 개수
 	public int getBall() {
 		int count = 0;
 		// 중복된 숫자가 몇개 있는지 확인(볼 + 스트라이크 개수)
@@ -72,6 +72,7 @@ public class BaseballGame {
 		return count - getStrike();
 	}
 
+	// 메소드4 : user 값 확인
 	/*user에 중복된 값과 범위를 넘어가는 값이 있는지 확인하는 메소드*/
 	public boolean setUser(List<Integer> user) {
 		// user를 this.user에 복사한 후 같은게 몇개씩 있는지 확인
@@ -100,9 +101,10 @@ public class BaseballGame {
 				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
+	// 메소드5 : 결과출력
 	public void printResult() {
 		int strike = getStrike();
 		int ball = getBall();
