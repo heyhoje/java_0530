@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이분할 예제</title>
+	<style>
+		/* float속성 & width 부모의 반인 50% */
+		.container{
+			border: 5px solid red; width: 500px;
+		}
+		.box{
+			width: 50%; height: 250px; background-color: blue;
+			float: left;
+		}
+		.box1{background-color: black;}
+		.container::after{
+			content: ''; display: block; clear: both;
+		}
+		/* .box1{
+			border: 5px dotted black;
+			width: 50%; height: 100px;
+			float: left;
+		}
+		.box2{
+			border: 5px dotted blue;
+			width: 50%x; height: 100px;
+		} */
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+	</div>
+</body>
+</html>
