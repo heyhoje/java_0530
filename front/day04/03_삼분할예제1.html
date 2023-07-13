@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>삼분할예제1</title>
+	<style>
+		.container{
+			width: 500px; height: 500px; padding: 10px;
+			box-sizing: border-box; border: 5px solid black;/* 컨텐츠+패딩+테두리 합한 값*/
+		}
+		/* .container::after{
+			content:''; display: block; clear: both;
+		} */
+		.box{
+			width: calc((100% - 2 * 10px) / 3);
+			height: 100%; background-color: red;
+			float: left;
+		}
+		.box+.box{
+			margin-left: 10px;
+		}
+		.box2{
+			/* width: calc((500px - 2 / 10px) / 3); */
+			background-color: orange;
+		}
+		.box3{
+			background-color: green;
+			float: right;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>삼분할예제3</title>
+	<style>
+		.container{
+			width: 500px; height: 500px; padding: 10px;
+			box-sizing: border-box; background-color: black;
+		}
+		.box{
+			float: left;
+			width: calc(50% - 5px); height: 100%; 
+			/* 5px빼는건 왼5오5=가운데10px패딩 이렇게 하려고 하는걸까요?*/
+			background-color: yellow;
+		}
+		/* .container::after{
+			content:''; display: block; clear: both;
+		} */ /* 왜 이분할 할때는 써놓고 삼분할 부터는 안쓸까???? */
+		.box2{
+			float: right;
+			/* width: calc(100% / 2); height: (100% / 2); */
+			background-color: transparent; /* 왜 투명해져??? */
+		}
+		.inner-box{
+			height: calc(50% - 5px); background-color: orangered;
+		}
+		/* .bottom-box{
+			margin-top: 10px;
+		} */
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box"></div>
+		<div class="box box2">
+			<div class="inner-box top-box"></div>
+			<div class="inner-box bottom-box"></div>
+		</div>
+		
+	</div>
+</body>
+</html>
