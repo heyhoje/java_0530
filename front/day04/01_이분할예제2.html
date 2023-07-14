@@ -15,9 +15,11 @@
 			width: 480px; border: 5px solid red; 
 			padding: 10px;
 		}
+		/*이분할에서 가상요소 after를 써야하는 이유*/
 		.container::after{
 			content:''; display: block; clear: both;
 		}
+		
 		.box{
 			width: 235px; height: 480px; background-color: yellow;
 			float: left; /* display inline-block은 앤터에 의한 공백이 생김 */
