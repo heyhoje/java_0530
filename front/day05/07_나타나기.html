@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>나타나기</title>
+	<style>
+		.box1{
+			width: 100px; height: 100px; 
+			border: 5px solid red; 
+		}
+		.box2{
+			width: 100px; height: 100px;
+			border: 5px solid black; 
+			display: none;
+		}
+		.container2{
+			margin-left: 30px;
+			/* margin-top: 100px; */
+		}
+
+		.container1>.box1:hover~.box2{
+			display: block;
+		}
+		.container2:hover>.box2{
+			display: block;
+		}
+
+		.container1, .container2 {float: left;}
+		/* .box2::after{
+		content:''; position: absolute; left: 0; right: 0;
+		bottom: 0; height: 4px;
+		transform: scale(0);		
+		transition: transform 0.5s;
+		transform-origin: bottom right;
+		}
+		.box1:hover::after{
+			transform: scale(1);
+			transform-origin: bottom left;
+		} */
+
+
+	</style>
+</head>
+<body>
+	<!-- box1만 hover했을 때, box2가 나타나고 유지 : ex) 네이버 언론사 편지-->
+	<div class="container1">
+		<div class="box box1"></div>
+		<div class="box box2">네이버 언론사 편지</div>
+	</div>
+	<!-- box1을 hover했을 때, box2가 나타나고 box2를 hover해도 유지 : ex) github 메뉴 -->
+	<div class="container2">
+		<div class="box box1"></div>
+		<div class="box box2">깃헙 메뉴</div>
+	</div>
+</body>
+</html>
