@@ -1,0 +1,120 @@
+@charset "utf-8";
+ 	* {padding: 0; margin: 0; color: #101010;
+	font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif 
+	}
+	ul, ol, li {list-style: none;}
+	a {text-decoration: none;}
+	body{
+		min-width: 1340px
+	}
+	html{font-size: 10.5px; line-height: 10.5px;}
+	
+	/* 헤더 영역 (검색창, 메뉴 등) */
+header{
+	width: 1280px; 
+	margin: 0 auto;/* 박스 가운데 정렬 */
+	position: relative;
+	padding: 64px 0 42px;
+	height: 156px;
+
+	background-color: lightgoldenrodyellow;
+		height: 200px; 
+}
+/* 햄버거 메뉴 */
+#ham_menu{
+	position: absolute; top: 18px; left: -10px;
+	/* width: 30px; height: 30px;
+	background-color: lightgreen; */
+}
+#ham_menu .btn-ham{
+	padding: 10px; cursor: pointer;
+	background-color: transparent; border: 0; outline: 0;
+}
+#ham_menu .btn-ham::after{
+	content:''; display: block; background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px;
+	background-position: -335px -284px;
+	width: 26px; height: 26px;
+	position: relative;
+}
+#ham_menu .btn-ham:hover::before{
+	content: ''; display: block; position: absolute; top: 1px; left: 1px;
+	width: 44px; height: 44px; border-radius: 50%; background-color: #f5f7f8;
+}
+/* 검색창 영역 */
+#box_search{
+	width: 706px; height: 50px; box-sizing: border-box; 
+	position: absolute; 
+	/* 좌우 가운데 정렬 */
+	left: 50%; transform: translateX(-50%);
+	border: 1px solid #03c75a;
+	border-radius: 25px; top: 64px;
+
+	/* 삭제용 배경색 */
+	/* background-color: lightpink; */
+}
+#box_search .box-logo{
+	float: left; width: 80px;
+}
+#box_search .box-logo .link-logo{
+	display: block; padding-left:10px; margin-right: 12px;
+}
+#box_search .box-logo .link-logo>.img-link-logo{
+	width: 58px; height: 58px; display: block;
+}
+
+/* 검색창 */
+#box_search .box-search-input{
+	float: right; width: 623px;
+}
+#box_search .box-search-input .input-search{
+	padding: 17px 0; width: 480px; float: left;
+	height: 48px; border: 0; outline: 0;
+	box-sizing: border-box;
+	line-height: 24px; font-weight: bold; font-size: 24px; color: #000;
+}
+#box_search .box-search-input .input-search::placeholder{
+	color: #f5f6f7;
+}
+/* 검색 버튼 */
+#box_search .box-search-input .btn-search{
+	padding: 17px 27px 16px 10px; cursor: pointer;
+	position: absolute; top: 0; right: 0; /* 오른쪽에 붙여줌 */
+	border: 0; outline: 0; background-color: transparent;
+}
+/* 얜 뭘까....색깔도 안들어오고 */
+/* 검색아이콘, 가상 키보드와 자동완성버튼, 검색창 아래 바로가기 메뉴 */
+#box_search .box-search-input .btn-search .icon-search{
+	background-color: #a3691b; display: block;
+}
+#box-search .box-search-input .btn-search .icon-search::before{
+background-image: url(../img/naver_icon.png);
+background-size: 422px 405px;
+background-position: -364px -106px;
+width: 25px; height: 25px; content: ''; display: block;
+}
+/* 컨텐츠 영역 */
+#container{
+	width : 1280px;
+	margin: 0 auto;/* 박스 가운데 정렬 */
+
+	/* 아래는 나중에 삭제할 속성  */
+	background-color: red;
+	height: 500px;
+}
+
+/* 푸터 영역(회사 정보) */
+footer{
+	min-width: 1280px; /* 최소 너비로, 브라우저 작을때는 1280px, 클때는 100%*/
+	/* background-color: #f5f6f7; */
+	background-color: lightgreen;
+
+	/* 아래는 나중에 삭제할 속성  */
+	height: 300px;
+}
+
+/* 공통 */
+.blind{
+	position: absolute; width: 1px; height: 1px; margin: -1px;
+	overflow: hidden;
+}
