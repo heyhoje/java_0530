@@ -24,27 +24,28 @@
 				<a href="#" class="link-logo">
 					<img src="../img/naver_7_17_logo.png" alt="로고" class="img-link-logo" width="58px" height="58px">
 				</a>
-				<form class="box-search-input">
-					<fieldset>
-						<legend class="blind">검색</legend>
-						<div class="box-input clearfix" >
-							<input type="text" class="input-search" placeholder="검색어를 입력해 주세요.">
-						</div>
-						<button class="btn-search">
-							<span class="icon-search"></span>
-							<span class="blind">검색</span>
-						</button>
-					</fieldset>
-				</form>
-				<div class="box-btns">
-					<button class="btn-kbd">
-						<span class="blind">입력도구</span>
-					</button>
-					<button class="btn-autocomplete">
-						<span class="blind">자동완성/최근검색어펼치기</span>
-					</button>
-				</div>
 			</div>
+			<form class="box-search-input">
+				<fieldset>
+					<legend class="blind">검색</legend>
+					<div class="box-input clearfix" >
+						<input type="text" class="input-search" placeholder="검색어를 입력해 주세요.">
+					</div>
+					<button class="btn-search">
+						<span class="icon-search"></span>
+						<span class="blind">검색</span>
+					</button>
+				</fieldset>
+			</form>
+			<div class="box-btns">
+				<button class="btn-kbd">
+					<span class="blind">입력도구</span>
+				</button>
+				<button class="btn-autocomplete">
+					<span class="blind">자동완성/최근검색어펼치기</span>
+				</button>
+			</div>
+		</div>
 			<!-- 검색창 끝 -->
 			<div class="shortcut-area">
 				<ul class="shortcut-list clearfix">
@@ -117,13 +118,14 @@
 				</a>
 			</div>
 			<!-- 네이버페이 끝 -->
-			<div class="box-nofity">
+			<div class="box-notify">
 				<button class="btn-notify">
 					<span class="blind">알림</span>
 				</button>
 			</div>
 			<!-- 알림 끝 -->
 	</header>
+	<!-- 이 밑으로 html은 다 채움. 짝꿍 css찾기가 고난길일뿐...^^ -->
 	<div id="container">
 		<div class="box-left">
 			<div class="box-banner" id="box_left1">
@@ -132,43 +134,302 @@
 			<!-- 왼쪽 1번째 컨텐츠(광고) 끝 -->
 			<div class="box-newsstand" id="box-left2">
 				<div class="box-newsstand-body">
-					<div class="box-header">
-						<ul class="tap-list clearfix">
-							<li class="tap-item">
+					<div class="box-header">1
+						<ul class="tab-list clearfix">
+							<li class="tab-item">
 								<a href="#" class="btn-newsstand" aria-selected="true">뉴스스탠드</a><a href="#" class="btn-press">언론사편집</a>
 							</li>
-							<li class="tap-item">
+							<li class="tab-item">
 								<a href="#" class="btn-enter">엔터</a>
 							</li>
-							<li class="tap-item">
+							<li class="tab-item">
 								<a href="#" class="btn-sports">스포츠</a>
 							</li>
-							<li class="tap-item">
+							<li class="tab-item">
 								<a href="#" class="btn-economics">경제</a>
 							</li>
 						</ul>
 					</div>
-					<div class="box-header-sub clearfix">
+					<div class="box-header-sub clearfix">2
 						<div class="box-sub-left">
 							<a href="#" class="hover float-left">전체언론사<i class="icon-triangle-down"></i></a>
-							<div class="box-news float-left">
+							<!-- <div class="box-news float-left">
 								<a href="#" class="btn-media hover float-left">연합뉴스</a>
 								<ul class="news-list float-left">
 									<li class="news-item">
-										<a href="#" class="link-news hover">민주, '정당한 영장 청구에 불체포특권 포기' 결의 채택</a>
-								</li>
-							</ul>
-							</div>
+										<a href="#" class="link-news hover">1.민주, '정당한 영장 청구에 불체포특권 포기' 결의 채택</a>
+									</li>
+									<li class="news-item">
+										<a href="#" class="link-news hover">2.민주, '정당한 영장 청구에 불체포특권 포기' 결의 채택</a>
+									</li>
+									<li class="news-item">
+										<a href="#" class="link-news hover">3.민주, '정당한 영장 청구에 불체포특권 포기' 결의 채택</a>
+									</li>
+									<li class="news-item">
+										<a href="#" class="link-news hover">4.민주, '정당한 영장 청구에 불체포특권 포기' 결의 채택</a>
+									</li>
+								</ul>
+							</div> -->
 						</div>
 						<div class="box-sub-right">
 							<a href="#" class="link-news-stand">뉴스스탠드</a>
-							<a href="#" class="link-news-home">뉴스홈</a>
+							<a href="#" class="link-news-home position-relative">뉴스홈</a>
 						</div>
 					</div>
-					<div class="box-main">3</div>
+					<!-- 박스 메인 위에 안채웠음?? 이제 채움 이제 css만 하면 됨ㅠㅠ-->
+					<div class="box-main">
+						<div class="box-border">
+							<!-- 가로줄 -->
+							<i class="border-to-right"></i>
+							<i class="border-to-right"></i>
+							<i class="border-to-right"></i>
+							<!-- 세로줄 -->
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+						</div>
+						<ul class="list-contents">
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20px" src="https://s.pstatic.net/static/newsstand/up/2020/0903/nsd185255316.png" alt="조선일보">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="box-newsstand-page"></div>
+				<div class="box-newsstand-page">
+				<div class="box-newsstand-page" page-container>
+					<div class="box-page">
+						<button class="brn-prev"><span>이전 버튼</span></button>
+						<div class="box-title float-left">
+							<span class="text-point">
+								<span>언론사</span>
+								<span class="text-more">더보기</span>
+							</span>
+							<span class="page-current">1</span><span class="page-max">/4</span>
+						</div>
+						<button class="btn-next"><span class="blind">다음 버튼</span></button>
+					</div>
+					<div class="box-btns">
+						<button class="btn-list">
+						<button class="btn-list" aria-checked="true">
+							<span class="blind">리스트형</span>
+						</button>
+						<button class="btn-thumb">
+						<button class="btn-thumb" >
+							<span class="blind">썸네일형</span>
+						</button>
+					</div>
+				</div>
 			</div>
+			<!-- 왼쪽 2번째 컨텐츠(뉴스) 끝 -->
+			<div class="box-shopping" id="box-left3">
+				<div class="box-shopping-body">1</div>
+				<div class="box-shopping-page page-container">
+					<div class="box-page">
+						<button class="btn-prev"><span class="blind">이전 버튼</span></button>
+						<div class="box-title float-left">
+							<span class="text-point">
+								<span>쇼핑아이템</span>
+								<span class="text-more">더보기</span>
+							</span>
+							<span class="page-current">1</span><span class="page-max">/18</span>
+						</div>
+						<button class="btn-next"><span class="blind">다음 버튼</span></button>
+					</div>
+				</div>
+			</div>
+			<!-- 왼쪽 3번째 컨텐츠 끝(쇼핑) -->
+		</div>
 		</div>
 		<!-- 컨텐츠 왼쪽 박스 끝 -->
 		<div class="box-right">
@@ -179,12 +440,15 @@
 						<i class="icon-login"> <span class="blind">NAVER</span>
 						</i> 로그인
 					</a>
-					<div class="box-links"></div>
+					<div class="box-links">
+						<a href="#" class="link-find-id">아이디 찾기</a><a href="#" class link-find-pw>비밀번호 찾기</a><a href="#" class="link-signup">회원가입</a>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 컨텐츠 오른쪽 박스 끝 -->
 	</div>
+	<!-- 컨텐츠 끝 -->
 	<footer></footer>
 	<!-- 푸터 끝 -->
 </body>
