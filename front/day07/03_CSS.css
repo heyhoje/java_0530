@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.box::after{
+	content:''; clear: both; display: block;
+}
+.inner-box{
+	float: left; width: 50%; height: 500px; background-color: lightsalmon;
+}
+.inner-box:nth-child(2){
+	background-color: lightblue;
+}
