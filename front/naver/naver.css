@@ -253,8 +253,8 @@
 		width: 1280px; margin: 0 auto; /* 박스 가운데 정렬 */
 	 
 		/* 아래는 나중에 삭제할 속성 */
-		/* background-color: lightcoral; */
-		/* height: 500px; */
+		background-color: lightcoral;
+		height: 500px;
 	}
 	/* 컨텐츠 영역 공통 */
 	#container>.box-left>div,
@@ -285,62 +285,62 @@
 	}
 
 	/* 2번째 왼쪽 컨텐츠 : 뉴스 스탠드 */
-	#container .box-left .box-newsstand .box-newsstand-body{
+	#container .box-left  .box-newsstand .box-newsstand-body{
 		padding: 18px 20px;
 	}
-	#container .box-left .box-newsstand .box-newsstand-body .tab-list{
+	#container .box-left  .box-newsstand .box-newsstand-body .tab-list{
 		font-size: 1.4rem; line-height: 1.7rem; letter-spacing: -.4px;
 	}
-	#container .box-left .box-newsstand .box-newsstand-body .tab-item{
+	#container .box-left  .box-newsstand .box-newsstand-body .tab-item{
 		float: left;  position: relative;
 		font-size: 1.6rem; line-height: 23px; font-weight: 800;
  	}
-	 #container .box-left .box-newsstand .box-newsstand-body .tab-item+.tab.item{
+	 #container .box-left  .box-newsstand .box-newsstand-body .tab-item+.tab-item{
 		padding-left: 26px;
 	 }
-	#container .box-left .box-newsstand .box-newsstand-body .tab-item+.tab.item::before{
+	#container .box-left  .box-newsstand .box-newsstand-body .tab-item+.tab-item::before{
 		content: ''; display: block; position: absolute; 
 		width: 1px; height: 15px; background-color: #d3d5d7; 
 		/* margin: ; padding: ; */
 		transform: skew(-15deg); 
 		top:4px; left: 13px;
 	}
-	#container .box-left .box-newsstand .box-newsstand-body .tab-item .btn-press::before{
+	#container .box-left  .box-newsstand .box-newsstand-body .tab-item .btn-press::before{
 		content: ''; display: inline-block; 
 		width: 4px; height: 4px; background-color: #d3d5d7; 
 		border-radius: 50%; margin: 9px 7px 0; vertical-align: top;
 	}
 	#container .box-left .box-newsstand .box-newsstand-body .tab-item>a{
-		color: rgba(0,0,0,.5);
+		color: rgba(8,8,8,.5);
 	}
-	#container .box-left .box-newsstand .box-newsstand-body .tab-item>a[aria_selected=true]{
-		color: #080808
+	#container .box-left .box-newsstand .box-newsstand-body .tab-item>a[aria-selected=true]{
+		color: #080808;
 	}
-	#container .box-left .box-newsstand .box-newsstand-body .tab-item>a:hover{
+	#container .box-left  .box-newsstand .box-newsstand-body .tab-item>a:hover{
 		text-decoration: underline;
 	}
-	#container .box-left .box-newsstand .box-header-sub{
+	#container .box-left  .box-newsstand .box-newsstand-body .box-header-sub{
 		margin-top: 17px; padding: 12px 20px; background-color: #f5f7f8;
 		border-radius: 4px; line-height: 26px; font-size: 1.4rem; letter-spacing: -.4px;
 	}
 	#container .box-left .box-newsstand .box-header-sub .box-sub-left{
 		float: left;
 	}
-	#container .box-left .box-newsstand .box-header-sub .box-sub-left .icon-triangle-down{
+	#container .box-left  .box-newsstand .box-header-sub .box-sub-left .icon-triangle-down{
 		background-image: url(../img/naver_icon.png);
 		background-size: 422px 405px; display: inline-block;
 		background-position: -412px -366px;
 		width: 9px; height: 6px; 
 		margin: 10px 0 0 5px; vertical-align: top;
 	}
-	#container .box-left .box-newsstand .box-header-sub .box-sub-left .box-news,
-	#container .box-left .box-newsstand .box-header-sub .box-sub-right .link-news-home{
+	#container .box-left  .box-newsstand .box-header-sub .box-sub-left .box-news,
+	#container .box-left  .box-newsstand .box-header-sub .box-sub-right .link-news-home{
 		padding-left: 25px; position: relative;
 	}
 	/* | */
-	#container .box-left .box-newsstand .box-header-sub .box-sub-left .box-news::before,
-#container .box-left .box-newsstand .box-header-sub .box-sub-right .link-news-home::before{
-		content:''; position: relative; top: 7px; left: 12px;
+	#container .box-left  .box-newsstand .box-header-sub .box-sub-left .box-news::before,
+	#container .box-left  .box-newsstand .box-header-sub .box-sub-right .link-news-home::before{
+		content:''; position: absolute; top: 7px; left: 12px;
 		width: 1px; height: 12px; background-color: #d3d5d7;
   }
 	/* 가운데 점 */
@@ -366,18 +366,13 @@
 	#container .box-left .box-newsstand .box-header-sub .box-sub-left .news-list{
 		height: 26px; overflow: hidden;
 	}
-	#container .box-left .box-newsstand .box-newsstand-page{
-		padding: 10px 0 11px; border-top: 1px solid #ebebeb;
-		
-	}
-	/* 헤더서브 부터 안채움 */
+
 	#container .box-left .box-newsstand .box-main{
 		margin-top: 18px; position: relative;
 	}
 
-	/* 박스컨텐츠 였던 list-contents 아래 부분 부터 손 놔버림 몰라시발 */
 	#container .box-left .box-newsstand .box-main .list-contents{
-		border: 1px solid red; height: 222px; overflow: hidden;
+		border: 1px solid red/*#ebebeb*/; height: 222px; overflow: hidden;
 		border-radius: 4px; 
 		/* 
 		형제 중 position:absolute가 있을 때, 형제 요소 위로 올려야 하는 경우 
@@ -387,6 +382,8 @@
 	}
 	#container .box-left .box-newsstand .box-main .item-contents{
 		width: 16.66%; height: 56px; float: left; 
+		position: relative;
+		/* 영역 체크용 (삭제) */
 		background-color: yellow;
 	}
 	#container .box-left .box-newsstand .box-main .link-contents{
@@ -399,12 +396,33 @@
 	.box-border:hover{
 		background-color: yellowgreen;
 	} */
+	#container .box-left .box-newsstand .box-main .box-contents-hover{
+		position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+		background-color: #2868f2; text-align: center;
+		padding: 13px 0; display: none;
+	}
+	#container .box-left .box-newsstand .box-main .item-contents:hover .box-contents-hover{
+		display: block;
+	}
+	#container .box-left .box-newsstand .box-main .box-contents-hover .btn-subs,
+	#container .box-left .box-newsstand .box-main .box-contents-hover .link-news-view{
+		font-size: 1.3rem; font-weight: 400; line-height: 30px; color: #fff;
+		letter-spacing: -.4px;
+	}
+	#container .box-left .box-newsstand .box-main .box-contents-hover .link-news-view::before{
+		width: 1px; height: 12px; display: inline-block; content:'';
+		margin: 9px 10px 0; background-color: rgba(255,255,255,0.3);
+		vertical-align: top;
+	}
+	#container .box-left .box-newsstand .box-main .box-contents-hover a:hover{
+		font-weight: bold; text-decoration: underline;
+	}
 	#container .box-left .box-newsstand .box-main .box-border{
 		position: absolute; top:0; bottom:0; left:0; right:0;
 	}
 	#container .box-left .box-newsstand .box-main .box-border .border-to-right{
-	height: 1px; position: absolute; left:0; right:0; 
-	background-color: red; top:10px;
+	height: 1px; position: absolute; left:0; right:0; z-index: 1;
+	background-color: red/*#ebebeb*/; top:10px;
 	}
 	#container .box-left .box-newsstand .box-main .box-border .border-to-right:nth-of-type(1){
 		top: 56px;
@@ -417,7 +435,7 @@
 	}
 	#container .box-left .box-newsstand .box-main .box-border .border-to-bottom{
 		width: 1px; position: absolute; top: 0; bottom: 0; z-index: 1;
-		background-color: red;
+		background-color: red/*#ebebeb*/;
 	}
 	#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(4){
 		left: 132px;
@@ -434,8 +452,32 @@
 	#container .box-left .box-newsstand .box-main .box-border .border-to-bottom:nth-of-type(8){
 		left: 657px;
 	}
+	#container .box-left .box-newsstand .box-newsstand-page{
+		padding: 10px 0 11px; border-top: 1px solid #ebebeb;
+	}
 	
-	
+	/* 3번째 컨텐츠 영역(쇼핑) */
+	#container .box-left .box-shopping .box-shopping-body{
+		padding: 19px 20px 0;
+	}
+	#container .box-left .box-shopping .box-shopping-page{
+		border-top: 1px solid #ebebeb;
+	}
+	#container .box-left .box-shopping .body-container .box-header-sub{
+		margin-top: 16px; padding: 0;
+	}
+	#container .box-left .box-shopping .body-container .box-header-sub .box-sub-left{
+		width: 668px; background-color: #f5f7f8; border-radius: 4px;
+		box-sizing: border-box; padding: 15px 20px 14px;
+		line-height: 21px; font-weight: bold;
+	}
+	#container .box-left .box-shopping .body-container .box-header-sub .text-today-pick{
+		padding-right: 19px; position: relative;
+	}
+	#container .box-left .box-shopping .body-container .box-header-sub .text-today-pick::after{
+		content:''; position: absolute; top: 8px; right: 8px; 
+		width: 3px; height: 3px; border-radius: 50%; background-color: #d3d5d7;
+	}
 	/* 컨텐츠 오른쪽 영역 */
 	#container .box-right{
 		float: right; width: 420px;
