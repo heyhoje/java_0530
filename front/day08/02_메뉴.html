@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		/* 메뉴바를 flex를 이용해서 만들어보기 */
+		* {padding:0; margin:0; color:black;	}
+		ul, ol {list-style: none;}
+		a {text-decoration: none;}
+		.list-menu{
+			display: flex;
+			width: 600px; border: 3px solid black;
+		}
+		.item-menu+.item-menu{
+			border-left: 3px solid black; margin-left: -3px;
+		}
+		.item-menu{
+			width: 100%; height: 50px;
+			flex-flow: row nowrap;
+		}
+		.link-menu{
+			display: block; height: 100%; cursor: pointer; color: black;
+			font-size: 30px; text-align: center; line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="list-menu">
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴2</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+		<!-- <div class="container">
+			<div class="box box1">메뉴1</div>
+			<div class="box box2">메뉴2</div>
+			<div class="box box3">메뉴3</div>
+		</div> -->
+</body>
+</html>
