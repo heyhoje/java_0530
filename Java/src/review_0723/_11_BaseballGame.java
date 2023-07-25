@@ -47,33 +47,38 @@ public class _11_BaseballGame {
 		
 		// 3. 판별!
 			strike = 0;
-			ball = 0;
-		
+			ball = 0;	
 		// 스트라이크 개수 판별
 			strike = strike(com, user);
-//			System.out.println("S : " + strike);
+			System.out.println("S : " + strike);
+
 		// 볼 개수 판별
 			ball = ball(com, user);
-//			System.out.println("B : " + ball);
+			System.out.println("B : " + ball);
+
+			
 		// 스트라이크와 볼의 개수에 맞게 출력
 			printResult(strike, ball);
-
 		}while(strike < 3);
 		
 		System.out.println("Good!");
 		sc.close();
+		
 	}
-	
 	// 메소드1 : strike 판별
+	/**기능 : strike 같은 자리에 같은 숫자가 몇개 있는지 확인한다
+	 * 매개변수 : arr1[], arr2[]
+	 * 리턴타입 : 몇 개 => 정수 int
+	 * 메소드명 : strike
+	 */
 	public static int strike(int arr1[], int arr2[]) {
-		if(arr1 == null||arr2 == null) {
+		if(arr1 == null || arr2 == null) {
 			return 0;
 		}
-		
 		int size = arr1.length < arr2.length ? arr1.length : arr2.length;
 		
 		int count = 0;
-		for(int i = 0; i < size; i++){
+		for(int i = 0; i < size; i++) {
 			if(arr1[i] == arr2[i]) {
 				count++;
 			}
@@ -82,32 +87,55 @@ public class _11_BaseballGame {
 	}
 	
 	// 메소드2 : ball 판별
+	/** 기능 : ball, 다른 자리에 같은 숫자가 몇개 있는지 확인하세요 
+	 * 매개변수 : arr1[], arr2[]
+	 * 리턴타입 : 몇 개 => 정수 int
+	 * 메소드명 : ball
+	 */
 	public static int ball(int arr1[], int arr2[]) {
-		if(arr1 == null | arr2 == null) {
+		if(arr1 == null||arr2 == null) {
 			return 0;
 		}
 		int count = 0;
 		
 		for(int tmp : arr1) {
 			if(Array.contains(arr2, tmp, arr2.length)) {
-				count++;
+				count++;				
 			}
 		}
 		return count - strike(arr1, arr2);
 	}
 	
 	// 메소드3: printResult
-	public static void printResult(int strike, int ball) {
+	/**기능 : 스트라이크 개수와 볼 개수를 프린트한다.
+	 * 매개변수 : int strike, int ball
+	 * 리턴타입 : 프린트 => void
+	 * 메소드명 : printResult
+	 */
+	private static void printResult(int strike, int ball) {
 		if(strike != 0) {
-			System.out.println("S : " + strike);
+			System.out.println(strike + "S");
 		}
 		if(ball != 0) {
-			System.out.println("B : " + ball);
+			System.out.println(ball + "B");
 		}
 		if(strike == 0 && ball == 0) {
-			System.out.println("3OUT");
-		}
-		System.out.println();
+			System.out.println("3OUT!");
+		}	
 	}
-
 }
+
+// 이 짜식이 틀렸는데 3S라고 거짓말하고 퇴근한다....!!!!!!!! 배열 번지를 모르는 짜식 아닐까? 
+/*
+ * 야구 게임 시작!
+[5, 7, 6]
+
+숫자 3개를 입력하세요
+user :
+6 5 7
+
+S : 3
+B : 0
+3S
+Good!
+ * */
