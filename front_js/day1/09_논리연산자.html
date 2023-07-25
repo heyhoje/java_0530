@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>논리연산자 예제</title>
+</head>
+<body>
+	<script>
+		/*
+		js에서 참은 true와 0이 아닌 수
+		*/
+		let num = 20;
+		console.log(`num > 0 && num && num == 0 : ${num > 0 && num && num == 0}`)
+		// js에서 num은 참 => 참 참 거짓 => '거짓!!!'
+		console.log(`0 || num >= 20 : ${0 || num >= 20}`)
+		// 거짓 || 참 => '참!!!'
+
+		// || 연산자를 이용한 변수 초기값 설정
+		let firstName = '길동';
+		let lastName = '';
+		let nickName = '';
+		// 이름이 있으면 이름을, 성이 있으면 성을, 닉네임이 있으면 닉네임을
+		// 셋 다 없으면 익명을 name에 저장하는 코드를 작성
+		let name = firstName || lastName || nickName || '익명';
+		console.log(`name : ${name}`);
+
+		// 나이가 19세 이상이면 '운전 가능'을, 아니면 false를 저장하는 코드 작성
+		let age = 10;
+		let res;
+		/* if(age > 19){
+			res = '운전 가능';
+		}else {
+			res = false;
+		}*/
+		res = age >= 19 && '운전 가능'
+		// '운전가능'은 판별을 할 수 없으니까 res에 값을 저장한다. 
+		// let age = 10 => 거짓 & (볼필요없음) => false
+		console.log(`${age}살은 운전 가능? : ${res}`) 
+	</script>
+</body>
+</html>
