@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>성별 예제</title>
+</head>
+<body>
+	<script>
+		// prompt를 이용하여 성별을 입력받고, 입력 받은 성별이 M이면 남성입니다.
+		// F이면 여성입니다.를 출력하는 코드를 작성하세요.
+
+		let gender = prompt("성별을 입력하세요(F:여성 or M:남성 or 기타:미공개)");
+		if(gender == "W"){
+			alert("여성입니다");
+		}else if(gender == "M"){
+			alert("남성입니다");
+		}else{
+			alert('공개하지 않겠습니다');
+		}
+		/* let result;
+		if(gender == "W"){
+			result = "여성입니다";
+		}else if(gender == "M"){
+			result = "남성입니다";
+		}else{
+			result = '미공개'
+		}
+		alert(result); */
+	</script>
+</body>
+</html>
