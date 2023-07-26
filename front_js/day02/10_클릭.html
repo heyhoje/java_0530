@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지</title>
+	<style>
+		.btn-prev,
+		.btn-next{
+			width: 30px; height: 30px; background-color: #fff; 
+			border: 1px solid black; cursor: pointer; 
+		}
+		/* .box-page::after{
+			content:''; display: block; clear: both;
+		}
+		.box-page>*{float:left} */
+
+		.box-page{ display: flex; justify-content: center;}
+		.box-page-num{
+			padding: 0 5px; line-height: 32px; font-size: 18px;
+		}
+
+	</style>
+</head>
+<body>
+	<!-- innertext로 글자 바꾸기 -->
+	<!-- click이벤트 -->
+	<div class="box-page">
+		<button class="btn-prev"><</button>
+		<div class="box-page-num">
+			<span class="page-current">1</span>
+			<span class="page-max">/ 6</span>
+		</div>
+		<button class="btn-next" onclick="next();">></button>
+	</div>
+
+	<script>
+		let currentPage = 1;
+		const MAX_PAGE = 6;
+		let btnPrev = document.querySelector('.btn-prev');
+		let btnNext = document.querySelector('.btn-next');
+		let pageCurrent = document.querySelector('.page-current');
+
+		btnPrev.onclick = ()=>{
+			//currentPage = --currentPage == 0 ? MAX_PAGE : currentPage;
+			currentPage--;
+			currentPage = currentPage == 0 ? MAX_PAGE : currentPage;
+			// if(currentPage == 0){
+			// 	currentPage = MAX_PAGE;
+			// }else{
+			// 	currentPage = currentPage;
+			// }
+			pageCurrent.innerText = currentPage;
+			// alert('클릭');
+			}
+			function next(){
+				currentPage = ++currentPage > MAX_PAGE ? 1 : currentPage;
+				pageCurrent.innerText = currentPage;
+			}
+		
+
+		// box.innerText = '1'
+		// let left = 1;
+		// setInterval(function(){
+		// 	if(left > 0 && left < 6){
+		// 		left++;
+		// 	}
+		// 	if(left > 6){
+		// 		left++;
+		// 		left = 1;
+		// 	}
+		// 	if(left < 0){
+		// 		left = 1
+		// 	}
+		// })
+
+		// let btn = document.getElementById('btn')
+		// btn1.onclick = function(){
+		// 	num -= 1;
+		// }
+		// // let btn2 = document.getElementById('btn2')
+		// btn2.onclick = function(){
+		// 	num += 1;
+		// }
+	</script>
+</body>
+</html>
