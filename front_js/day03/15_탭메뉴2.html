@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭메뉴2</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 300px; height: 300px;
+			border: 1px solid black; 
+			margin-top: 10px
+		}
+	</style>
+</head>
+<body>
+
+	<button class="menu1">메뉴1</button>
+	<button class="menu2">메뉴2</button>
+	<button class="menu3">메뉴3</button>
+	<div class="box"></div>
+
+	<script>
+		$('.menu1').hover(function(){
+			$('.box').css('background', 'red');
+			$('.menu1').css('background', 'red');
+		}, function(){$('.box').css('background', 'transparent');
+			$('.menu1').css('background', 'transparent');
+		})
+		$('.menu2').hover(function(){
+			$('.box').css('background', 'blue');
+			$('.menu2').css('background', 'blue');
+		}, function(){$('.box').css('background', 'transparent');
+			$('.menu2').css('background', 'transparent');
+		})
+		$('.menu3').hover(function(){
+			$('.box').css('background', 'yellow');
+			$('.menu3').css('background', 'yellow');
+		}, function(){$('.box').css('background', 'transparent');
+			$('.menu3').css('background', 'transparent');
+		})
+	</script>
+</body>
+</html>
