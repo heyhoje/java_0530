@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>preventDefault</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<div style="height: 1000px"></div>
+	<a href="#">링크</a>
+
+	<script>
+		$('a').click(function(e){ // 매개변수로 e(vent) 객체를 가져오고
+			// 태그의 기본 기능을 막아줌(페이지 이동/현재 페이지의 특정 위치로 이동)
+			e.preventDefault();
+		});
+	</script>
+</body>
+</html>

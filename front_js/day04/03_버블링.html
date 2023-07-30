@@ -43,7 +43,11 @@
 		$('.item-menu').click(function(){
 			$(this).children('.list-sub').toggle();
 		});
-		$('.link-sub').click(function(){
+		/* list-menu 까지 click이벤트가 적용되는 버블링을 막기 위해
+		버블링을 막아주는 메소드 : stopPropagation()		
+		*/
+		$('.link-sub').click(function(e){ // 매개변수로 e(vent) 객체를 가져오고
+			e.stopPropagation(); // e -> 버블링을 막아주세요!
 			alert($(this).text() + '클릭');
 		});
 	</script>
