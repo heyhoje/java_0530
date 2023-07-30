@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>사이드 메뉴 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		nav{ position: relative; height: 50px;}
+		.btn-menu{
+			width: 50px; height: 50px; 
+			position: absolute; top: 0px; right: 0px;
+			border: 0; background-color: grey;
+		}
+		.list-menu{
+			width: 200px; height: 500px; border: 1px solid black;
+			position: fixed; top: 58px; right: -202px; background-color: yellow;
+			list-style: none; padding: 0; margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<button class="btn-menu">메뉴</button>
+		<ul class="list-menu"></ul>
+	</nav>
+
+	<script>
+		// 1. 전역변수를 이용
+		let fold = true;
+
+		$('.btn-menu').click(function(){
+			// 요소가 애니메이션 중이면 동작하지 않게 함
+			if($('.list-menu').is(':animated')){
+				return; // 끝날때까지 다른 애니메이션을 하지 않도록 막아줌
+			}
+
+			// 2. right 값을 가져와서 0일때, 0이 아닐때로 
+			// css(속성, 값) = 대항하는 값으로, 스타일을 바꿈 <Set기능>
+			// css(속성) = 현재 이 요소의, 속성에 대한 값을 가져옴
+			// $(요소).html() : 해당요소의 html코드를 가져옴 <Get기능>
+
+			let right = $('.list-menu').css('right');
+			/*
+			Number(문자열) vs parseInt(문자열)
+			- 공통점 : 문자열을 숫자로 변환
+			- 차이점 : 
+				- Number()는 숫자로 바꿀 수 없는 문자가 있는 경우 NaN가 됨.
+				- parseInt()는 숫자로 바꿀 수 없는 문자가 나타나기 전까지 숫자를 바꿈.
+
+			*/
+			right = parseInt(right); 
+			// '-202px'을 가져오기 때문에, -202 중에서 숫자로 바꿀수 있는 -202만 가져옴
+
+			// 나타나게 하는 코드
+			if(/*fold*/ right != 0){
+			$('.list-menu').animate({ right : 0 }, 1000);
+			}else {
+			// 들어가게 하는 코드
+			$('.list-menu').animate({ right : '-202px' }, 1000);
+			}
+			fold = !fold;
+
+		});
+		// 원하는 기능을 하기 위해서 변수를 활용할 수 있는지 체크하는 문제
+	</script>
+</body>
+</html>
