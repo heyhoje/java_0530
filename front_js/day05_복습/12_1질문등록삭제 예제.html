@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>질문 등록/삭제 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.inner-box::after{
+			content:''; display: block; clear: both;
+			 margin-bottom: 10px;
+		}
+		.question-box{
+			float: left; width: calc(100% - 50px); height: 50px; 
+			box-sizing: border-box; /*테두리 기준으로 박스사이징*/
+			border: 2px solid black; border-radius: 5px 0 0 5px;
+		}
+		.btn-add, .btn-del{
+			float: right; width: 50px; height: 50px; box-sizing: border-box;
+			border: 2px solid black; border-radius: 0 5px 5px 0;
+			background-color: white; border-left: 0; cursor: pointer;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">
+			<input type="text" class="question-box" placeholder="질문">
+			<button class="btn-add">+</button>
+		</div>
+	</div>
+	
+	<script>
+		$('.btn-add').click(function(){
+			let element =
+			`<div class="inner-box">
+				<input type="text" class="question-box" placeholder="질문">
+				<button class="btn-del">-</button>
+			</div>`;
+			$('.box').append(element); //append = 마지막 자식요소 다음
+		});
+		// 요소삭제 empty vs remove 
+		// => '클릭한' 삭제 버튼의 부모 요소를 찾아서 remove로 삭제
+		// but, 해당 이벤트를 등록한 시점에는 .btn-del이 없기 떄문에 
+		// $(document).on(이벤트, 요소, 함수) 를 써야함
+		$(document).on('click', '.btn-del', function(){
+			$(this).parent().remove();
+		});
+	</script>
+</body>
+</html>

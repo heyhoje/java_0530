@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<button class="btn-add">추가</button>
+	<div class="box"></div>
+
+	<!-- after/before/append/prepend 
+	before = 선택자 앞 / after = 선택자 다음
+	prepend = 첫번째 자식요소 앞 / append = 마지막 자식요소 다음
+
+	* front_js/day03/01_jquery_add.html (요소추가) 
+	-->
+	<script>
+		// 방법1: append 이용 (마지막 자식요소 다음)
+		/*
+		$('.btn-add').click(function(){
+			let input = `<input type="text"><br>`;
+			$('.box').append(input);
+		}) */
+
+		// 방법2 : before 이용 (선택자 앞)
+		/*
+		$('.btn-add').click(function(){
+			let input = `<br><input type="text">`; // <br>뒤에다 하면 추가버튼 옆에서부터 추가됨
+			$('.box').before(input);
+		}); */
+
+		// 방법3 : html 이용
+		$('.btn-add').click(function(){
+			let input = `<br><input type="text">`;
+			let html = $('.box').html();
+			$('.box').html(html + input);
+			// html은 덮어쓰기 되기 때문에, 코드를 그대로 가져와서 뒤에 '+ input' 붙이기
+		});
+	</script>
+</body>
+</html>

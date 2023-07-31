@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>질문 등록/삭제 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.inner-box::after{
+			content:''; display: block; clear: both; 
+			margin-bottom: 10px;
+		}
+		.question-box{
+			float: left; width: calc(100% - 50px); height: 50px; box-sizing: border-box;
+			border: 2px solid black; border-radius: 5px 0 0 5px;
+		}
+		.btn-add, .btn-del{
+			float: right; width: 50px; height: 50px; box-sizing: border-box;
+			border: 2px solid black; border-radius: 0 5px 5px 0;
+			background-color: white; border-left: 0; cursor: pointer;
+			font-size: 30px;
+		}
+		.label{ width: 100%; float: left; margin-bottom: 5px;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">
+			<label class="label">질문1</label>
+			<input type="text" class="question-box" placeholder="질문">
+			<button class="btn-add">+</button>
+		</div>
+	</div>
+	
+	<script>
+		$('.btn-add').click(function(){
+			let element =
+			`<div class="inner-box">
+				<label class="label">질문1</label>
+				<input type="text" class="question-box" placeholder="질문">
+				<button class="btn-del">-</button>
+			</div>`;
+			$('.box').append(element); // append = 마지막 자식요소 다음
+			checkNumber();
+		});
+
+		// * 요소삭제 empty vs remove 
+		// => '클릭한' 삭제 버튼의 부모 요소를 찾아서 remove로 삭제
+		// but, 해당 이벤트를 등록한 시점에는 .btn-del이 없기 떄문에 
+		// $(document).on(이벤트, 요소, 함수) 를 써야함
+		$(document).on('click', '.btn-del', function(){
+			$(this).parent().remove();
+			checkNumber();
+		});
+
+		// 시도했으나 통하지 않은 방법..... (X)
+		// let labelNum = 1;
+		// $('.btn-add').click(function(){
+		// 	$('.inner-box').append(`<label>질문${labelNum++}</label>`)
+		// })
+
+		/* ==>
+		질문 라벨 번호를 1부터 연속되게 하는 함수
+			(add/del에 코드가 중복되기 때문에 함수로 만들었다.)
+		*/
+		function checkNumber(){
+			$('.label').each(function(index){
+				$(this).text('질문'+(index+1));
+			});
+		}
+	</script>
+</body>
+</html>
