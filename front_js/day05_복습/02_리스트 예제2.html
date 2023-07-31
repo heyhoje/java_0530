@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>항목별 노랑</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="itme1">항목1</li>
+		<li class="itme2">항목2</li>
+		<li class="itme3">항목3</li>
+	</ul>
+	<button class="btn btn1">버튼1</button>
+	<button class="btn btn2">버튼2</button>
+	<button class="btn btn3">버튼3</button>
+	
+	<script>
+		// 1. 각 버튼마다 이벤트를 등록, 코드를 각각 적용하는 방법
+		// eq(번지수) / 다음 버튼 누를때 적용된거 해제될 수 있도록 전체 white처리
+		$('.btn1').click(()=>{
+			$('li').css('background-color','white');
+			$('li').first().css('background-color', 'yellow')
+		});
+		$('.btn2').click(()=>{
+			$('li').css('background-color','white');
+			$('li').eq(1).css('background-color', 'yellow')
+		});
+		$('.btn3').click(()=>{
+			$('li').css('background-color','white');
+			$('li').eq(2).css('background-color', 'yellow')
+		});
+
+
+		/*시도였던거 같은데 아직 data-target 차례 아니었음*/
+		// $('.btn').click(function(){
+		// 	let target = $(this).attr('data-target');
+		// 	$(target).css('background-color', 'yellow');
+		// });
+		
+
+	</script>
+</body>
+</html>

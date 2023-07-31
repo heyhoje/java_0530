@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>항목1 노랑</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="itme1">항목1</li>
+		<li class="itme2">항목2</li>
+		<li class="itme3">항목3</li>
+	</ul>
+	<button class="btn btn1">버튼1</button>
+	<button class="btn btn2">버튼2</button>
+	<button class="btn btn3">버튼3</button>
+	
+	<script>
+		// 2. 3개 이벤트를 
+		$('.btn').click(function(){
+			// console.log('테스트');
+			$('li').css('background-color','white');
+			// 현재 눌린 버튼이 .btn 중 몇번째인지 가져옴
+			let index = $(this).index()-1;
+			$('li').eq(index).css('background-color', 'yellow'); 
+			// index에는 몇번지인지가 들어가야함, 위에 index()-1번째로 설정
+		});
+		
+	</script>
+</body>
+</html>
