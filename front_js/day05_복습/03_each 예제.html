@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>for-each 예제</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn">버튼1</button>
+	<button class="btn">버튼2</button>
+	<button class="btn">버튼3</button>
+
+	<script>
+		// 1. 
+		$('.btn').each((index, element)=>{ // 해당 요소를 하나씩 꺼내서 작업할때
+			// console.log(index); - (각 버튼의 인덱스값 콘솔창에서 확인하고 주석처리)
+			$(element).click(function(){ // <-얘를 이용해서 이벤트를 등록. 요소를 전달받아서 click이벤트 등록
+				// console.log($(this).text()) - (콘솔창에 버튼1/버튼2/버튼3이 출력됨)
+				$('li').css('background-color', 'white');
+				$('li').eq(index).css('background-color', 'yellow');
+			});
+		});
+
+		// 2. 
+		// $('.btn').each(function(index, element){
+		// 	// this : each에 의해 꺼내진 요소(.btn요소) 
+		// 	$(this).click(function(){
+		// 		$('li').css('background-color', 'white');
+		// 		$('li').eq(index).css('background-color', 'yellow');
+		// 	});
+		// })
+	</script>
+</body>
+</html>
