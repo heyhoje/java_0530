@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 이전다음1</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li>항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn btn1">버튼1</button>
+	<button class="btn btn2">버튼2</button>
+	<button class="btn btn3">버튼3</button>
+	<br>
+	<button class="btn-prev">이전</button>
+	<button class="btn-next">다음</button>
+	
+	<script>
+		// 1. 전역변수
+		// .css(속성, 값)
+		let num = 0;
+		$('.btn').click(function(){
+			$('li').css('background-color','white');
+
+			// 현재 눌린 버튼이 .btn 중 몇번째인지 가져옴
+			let index = $(this).index()-1;
+			num = index; // (선행작업) num를 index로 바꿔줌
+			$('li').eq(index).css('background-color', 'yellow'); 
+			// index에는 몇번지인지가 들어가야함, 그래서 위에 index()-1번째로 설정
+		});
+
+		$('.btn-prev').click(()=>{
+			--num;
+			if(num < 0){
+				num = $('li').length -1;
+			}
+			$('.btn').eq(num).click(); // 이벤트 등록이 아닌 호출!
+		});
+
+		$('.btn-next').click(()=>{
+			++num;
+			if(num == $('li').length){
+				num = 0;
+			}
+			$('.btn').eq(num).click(); // 이벤트 등록이 아닌 호출!
+		})
+		
+	</script>
+</body>
+</html>
