@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+	<script src="../js/jquery.min.js"></script>
+	
+	<style>
+		html{ background-color: rgb(192, 227, 239);}
+		#join {
+			width: 350px; height: auto; border: 1px solid black;
+			background-color: rgb(244, 247, 250);
+		}
+		input {
+			border-bottom : 2px dashed black; border-top: none;
+			border-left: none; border-right: none;
+			background-color: rgb(244, 247, 250);
+		}
+		p { font-size: 8px; color: grey; }
+		.btn-signup {
+			background-color: rgb(207, 235, 165);
+			width: 90%; height: 100%; cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<main id="join">
+		<h1></h1>
+		<table id="user_info">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" id="id" size="25"></td>
+			</tr>
+			<tr>
+				<td>패스워드</td>
+				<td><input type="password" id="pw" size="25"></td>
+			</tr>
+			<tr>
+				<td>패스워드 확인</td>
+				<td><input type="password" id="pw2" size="25"></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" id="email" size="8">@<input type="text" id="email2" size="9"></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td>
+					<input type="text" id="address1" size="25"> <br>
+					<input type="text" id="address2" size="25">
+				</td>
+			</tr>
+		</table>
+		<button class="btn-signup" onclick="check()">가 입</button>
+	</main>
+	<script>
+
+	</script>
+</body>
+</html>

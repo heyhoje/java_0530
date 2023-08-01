@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+	<script src="../js/jquery.min.js"></script>
+	
+	<style>
+		html{ background-color: rgb(192, 227, 239);}
+		#join {
+			width: 400px; height: auto; border: 1px solid black;
+			background-color: rgb(244, 247, 250);
+			margin: 0 auto;
+		}
+		h1{
+			color:rgb(211, 205, 205); margin:0; text-align: center;
+			margin-top: 10px
+		}
+		form{margin-left: 10px; margin-right: 10px;}
+		input {
+			border-bottom : 2px dashed black; border-top: none;
+			border-left: none; border-right: none;
+			background-color: rgb(244, 247, 250);
+			margin-bottom: 10px; margin-left: 10px;
+		}
+		/* p { font-size: 8px; color: grey; } */
+		.btn-signup {
+			background-color: rgb(207, 235, 165); 
+			margin: 0 20px 10px; padding: 0;
+			width: 90%; height: 50px;	cursor: pointer; border: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="join">
+		<h1>회원가입</h1>
+		<form action="">
+			<div class="form-group">
+				<table id="user_info">
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" class="form-comtrol" name="id" size="30" required></td>
+						<label class="id"></label>
+					</tr>
+					<tr>
+						<td>패스워드</td>
+						<td><input type="password" class="form-comtrol" name="pw" size="30" required></td>
+						<label class="pw"></label>
+					</tr>
+					<tr>
+						<td>패스워드 확인</td>
+						<td><input type="password" class="form-comtrol" name="pw2" size="30" required></td>
+						<label class="pw2"></label>
+					</tr>
+					<tr>
+						<td>이메일</td>
+						<td><input type="text" class="form-comtrol" name="email" size="10"> @<input type="text" id="email2" size="11"></td>
+					</tr>
+					<tr>
+						<td>주소</td>
+						<td><input type="text" class="form-comtrol" name="address1" size="30"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="text" class="form-comtrol" name="address2" size="30"></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+		<button class="btn btn-signup" >가 입</button>
+	</div>
+
+	<script>
+		// 1. 패스워드 입력 요소를 클릭한 경우 "영문자 대/소문자 특수문자, 숫자 포함 8~32자"라는 메세지가 나오게 한다.
+		// 2. 아이디, 패스워드, 패스워드 확인을 입력하지 않고 다음 입력 요소로 이동하는 경우 
+		//    "필수 입력 항목 입니다"라는 메세지가 입력 요소 하단에 나오게 한다 
+
+		// 패스워드 입력요소 - 메세지 1번만 나오게 조치 필요. 
+		$('[name=pw]').click(function(){
+			$(this).after('<br>영문자 대/소문자 특수문자, 숫자 포함 8~32자')
+		});
+		$('form').submit(function(){
+			let ok = true; // 회원가입을 진행해도 될지 말지를 결정하는 변수
+
+		if(!checkID()){
+			ok = false;
+		}
+		if(!checkPw()){
+			ok = false;
+		}
+		if(!checkPw2()){
+			ok = false;
+		}
+		if(!checkEmail()){
+			ok = false;
+		}
+		return ok;
+
+	});
+			function checkID(){
+				let id = $('[name=id]').val();
+				let regex = /^\w{8,13}$/;
+				if(regex.test(id)){
+					$('.error-id').text('사용 가능한 아이디입니다.');
+					return true;
+				}else{
+					$('.error-id').text('아이디는 영문 또는 숫자 8~13자 이어야 합니다.');
+					return false;
+				}
+			}
+			function checkPw(){
+				let pw = $('[name=pw]').val();
+				let regex = /^[a-zA-Z0-9!@#$]{8,20}$/;
+				if(regex.test(pw)){
+					$('.error-pw').text('안전한 비밀번호 입니다.');
+					return true;
+				}else{
+					$('.error-pw').text('비밀번호는 영문 또는 숫자, 특수문자(!@#$) 8~20자 이어야 합니다.');
+					return false;
+				}
+			}
+			function checkPw2(){
+				let pw = $('[name=pw]').val();
+				let pw2 = $('[name=pw2]').val();
+				if(pw == pw2){
+					$('.error-pw2').text('비밀번호와 일치합니다');
+					return true;
+				}else{
+					$('.error-pw2').text('비밀번호와 일치하지 않습니다.');
+					return false;
+				}
+			}
+	</script>
+</body>
+</html>
