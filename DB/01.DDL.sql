@@ -38,7 +38,7 @@ use course;
 
 /*
 테이블 생성
-- autu_increment는 기본키에만 설정할 수 있다
+- auto_increment는 기본키에만 설정할 수 있다
 - 테이블당 최대 1개만 설정
 - default는 not null인 경우 기본값을 설정할 때 사용 
 - check는 데이터가 추가될 때 조건이 맞지 않는 경우 추가되게 하지 않을 때 사용
@@ -90,7 +90,7 @@ create table if not exists course.`course`(
     semester varchar(10) not null default '1',
     primary key(num),
     foreign key(subject_code) references subject(code),
-    foreign key(student_num) references student(code)
+    foreign key(student_num) references student(num)
 );
 /*
 alter : 테이블을 수정 
