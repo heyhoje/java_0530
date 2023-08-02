@@ -10,9 +10,8 @@
 			display: none;
 		}
 		.btn-file{
-			border: 2px solid red;
-			width: 100px; height: 100px;font-weight: fold;
-			font-size: 30px; line-height: 100px; text-align: center;
+			border: 2px solid red; width: 100px; height: 100px;
+			font-weight: bold; font-size: 30px; line-height: 100px; text-align: center;
 			display: block; text-decoration: none; color: red;
 		}
 		.box-thumbnail{ display: none;}
@@ -24,28 +23,13 @@
 	<div class="box-thumbnail">
 		<img src="" alt="미리보기" id="preview" height="100" width="auto" onclick="$('.input-file').click();">
 	</div>
+
 	<script>
 		$('.btn-file').click(function(){
-			$('.input-file').click();
+			$('input-file').click();
 		});
-		function readUrl(input){
-			//input태그가 첨부파일이고, 첨부파일이 선택되면
-			if(input.files && input.files[0]){
-				let reader = new FileReader();
-				reader.onload = function(e){
-					document.getElementById('preview').src = e.target.result;
-				}
-				reader.readAsDataURL(input.files[0]);
-				$('.box-thumbnail').show();
-				$('.btn-file').hide();
-			} 
-			//첨부파일이 선택되지 않으면
-			else{
-				document.getElementById('preview').src = '';
-				$('.box-thumbnail').hide();
-				$('.btn-file').show();
-			}
-		}
+		
+		
 	</script>
 </body>
 </html>
