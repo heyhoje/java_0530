@@ -4,7 +4,9 @@ delete : 데이터를 삭제
 delete from 테이블명 where 기본키 = 값;
 */
 -- 학번이 2023160001인 학생의 데이터를 삭제하는 쿼리
-delete from student where num = '2023160001';
+DELETE FROM student 
+WHERE
+    num = '2023160001';
 
 /*
 - 데이터 삭제 시, where절이 없거나 where의 속성이 기본키가 아닌 경우

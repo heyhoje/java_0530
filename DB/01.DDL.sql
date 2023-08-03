@@ -68,6 +68,7 @@ create table if not exists course.`student`(
     name varchar(20) not null,
     major varchar(20) not null,
     primary key(num)
+-- 기본키 : 튜플(행)중에 유일하게 다른것과 구분되는것 
 );
 -- 과목(과목코드, 과목명, 학점, 시수)
 -- 과목코드 앞 3자리는 종류, 뒤 3자리는 숫자 MSC001
@@ -91,6 +92,7 @@ create table if not exists course.`course`(
     primary key(num),
     foreign key(subject_code) references subject(code),
     foreign key(student_num) references student(num)
+    -- 외래키 : 다른 테이블의 기본키를 참조하는 속성(내가 원하는 정보가 해당 테이블에 있기 때문)
 );
 /*
 alter : 테이블을 수정 
