@@ -8,10 +8,11 @@ public class _nado_quiz_06 {
 		String id = "990130-1234567"; // 0 1 2 ... 13  
 		String phone = "010-1234-5678"; // 0 1 2 ... 12
 		
-		System.out.println("이름 : " + getHiddenData(name, 1)); // 개인정보, 비공개 시작
+		System.out.println("이름 : " + getHiddenData(name, 1));// 개인정보, 비공개 시작
 		System.out.println("주민번호 : " + getHiddenData(id, 8));
 		System.out.println("전화번호 : " + getHiddenData(phone, 9));
-		
+
+	}
 	
 	/** 기능 : 몇번째 인덱스 부터 잘라낼지 
 	 * 매개변수 : 멤버변수, 인덱스번호
