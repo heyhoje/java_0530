@@ -94,9 +94,9 @@ DROP TABLE IF EXISTS `theater`;
 CREATE TABLE `theater` (
 	`th_num`	int	NOT NULL primary key auto_increment,
 	`th_name`	varchar(20)	not NULL,
-    `th_address` 	varchar(20) not null, 
+    `th_address` 	varchar(50) not null, 
 	`th_re_name`	varchar(15)	NOT NULL,
-	`th_totaL_screen`	int	NULL default 1,
+	`th_total_screen`	int	NULL default 1,
 	`th_total_seat`	int	not NULL
 );
 
@@ -123,13 +123,12 @@ CREATE TABLE `seat` (
 	`se_row`	char(1)	not NULL,
 	`se_col`	varchar(2)	not NULL,
 	`se_state`	varchar(10)	not NULL default '일반', -- 일반/커플/스위트
-	`se_sc_num`	int	NOT NULL,
-    `se_total_seat` int not null
+	`se_sc_num`	int	NOT NULL
 );
 
-DROP TABLE IF EXISTS `movie-schedule`;
+DROP TABLE IF EXISTS `movie_schedule`;
 
-CREATE TABLE `movie-schedule` (
+CREATE TABLE `movie_schedule` (
 	`ms_num`	int	NOT NULL primary key auto_increment,
 	`ms_mo_num`	int	NOT NULL,
 	`ms_sc_num`	int	NOT NULL,
@@ -166,7 +165,7 @@ DROP TABLE IF EXISTS `reservation_list`;
 
 CREATE TABLE `reservation_list` (
 	`rl_num`	int	NOT NULL primary key auto_increment,
-	`rl_re_num`	varchar(20)	NOT NULL,
+	`rl_rv_num`	varchar(20)	NOT NULL,
 	`rl_se_num`	int	NOT NULL,
 	`rl_pr_num`	int	NOT NULL
 );
