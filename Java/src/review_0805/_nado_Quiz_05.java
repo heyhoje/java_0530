@@ -9,6 +9,7 @@ public class _nado_Quiz_05 {
 			int size = 250 + (i*5);
 			System.out.println("신발 사이즈 : " + size + " (재고 있음)");
 		}
+		// 왜 맨날 배열 배워놓고 안배열로 문제를 풀까...;;
 		
 		System.out.println("---------------");
 		
