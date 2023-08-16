@@ -117,8 +117,8 @@ insert into movie_file(mf_fi_num, mf_mo_num)
 values(11,2), (12,2), (13,2), (14,2), (15,2);
 
 -- 8/9 14:00 -------------------------------------------
--- 영화관 등록을 위해 사전에 해야하는 작업
--- 지역 데이터를 추가 : 
+-- <영화관 등록>을 위해 사전에 해야하는 작업
+-- 지역 데이터를 추가 : 서울, 경기, 인천, 강원, 대전/충청, 대구, 부산/울산, 경상, 광주/전라/제주
 
 insert into region values('서울'), ('경기'), ('인천'), ('대전/충청'), ('대구'), ('부산/울산'), ('경상'), ('광주/전라/제주');
 
@@ -127,31 +127,173 @@ insert into region values('서울'), ('경기'), ('인천'), ('대전/충청'), 
 insert into theater(th_name, th_address, th_re_name, th_total_screen, th_total_seat)
 values('CGV강남', '서울특별시 강남구 강남대로 438 (역삼동)', '서울', 2, 24);
 
--- CGV강남 영화관에 있는 상영관 등록
+-- CGV강남 영화관에 있는 <상영관 등록> -- 등록안됨......... 
 -- 1관 6층, 총 10좌석
--- 2관(LCK관) 6층(LASER), 총 14좌석
+-- 2관(LCK관) 6층(LASER), 총 14좌석 
 insert into screen(sc_name, sc_total_seat, sc_th_num)
 values('1관 6층', 10, 1), ('2관(LCK관) 6층(LASER)', 14, 1);
-
--- CGV강남 영화관 좌석 등록
+ 
+-- CGV강남 영화관 <좌석 등록>
 -- 1관 : A1, A2, A3, A4, B1, B2, B3, C1, C2, C3
 -- 2관 : A1, A2, A3, A4, B1, B2, B3, B4, C1, C2, C3, C4, D1, D2
 insert into seat(se_name, se_row, se_col, se_sc_num)
 values('A1', 'A', '1', 1), ('A2', 'A', '2', 1), ('A3', 'A', '3', 1), ('A4', 'A', '4', 1),
 ('B1', 'B', '1', 1), ('B2', 'B', '2', 1), ('B3', 'B', '3', 1), 
 ('C1', 'C', '1', 1), ('C2', 'C', '2', 1), ('C3', 'C', '3', 1),
-('A1', 'A', '1', 1), ('A2', 'A', '2', 1), ('A3', 'A', '3', 1), ('A4', 'A', '4', 1),
-('B1', 'B', '1', 1), ('B2', 'B', '2', 1), ('B3', 'B' '3', 1), ('B4', 'A', '4', 1),
-('C1', 'C', '1', 1), ('C2', 'C', '2', 1), ('C3', 'C', '3', 1), ('C4', 'C', '4', 1),
-('D1', 'D', '1', 1), ('D2', 'D', '2', 1);
+('A1', 'A', '1', 2), ('A2', 'A', '2', 2), ('A3', 'A', '3', 2), ('A4', 'A', '4', 2),
+('B1', 'B', '1', 2), ('B2', 'B', '2', 2), ('B3', 'B', '3', 2), ('B4', 'B', '4', 2),
+('C1', 'C', '1', 2), ('C2', 'C', '2', 2), ('C3', 'C', '3', 2), ('C4', 'C', '4', 2),
+('D1', 'D', '1', 2), ('D2', 'D', '2', 2);
 
--- 영화 스케줄 
+-- <영화 스케줄>
 -- 오펜하이머, 1관, 23년 8월 16일, 09:00, 12:30, 16:00, 23:00
 -- 콘크리트 유토피아, 2관, 23년 8월 16일, 10:10, 12:50, 18:10, 20:50, 23:30
-insert into movie_schedule(ms_mo_num, ms_sc_num, ms_date, ms_start_time, ms_end_time, ms_possible_seat, ms_discount)
-	select 1, 1, '2023-08-16', '09:00', ??, 10, 
-		case when '09:00' <= '12:00' then 'Y' else 'N' end
-        from movie where mo_num = 1;
-select adddate(2023-08-16 '09:00', interval 90 minute);
---
+insert into `movie_schedule`(ms_mo_num, ms_sc_num, ms_date, ms_possible_seat, 
+ms_start_time, ms_end_time, ms_discount)
+select 
+	1, 1, '2023-08-16', 10, '09:00:00', 
+	RIGHT(ADDDATE('2023-08-16 09:00:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '09:00' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
 
+
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	1, 1, '2023-08-16',10,  '09:00:00', 
+	RIGHT(ADDDATE('2023-08-16 09:00:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '09:00' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	1, 1, '2023-08-16',10,  '12:30:00', 
+	RIGHT(ADDDATE('2023-08-16 12:30:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '12:30' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	1, 1, '2023-08-16',10,  '16:00:00', 
+	RIGHT(ADDDATE('2023-08-16 16:00:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '16:00' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	1, 1, '2023-08-16',10,  '19:30:00', 
+	RIGHT(ADDDATE('2023-08-16 19:30:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '19:30' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 1;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	2, 2, '2023-08-16',14,  '10:10:00', 
+	RIGHT(ADDDATE('2023-08-16 10:10:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '10:10' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 2;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	2, 2, '2023-08-16',14,  '12:50:00', 
+	RIGHT(ADDDATE('2023-08-16 12:50:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '12:50' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 2;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	2, 2, '2023-08-16',14,  '18:10:00', 
+	RIGHT(ADDDATE('2023-08-16 18:10:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '18:10' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 2;
+INSERT INTO MOVIE_SCHEDULE(MS_MO_NUM, MS_SC_NUM, MS_DATE,MS_POSSIBLE_SEAT, 
+	MS_START_TIME, MS_END_TIME, MS_DISCOUNT)
+SELECT 
+	2, 2, '2023-08-16',14,  '20:50:00', 
+	RIGHT(ADDDATE('2023-08-16 20:50:00', INTERVAL MO_RUNNING_TIME+10 MINUTE), 8), 
+	CASE WHEN '20:50' <= '12:00' THEN 'Y' ELSE 'N' END
+FROM MOVIE WHERE MO_NUM = 2;
+
+-- <예매>를 위해 사전에 해야하는 작업
+-- 요금 데이터를 추가
+-- 성인 : 14000, 조조 : 12000
+-- 청소년 : 11000, 조조 : 9000
+insert into price(pr_type, pr_price, pr_discount_price)
+values('성인', 14000, 12000), ('청소년', 11000,9000);
+
+-- 아이디 : abc123, 비번 : abc123, 이름 : 홍길동, 번호 : 011-1234-5678,
+-- 생일 : 2000-01-05, 권한 : user인 회원이 <회원가입>
+insert into member(me_id, me_pw, me_name, me_phone, me_birthday, me_authority)
+values('abc123', 'abc123', '홍길동', '011-1234-5678', '2000-01-05', 'user');
+
+-- abc123회원이 CGV강남에서 20:50에 시작하는 콘크리트 유토피아 영화를 성인 2명으로,
+-- A1, A2 좌석을 <예매>했을 때 필요한 쿼리들
+insert into reservation(rv_num, rv_adult, rv_teenager, rv_me_id, rv_ms_num, rv_price)
+	select '202308091614MS008001', 2, 0, 'abc123', ms_num,
+	case when ms_discount = 'Y' then 2*12000 + 0*9000
+    else 2*14000 + 0*11000 end
+    from movie_schedule where ms_mo_num = 2 and ms_start_time = '20:50:00';
+
+-- reservation_list에 예약 좌석 정보를 추가
+insert into reservation_list(rl_rv_num, rl_se_num, rl_pr_num)
+values ('202308091614ms008001', 11, 1), ('202308091614ms008001', 12,1);
+
+-- movie_schedule에 예약 가능 좌석 수 수정
+update movie_schedule 
+set ms_possible_seat = ms_possible_seat - 2
+where ms_num = 9;
+
+-- movie에 예매율 수정
+update movie 
+set mo_reservation_rate = round(
+	(select sum(rv_adult + rv_teenager)
+    from reservation
+		join movie_schedule on rv_ms_num = ms_num
+	where ms_mo_num = 2) / (select sum(rv_adult + rv_teenager)
+    from reservation
+		join movie_schedule on rv_ms_num = ms_num) * 100)
+	where mo_num = 2;
+    
+ -- 8/11 리뷰 추가 -------
+ -- abc123회원이 콘크리트 유토피아 리뷰를 다음과 같이 작성할 때 쿼리
+ -- 콘크리트 유토피아 재미있어요
+ insert into review(re_content, re_mo_num, re_me_id) 
+ values ('콘크리트 유토피아 재미있어요', 2, 'abc123');
+ -- select '콘크리트 유토피아 재미있어요', mo_num, 'abc123'
+ -- from movie
+ -- where mo_title = '콘크리트 유토피아';
+ 
+ -- abc123회원이 작성한 콘크리트 유토피아 리뷰를 admin회원이 추천을 클릭했을때 필요한 쿼리(x)
+ -- (단, 리뷰번호는 1번인걸 알고 있다고 가정)
+ -- 1. 추천 테이블에 데이터 추가
+ insert into `like`(li_me_id, li_re_num)
+ values('admin', 1);
+ -- 2. 리뷰 테이블에 추천 수를 업데이트 -- 토탈라이크 안올라가요,,,
+ update review 
+ set li_total_like = (select count(*) from `like` where re_num = 1)
+ where re_num = 1;
+ 
+ -- admin 회원이 1번 리뷰 추천을 취소했을 때 필요한 쿼리(이해x)
+ delete from `like` where me_id = 'admin' and re_num = 1;
+ update review
+ set re_total_like = (select count(*) from `like` where re_num = 1)
+ where re_num = 1;
+ 
+ -- 8/11 16:00 ------------------------
+ -- 각 영화의 리뷰수를 조회하는 쿼리
+ select mo_title as 영화, count(*) as 리뷰수 from review
+	right join movie on mo_num = re_mo_num
+ group by re_mo_num;
+ 
+ -- CGV강남에서 상영하는 모든 영화 스케줄을 조회하는 쿼리 (-- 조회안됨)
+ -- 영화 제목, 상영관 시간, 상영관 이름,  
+ select mo_title as 영화, mo_start_tiem as 상영시간, sc_name as 상영관 from movie_schedule
+	join movie on mo_num = ms_mo_num
+    join screen on sc_num = ms_sc_num
+where sc_th_num = (select th_num from theater where th_name = 'CGV강남');
+ 
+ -- 영화 예매율 순으로 가장 예매율이 높은 영화 1개를 조회하는 쿼리
+ -- 예매율이 같은 경우 개봉일이 늦은 영화를 조회
+ select mo_title as 영화예매율1위 from movie
+ order by mo_reservation_rate desc, mo_opening_date
+ limit 1;
