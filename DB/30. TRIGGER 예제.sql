@@ -131,4 +131,4 @@ UPDATE `ORDER` SET OR_STATE = '구매확정' WHERE OR_NUM = 3;
 
 
 -- 트리거 마무리
--- 간단한 요구사항 / ERD/ 테이블
+-- 도서대출사이트 - 간단한 요구사항 / ERD/ 테이블
