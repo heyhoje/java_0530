@@ -101,3 +101,10 @@ from review
 	right join `option` on re_op_num  = op_num
     join product on pr_code = op_pr_code
 group by op_num;
+
+-- 제품별 가격 순으로 정렬했을 때 가장 비싼 제품 3개를 조회
+SELECT * FROM (
+	SELECT PR_NAME, PR_PRICE, ROW_NUMBER() OVER(ORDER BY PR_PRICE DESC) AS 순위
+    FROM PRODUCT
+) as PRODUCT
+WHERE 순위 <= 3;
