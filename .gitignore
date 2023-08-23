@@ -24,3 +24,9 @@ hs_err_pid*
 replay_pid*
 Java/.classpath
 Java/.project
+
+.classpath
+.project
+.settings/
+meta-inf/
+
