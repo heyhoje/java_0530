@@ -13,7 +13,7 @@
     <description></description>
     <display-name>Home</display-name>
     <servlet-name>Home</servlet-name>
-    <servlet-class>kr.kh.app.controller.Home</servlet-class>
+    <servlet-class>kr.kh.app.Home</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
@@ -21,12 +21,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Signup</display-name>
-    <servlet-name>Signup</servlet-name>
-    <servlet-class>kr.kh.app.controller.Signup</servlet-class>
+    <display-name>Sign_up</display-name>
+    <servlet-name>Sign_up</servlet-name>
+    <servlet-class>kr.kh.app.Sign_up</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Signup</servlet-name>
-    <url-pattern>/signup</url-pattern>
+    <servlet-name>Sign_up</servlet-name>
+    <url-pattern>/sign_up</url-pattern>
   </servlet-mapping>
 </web-app>

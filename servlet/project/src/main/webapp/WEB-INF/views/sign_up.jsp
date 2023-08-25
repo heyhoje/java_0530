@@ -8,11 +8,10 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="<%=request.getContextPath()%>/signup" method="post">
+	<form action="/project/sign_up" method="post">
 		<input type="text" name="id"> <br>
-		<input type="password" name="pw>"> <br>
+		<input type="password" name="pw"> <br>
 		<button>회원가입</button>
 	</form>
-	
 </body>
 </html>
