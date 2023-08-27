@@ -1,5 +1,6 @@
 package kr.kh.app.service;
 
-public class BoardServiceimp {
+public class BoardServiceImp implements BoardService{
 
+	
 }

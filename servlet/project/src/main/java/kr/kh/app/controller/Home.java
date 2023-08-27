@@ -1,57 +1,44 @@
 package kr.kh.app.controller;
 
+import java.io.IOException;
+
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import kr.kh.app.service.MemberService;
+import kr.kh.app.service.MemberServiceImp;
 
-/**
- * Servlet implementation class Home
- */
+/** ì„œë¸”ë¦¿ */
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public Home() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
+	
 	public void init(ServletConfig config) throws ServletException {
-		System.out.println("init ½ÇÇà");
+		System.out.println("init ì‹¤í–‰");
 	}
 
-	/**
-	 * @see Servlet#destroy()
-	 */
+	
 	public void destroy() {
-		System.out.println("distroy ½ÇÇà");
+		System.out.println("distroy ì‹¤í–‰");
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// ¼­¹ö¿¡¼­ È­¸é¿¡°Ô µ¥ÀÌÅÍ¸¦ Àü¼Û
+		// ì„œë²„ì—ì„œ í™”ë©´ì—ê²Œ ë°ì´í„°ë¥¼ ì „ì†¡
 		request.setAttribute("msg", "hello");
-		// ¹Ì¸® ¸¸µé¾î ³õÀº home.jsp¿Í ¿¬°á
-		request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request,  response);
+		// ë¯¸ë¦¬ ë§Œë“¤ì–´ ë†“ì€ home.jspì™€ ì—°ê²°
+		request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// È­¸é¿¡¼­ º¸³½ id¸¦ °¡Á®¿È
+		// í™”ë©´ì—ì„œ ë³´ë‚¸ idë¥¼ ê°€ì ¸ì˜´
 		String id = request.getParameter("id");
 		System.out.println(id);
 		doGet(request, response);
