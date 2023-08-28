@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="project/sign_up">회원가입</a>
+<a href="/project/sign_up">회원가입</a>
 <a href="<%=request.getContextPath()%>/withdraw">회원탈퇴</a>
 <a href="<%=request.getContextPath()%>/list">게시글 조회</a>
 </body>
