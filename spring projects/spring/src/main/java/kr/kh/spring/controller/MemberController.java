@@ -18,8 +18,9 @@ import kr.kh.spring.vo.MemberVO;
 @Controller
 public class MemberController {
 	
-	@Autowired
+	@Autowired // new MemberServiceImp(); 해당 객체를 만들어줌
 	private MemberService memberService;
+	
 	
 	@RequestMapping(value="/member/signup", method=RequestMethod.GET)
 	public String signup() {
