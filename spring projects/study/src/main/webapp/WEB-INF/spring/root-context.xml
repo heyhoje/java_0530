@@ -16,7 +16,7 @@
 	<bean id="dataSource"
 	      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <!-- MySQL 버전에 따라 driverClassName의 value값이 달라짐 아래 코드는 Mysql 8기준 -->
-	    <property name="driverClassName" value="com.cj.mysql.jdbc.Driver"></property>
+	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 	    <!-- MySQL 버전이 6인 경우 아래 코드 반영 -->
 	    <!-- <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property> -->
 	    <property name="url"
