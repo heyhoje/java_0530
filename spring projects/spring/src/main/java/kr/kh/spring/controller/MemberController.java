@@ -1,5 +1,8 @@
 package kr.kh.spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.kh.spring.service.MemberService;
+import kr.kh.spring.util.Message;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
@@ -30,14 +34,12 @@ public class MemberController {
 //		System.out.println("비번 : " + me_pw);
 //		System.out.println("이메일 : " + me_email);
 		// System.out.println(member);
-		String msg = "회원 가입에 실패했습니다.";
-		String url = "/member/signup";
+		Message msg = new Message("/member/signup", "회원 가입에 실패했습니다.");
+		
 		if(memberService.signup(member)) {
-			msg = "회원 가입에 성공했습니다.";
-			url = "/";
+			msg = new Message("/", "회원 가입에 성공했습니다.");
 		}
 		model.addAttribute("msg", msg);
-		model.addAttribute("url", url); // 메인페이지로 ㄱㄱ
 		return "message";
 	}
 	
@@ -47,18 +49,31 @@ public class MemberController {
 	}
 	
 	@PostMapping(value="/member/login")
-	public String memberLoginPost(MemberVO member) {
-		String msg = "로그인에 실패했습니다.";
-		String url = "/member/login";
+	public String memberLoginPost(MemberVO member, Model model) {
+		Message msg = new Message("/member/login", "로그인에 실패했습니다.");
 		
 		MemberVO user = memberService.login(member);
 		if(user != null) {
-			msg = "로그인에 성공했습니다.";
-			url = "/";
+			msg = new Message("/", "로그인에 성공했습니다.");
 		}
-		model.addAttribute("url", url);
+		
+		model.addAttribute("user", user);
 		model.addAttribute("msg", msg);
 		return "message";
 	}
-
+	
+	@GetMapping("/member/logout")
+	public String memberLogout(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		Message msg = new Message("/", null);
+		
+		if(user != null) {
+			session.removeAttribute("user");
+			msg.setMsg = "로그아웃에 성공했습니다.";
+		}
+		model.addAttribute("msg", msg);
+		return "message";
+	}
 }
