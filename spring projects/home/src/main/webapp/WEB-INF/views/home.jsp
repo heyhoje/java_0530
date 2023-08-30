@@ -6,10 +6,13 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<h1>메인</h1>
+	<c:if test="${user == null}">
+		<a href="<c:url value='/member/signup'/>">회원가입</a>
+		<a href="<c:url value='/member/login'/>">로그인</a>
+	</c:if>
+	<C:if test="${user != null}">
+		<a href="<c:url value='/member/logout'>"
+	</C:if>
 </body>
 </html>
