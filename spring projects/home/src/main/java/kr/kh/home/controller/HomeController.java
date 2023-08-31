@@ -21,7 +21,7 @@ public class HomeController {
 		return "/main/home";
 	}
 
-	@RequestMapping(value="/test1")s
+	@RequestMapping(value="/test1")
 	public String test1(Model model, String id, Integer age) {
 		System.out.println("아이디 : " +id);
 		System.out.println("나이 : " + age);

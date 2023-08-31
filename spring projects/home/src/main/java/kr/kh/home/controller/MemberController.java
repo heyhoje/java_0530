@@ -22,10 +22,6 @@ public class MemberController {
 	
 	@PostMapping("/member/signup") //@requestMapping(value="/member/signup", method=requestMethod.POST)
 	public String memberSignupPost(Model model, MemberVO member) {
-		String msg ="테스트입니다";
-		String url ="/";
-		System.out.println(member);
-		
 		if(memberService.signup(member)) {
 			msg = "회원가입 성공!";
 			url = "/";
