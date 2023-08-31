@@ -17,7 +17,7 @@ public class MemberController {
 
 	@GetMapping("/member/signup")
 	public String memberSignup() {
-		return "member/signup";
+		return "/member/signup"; // .root 레이아웃을 적용할 수 있도록 /member로 바꿈 (/*/*양식)
 	}
 	
 	@PostMapping("/member/signup") //@requestMapping(value="/member/signup", method=requestMethod.POST)
@@ -42,7 +42,7 @@ public class MemberController {
 	
 	@GetMapping("/member/login")
 	public String memberLogin() {
-		return "member/login"; // "util/message"(x)
+		return "/member/login";
 	}
 	
 	@PostMapping("/member/login")

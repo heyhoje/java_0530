@@ -4,17 +4,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원가입</title>
 </head>
 <body>
 	<h1>회원가입</h1>
 	<form action="<c:url value='/member/signup'/>" method="post">
-		<input type="text" name="me_id" placeholder="아이디" requiered><br>
-		<input type="password" name="me_pw" placeholder="비번" requiered><br>
-		<input type="text" name="me_email" placeholder="이메일" requiered><br>
-		<button>회원가입</button>
+		<div class="form-group">
+			<label>아이디</label>
+			<input type="text" class="form-control" name="me_id">
+		</div>
+		<div class="form-group">
+			<label>비번</label>
+			<input type="password" class="form-control" name="me_pw">
+		</div>
+		<div class="form-group">
+			<label>이메일</label>
+			<input type="email" class="form-control" name="me_email">
+		</div>
+		<button class="btn btn-outline-warning col-12">회원가입</button>
 	</form>
-	
 </body>
 </html>
