@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<h1>헤더</h1>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+	pageEncoding="utf-8" %>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="<c:url value='/' />">
@@ -23,8 +22,8 @@
 	      <a class="nav-link" href="<c:url value='/member/logout'/>">로그아웃</a>
 	    </li>
     </c:if>
-   	<li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
     </li>
   </ul>
-</nav>    
+</nav>

@@ -1,14 +1,14 @@
-package kr.kh.home.dao;
+package kr.kh.spring.dao;
 
 import org.apache.ibatis.annotations.Param;
 
-import kr.kh.home.vo.MemberVO;
+import kr.kh.spring.vo.MemberVO;
 
 public interface MemberDAO {
 
-	MemberVO selecetMember(@Param("me_id")String me_id);
+	MemberVO selectMember(@Param("me_id")String me_id);
 
 	boolean insertMember(@Param("m")MemberVO member);
 
-
+	
 }

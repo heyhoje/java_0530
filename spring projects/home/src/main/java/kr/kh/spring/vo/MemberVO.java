@@ -1,4 +1,4 @@
-package kr.kh.home.vo;
+package kr.kh.spring.vo;
 
 import lombok.Data;
 

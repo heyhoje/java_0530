@@ -13,9 +13,11 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- url이 /resources/로 시작하면 webapp/resources폴더에서 찾아서 가져옴  -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- 컨트롤러에서 리턴한 값에 prefix와 sufix를 추가하여 만들어진 결과를 이용하여 view(화면)을 선택함 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
@@ -26,7 +28,7 @@
 	    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	    <beans:property name="order" value="1" /><!-- 순서를 우선으로 지정 -->
 	</beans:bean>
-	<!-- 타일즈 설정 파일을 등록 -->     
+    <!-- 타이블 설정 파일을 등록 -->
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 	    <beans:property name="definitions">
 	        <beans:list>
@@ -35,8 +37,14 @@
 	    </beans:property>
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.kh.home.*" />
+	<context:component-scan base-package="kr.kh.spring.*" />
 	
+	<beans:bean id="loginInterceptor" class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	
-	
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/login"/>
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>
