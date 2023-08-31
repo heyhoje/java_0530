@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.kh</groupId>
-	<artifactId>home</artifactId>
-	<name>home</name>
+	<artifactId>spring</artifactId>
+	<name>spring</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -116,11 +116,12 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>  
+		</dependency> 
+		<!-- mybatis 의존성 추가 -->
 		<dependency>
-	    <groupId>org.mybatis</groupId>
-	    <artifactId>mybatis</artifactId>
-	    <version>3.4.1</version>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>3.4.1</version>
 		</dependency>
 		<!-- mybatis-spring 의존성 추가 -->
 		<dependency>
@@ -145,17 +146,16 @@
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <version>1.18.24</version>
-		    <scope>provided</scope>
 		</dependency>
-		
+		<!-- 스프링 시큐리티  -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
+		    <artifactId>spring-security-core</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
+		    <artifactId>spring-security-web</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
@@ -167,7 +167,7 @@
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>${org.springframework-version}</version>
-		</dependency>
+		</dependency>	
 		
 		<!-- Tiles -->
 		<dependency>
@@ -194,7 +194,7 @@
 		    <groupId>org.apache.tiles</groupId>
 		    <artifactId>tiles-template</artifactId>
 		    <version>${org.apache.tiles-version}</version>
-		</dependency>
+		</dependency>			       
 	</dependencies>
     <build>
         <plugins>
