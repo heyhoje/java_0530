@@ -1,10 +1,7 @@
-package kr.kh.study.DAO;
+package kr.kh.study.dao;
 
 import org.apache.ibatis.annotations.Param;
 
 public interface MemberDAO {
-
-		public int selectCountMember();
-
 
 }

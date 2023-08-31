@@ -3,7 +3,8 @@ package kr.kh.study.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.kh.study.DAO.MemberDAO;
+import kr.kh.study.dao.MemberDAO;
+import kr.kh.study.vo.MemberVO;
 
 @Service
 public class MemberServiceImp implements MemberService{
@@ -12,10 +13,11 @@ public class MemberServiceImp implements MemberService{
 	    private MemberDAO memberDao;
 
 		@Override
-		public int count() {
-			return memberDao.selectCountMember();
+		public boolean signup(MemberVO member) {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
-	    
+		
 	  
 }
