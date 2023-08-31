@@ -17,7 +17,6 @@ public class HomeController {
 	@RequestMapping(value="/")
 	public String home(Model model) {
 		model.addAttribute("name", "abc");
-		return "home";
 		return "/main/home";
 	}
 
@@ -26,7 +25,5 @@ public class HomeController {
 		System.out.println("아이디 : " +id);
 		System.out.println("나이 : " + age);
 		return "test1";
-	}
-	}
-	
+	}	
 }
