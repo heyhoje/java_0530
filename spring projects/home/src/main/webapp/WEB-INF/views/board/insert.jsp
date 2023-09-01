@@ -24,9 +24,9 @@
 		</div>
 		<div class="form-group">
 			<label>첨부파일</label>
-			<input type="file" name="form-control" id="files">
-			<input type="file" name="form-control" id="files">
-			<input type="file" name="form-control" id="files">
+			<input type="file" class="form-control" name="files">
+			<input type="file" class="form-control" name="files">
+			<input type="file" class="form-control" name="files">
 		</div>
 		<button class="btn btn-outline-success col-12">등록하기</button>
 	</form>

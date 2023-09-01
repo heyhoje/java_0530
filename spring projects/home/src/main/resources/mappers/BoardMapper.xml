@@ -5,7 +5,6 @@
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
 	<resultMap type="kr.kh.spring.vo.BoardVO" id="BoardVO">
 		<id property="bo_num" column="bo_num"/>
-		<result property="bo_" column="bo_"/>
 		<result property="bo_ori_num" column="bo_ori_num"/>
 		<result property="bo_views" column="bo_views"/>
 		<result property="bo_up" column="bo_up"/>
@@ -15,12 +14,11 @@
 		<result property="bo_title" column="bo_title"/>
 		<result property="bo_me_id" column="bo_me_id"/>
 		<result property="bo_contents" column="bo_contents"/>
-		<result property="bo_reg_date" column="bo_reg_date"/>
 		<result property="bo_up_date" column="bo_up_date"/>
-		
-		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList">
-		</collection>
+		<result property="bo_reg_date" column="bo_reg_date"/>
+		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 	</resultMap>
+
 
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
 		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
@@ -51,4 +49,19 @@
 	<select id="selectFileList" resultType="kr.kh.spring.vo.FileVO">
 		select * from file where fi_bo_num = #{bo_num}
 	</select>
+	<update id="updateBoard">
+		update board
+		set
+			bo_title = #{board.bo_title},
+			bo_contents = #{board.bo_contents},
+			bo_up_date = now()
+		where
+			bo_num = #{board.bo_num}
+	</update>
+	<select id="selectFile" resultType="kr.kh.spring.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
 </mapper>

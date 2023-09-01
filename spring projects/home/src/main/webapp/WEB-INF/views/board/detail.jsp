@@ -37,16 +37,13 @@
 		<label>내용</label>
 		<div class="form-control" style="min-height: 400px">${board.bo_contents}</div>
 	</div>
-	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
-	${board}
+	
 	<div class="form-group">
 		<c:choose>
-			<c:when test="${board.fileVoList.size !=0}">
+			<c:when test="${board.fileVoList.size() != 0 }">
 				<label>첨부파일</label>
-				<c:forEach items="${board.fileVoList}">
-					<a class="form-control" href="<c:url 
-					value='/download${file.fi_name}'/>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
-					
+				<c:forEach items="${board.fileVoList }" var="file">
+					<a class="form-control" href="<c:url value='/download${file.fi_name}'/>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
@@ -55,5 +52,6 @@
 		</c:choose>
 	</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
+	<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
 </body>
 </html>
