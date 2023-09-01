@@ -1,13 +1,17 @@
 package kr.kh.spring.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.dao.BoardDAO;
 import kr.kh.spring.pagination.Criteria;
+import kr.kh.spring.util.UploadFileUtils;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Service
@@ -16,8 +20,9 @@ public class BoardServiceImp implements BoardService{
 	@Autowired
 	BoardDAO boardDao;
 
+	private String uploadPath = "D:\\uploadfiles";
 	@Override
-	public boolean insertBoard(BoardVO board, MemberVO user) {
+	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
 		if(user == null || user.getMe_id() == null) {
 			return false;
 		}
@@ -25,8 +30,34 @@ public class BoardServiceImp implements BoardService{
 			return false;
 		}
 		board.setBo_me_id(user.getMe_id());
-		return boardDao.insertBoard(board);
+		if(!boardDao.insertBoard(board)) {
+			return false;
+		}
+		//첨부파일 업로드/ 는 필수가 아님
+		if(files == null || files.length == 0) {
+			return true;
+		}
+		for(MultipartFile file : files) {
+			// uploadFileAndInsert(file); // 올리고나서 수정될 일이 있으니까 메소드로 미리 만들어놓는다..?
+			uploadFileAndInsert(file, board.getBo_num());
+		}
+		return true;
 	}
+
+	private void uploadFileAndInsert(MultipartFile file, int bo_num) {
+		if(file == null || file.getOriginalFilename().length() == 0) {
+			return;
+		}
+		try {
+			String fi_name = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+			FileVO fileVo = new FileVO(bo_num, fi_name, file.getOriginalFilename());
+			boardDao.insertFile(fileVo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
