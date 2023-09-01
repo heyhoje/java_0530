@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.BoardDAO">
-	<resultMap type="kr.kh.spring.vo.BoardVO" id="BardVO">
+	<resultMap type="kr.kh.spring.vo.BoardVO" id="BoardVO">
 		<id property="bo_num" column="bo_num"/>
 		<result property="bo_" column="bo_"/>
 		<result property="bo_ori_num" column="bo_ori_num"/>
@@ -18,7 +18,7 @@
 		<result property="bo_reg_date" column="bo_reg_date"/>
 		<result property="bo_up_date" column="bo_up_date"/>
 		
-		<collection property="files" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList">
+		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList">
 		</collection>
 	</resultMap>
 
