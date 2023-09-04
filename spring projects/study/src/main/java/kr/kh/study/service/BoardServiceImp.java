@@ -58,7 +58,7 @@ public class BoardServiceImp implements BoardService{
 		board.setBo_me_id(user.getMe_id());
 		boolean res = boardDao.insertBoard(board);
 		
-		return false;
+		return res;
 	}
 
 	@Override

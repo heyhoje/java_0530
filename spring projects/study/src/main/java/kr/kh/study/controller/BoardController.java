@@ -67,9 +67,9 @@ public class BoardController {
 	
 	@PostMapping("/board/update")
 	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
-		// System.out.println(board);
+		System.out.println(board);
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		// System.out.println(user);
+		System.out.println(user);
 		
 		boolean res = boardService.update(board, user);
 		if(res) {model.addAttribute("msg", "게시글을 수정했습니다.");
