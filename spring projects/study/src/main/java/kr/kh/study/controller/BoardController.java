@@ -67,16 +67,30 @@ public class BoardController {
 	
 	@PostMapping("/board/update")
 	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
-		System.out.println(board);
+		// System.out.println(board);
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		System.out.println(user);
+		// System.out.println(user);
 		
 		boolean res = boardService.update(board, user);
 		if(res) {model.addAttribute("msg", "게시글을 수정했습니다.");
 	}else {
 		model.addAttribute("msg", "게시글을 수정하지 못했습니다.");
 		}
-		model.addAttribute("url", "/board/detail?bo_num" + board.getBo_num());
+		model.addAttribute("url", "/board/detail?bo_num=" + board.getBo_num());
+		return "/util/message";
+	}
+	
+	@GetMapping("/board/delete")
+	public String boardDelete(Model model, Integer bo_num, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.deleteBoard(bo_num, user);
+		
+		if(res) {
+			model.addAttribute("msg", "게시글을 삭제했습니다.");
+		}else {
+			model.addAttribute("msg", "게시글을 삭제하지 못했습니다.");
+		}
+		model.addAttribute("url", "/board/list");
 		return "/util/message";
 	}
 }
