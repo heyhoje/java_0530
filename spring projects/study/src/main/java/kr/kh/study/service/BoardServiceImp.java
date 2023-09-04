@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.study.dao.BoardDAO;
 import kr.kh.study.vo.BoardVO;
+import kr.kh.study.vo.MemberVO;
 
 @Service
 public class BoardServiceImp implements BoardService{
@@ -43,6 +44,40 @@ public class BoardServiceImp implements BoardService{
 		}
 		//다오에게 게시글 번호를 주면서 조회수를 1증가시키리고 요청
 		boardDao.updateBoardViews(bo_num);
+	}
+
+	@Override
+	public boolean insertBoard(BoardVO board, MemberVO user) {
+		// 매개변수 체크
+		if(user == null|| user.getMe_id() == null) {
+			return false;
+		}
+		if(board == null || board.getBo_title() == null || board.getBo_title().length() == 0) {
+			return false;
+		}
+		board.setBo_me_id(user.getMe_id());
+		boolean res = boardDao.insertBoard(board);
+		
+		return false;
+	}
+
+	@Override
+	public boolean update(BoardVO board, MemberVO user) {
+		// 매개변수 처리
+		if(user == null|| user.getMe_id() == null) {
+			return false;
+		}
+		if(board == null || board.getBo_title() == null || board.getBo_title().length() == 0) {
+			return false;
+		}
+		
+		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		if(dbBoard == null || !dbBoard.getBo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		
+		boolean res = boardDao.updateBoard(board);
+		return res;
 	}
 	
 	

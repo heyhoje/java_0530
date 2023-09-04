@@ -89,6 +89,7 @@ public class BoardController {
 		model.addAttribute("msg", msg);
 		return "message";
 	}
+	
 	@GetMapping("/delete")
 	public String delete(Model model, HttpSession session, Integer bo_num) {
 		MemberVO user = (MemberVO)session.getAttribute("user");

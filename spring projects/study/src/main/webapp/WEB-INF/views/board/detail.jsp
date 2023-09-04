@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 상세</title>
 </head>
 <body>
 	<h1>게시글 상세</h1>
@@ -14,6 +14,6 @@
 	<h3>조회수 : ${board.bo_views }</h3>
 	<hr>
 	<div>${board.bo_contents }</div>
-	
+	<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>">수정</a>
 </body>
 </html>
