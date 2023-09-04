@@ -27,5 +27,7 @@ public interface BoardDAO {
 	FileVO selectFile(@Param("fi_num")Integer num);
 
 	void deleteFile(@Param("fi_num")Integer num);
+	
+	void deleteBoard(@Param("bo_num")Integer bo_num);
 
 }
