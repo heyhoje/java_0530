@@ -40,6 +40,7 @@ public class MemberServiceImp implements MemberService{
 		String encPw = passwordEncoder.encode(member.getMe_pw());
 		member.setMe_pw(encPw);
 		return memberDao.insertMember(member);
+		
 	}
 
 	private boolean checkRegexMember(MemberVO member) {

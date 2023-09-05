@@ -12,18 +12,32 @@
 	<update id="updateBoardViews">
 		update board set bo_views = bo_views + 1 where bo_num = #{bo_num}
 	</update>
-	<insert id="insertBoard">
-		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
-			select ifnull(max(bo_num),0)+1, ifnull(max(bo_num),0)+1, #{board.bo_title}, #{board.bo_contents}, #{board.bo_me_id}
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id) 
+			select ifnull(max(bo_num),0)+1, ifnull(max(bo_num),0)+1, #{board.bo_title}, 
+				#{board.bo_contents}, #{board.bo_me_id}
 			from board
 	</insert>
 	<update id="updateBoard">
 		update board set 
-		bo_title = #{board.bo_title}, bo_contents = #{board.bo_contents}, bo_up_date = now()
+			bo_title = #{board.bo_title}, bo_contents = #{board.bo_contents}, bo_up_date = now()
 		where
 			bo_num = #{board.bo_num}
 	</update>
 	<delete id="deleteBoard">
-		delete from board where bo_num = #{bo_num} 
+		delete from board where bo_num = #{bo_num}
 	</delete>
+	<insert id="insertFile">
+		insert into file(fi_name, fi_ori_name, fi_bo_num)
+		values(#{file.fi_name}, #{file.fi_ori_name}, #{file.fi_bo_num})
+	</insert>
+	<select id="selectFileList" resultType="kr.kh.study.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
+	</select>
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
+	<select id="selectFile" resultType="kr.kh.study.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
 </mapper>
