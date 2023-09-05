@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.study.pagenation.Criteria;
 import kr.kh.study.vo.BoardVO;
 import kr.kh.study.vo.FileVO;
 
 public interface BoardDAO {
 
-	List<BoardVO> selectBoardList();
+	List<BoardVO> selectBoardList(@Param("cri")Criteria cri);
 
 	BoardVO selectBoard(@Param("bo_num")Integer bo_num);
 
@@ -28,6 +29,8 @@ public interface BoardDAO {
 	void deleteFile(@Param("fi_num")int fi_num);
 
 	FileVO selectFile(@Param("fi_num")int fi_num);
+
+	int selectBoardTotalCount();
 
 
 }
