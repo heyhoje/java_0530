@@ -45,9 +45,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/insert")
-	public String insert() {
+	public String insert(Model model, Integer bo_ori_num) {
+		model.addAttribute("bo_ori_num", bo_ori_num == null ? 0 : bo_ori_num);
 		return "/board/insert";
 	}
+	
 	@PostMapping("/insert")
 	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
