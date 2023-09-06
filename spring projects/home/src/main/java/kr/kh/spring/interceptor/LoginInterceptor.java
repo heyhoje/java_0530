@@ -12,7 +12,8 @@ import kr.kh.spring.vo.MemberVO;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
-	public void postHandle(
+	/** 5번에서 가로채서 로그인 유지. 이미 방문해서 나왔기 때문에 return값이 필요없음 */
+	public void postHandle( 
 		HttpServletRequest request,
 		HttpServletResponse respose,
 		Object handler,
