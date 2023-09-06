@@ -1,6 +1,8 @@
 package kr.kh.spring.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.pagination.Criteria;
@@ -17,10 +21,11 @@ import kr.kh.spring.pagination.PageMaker;
 import kr.kh.spring.service.BoardService;
 import kr.kh.spring.util.Message;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/board") // 아래에 /board/like 이렇게 쓰면 안됨. requestMapping했기 떄문
 public class BoardController {
 
 	@Autowired
@@ -101,5 +106,17 @@ public class BoardController {
 		}
 		model.addAttribute("msg", msg);
 		return "message";
+	}
+	
+	@ResponseBody // ** ajax 하려면 꼭 해당 어노테이션 추가해줘야함
+	@PostMapping("/like")
+	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		// 추천 : 1, 비추천 : -1, 취소 : 0 / 추천과 비추천 모두 하나의 메소드로 처리할 예정 
+		int res = boardService.like(likeVo);
+		//System.out.println(likeVo);
+		map.put("res", 1);
+		return map;
 	}
 }

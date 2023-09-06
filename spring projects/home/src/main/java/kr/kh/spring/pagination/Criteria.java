@@ -27,9 +27,9 @@ public class Criteria {
 		return (page - 1) * perPageNum;
 	}
 	public String getUrl(int page) {
-		return "?page=" + page;
+		return "?page=" + page + "&type=" + type + "&search=" + search;
 	}
 	public String getCurrentUrl() {
-		return "?page=" + page;
+		return "?page=" + page + "&type=" + type + "&search=" + search;
 	}
 }

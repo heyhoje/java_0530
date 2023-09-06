@@ -31,7 +31,7 @@
 	</c:if>
 	<div class="form-group clearfix">
 		<button class="btn btn-outline-primary btn-up col-6 float-left">추천(${board.bo_up })</button>
-		<button class="btn btn-outline-danger btn-up col-6 float-right">비추천(${board.bo_down })</button>
+		<button class="btn btn-outline-danger btn-down col-6 float-right">비추천(${board.bo_down })</button>
 	</div>
 	<div class="form-group">
 		<label>내용</label>
@@ -52,6 +52,41 @@
 		</c:choose>
 	</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
-	<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
+	<c:if test="${user.me_id == board.bo_me_id}">
+		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
+		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-danger">삭제</a>
+	</c:if>
+	<script type="text/javascript">
+		// 추천 버튼을 클릭했을 때, 콘솔창에 추천이라고 출력
+		$('.btn-up').click(()->){
+			let data = {
+					li_me_id : '${user.me_id}',
+					li_bo_num : '${board.bo_num}',
+					li_state : 1
+			};
+			
+			$.ajax({
+				async : false, /* 비동기 활성화 여부 - false = 동기화, 뭐가 끝날때까지 기다릴건지 말건지 true/false로 결정 */
+				type : 'post', /* 전송방식 : get/post */
+				url : '<c:url value="/board/like"/>', /* 데이터를 보낼 url */
+				data : JSON.stringify(data), /* 보낼 데이터. 보통 객체나 json으로 보냄 */
+				contentType : "application/json; charset=UTF-8", /* 서버로 보낼 데이터의 타입, data의 타입 */
+				dataType : "json", /* 서버에서 화면으로 보낸 데이터의 타입, 서버에서 보낸!! */
+				success : function(data){ /* ajax가 성공하면 실행될 메소드로, 서버에서 보낸 데이터-datatype??를 매개변수에 저장해줌 */
+					if(data.res){
+						alert('추천했습니다.');
+					}else {
+						alert('비추천했습니다.')
+					}
+				}
+			});
+			console.log('추천')
+		})
+		
+		// 비추천 버튼을 클릭했을 때, 콘솔창에 비추천이라고 출력
+		$('.btn-down').click(()->{
+			console.log('비추천')
+		})
+	</script>
 </body>
 </html>
