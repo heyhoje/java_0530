@@ -61,12 +61,16 @@ public class BoardController {
 		return "message";
 	}
 	@GetMapping("/detail")
-	public String detail(Model model, Integer bo_num , Criteria cri) {
+	public String detail(Model model, Integer bo_num , Criteria cri, HttpSession session) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
 		//List<FileVO> fileList = boardService.getFileList(bo_num)
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		LikeVO like = boardService.getBoardLike(bo_num, user);
+		
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);
+		model.addAttribute("like", like);
 		return "/board/detail";
 	}
 	@GetMapping("/update")
@@ -116,7 +120,10 @@ public class BoardController {
 		// 추천 : 1, 비추천 : -1, 취소 : 0 / 추천과 비추천 모두 하나의 메소드로 처리할 예정 
 		int res = boardService.like(likeVo);
 		//System.out.println(likeVo);
+		BoardVO board = boardService.getBoard(likeVo.getLi_bo_num());
+	
 		map.put("res", res);
+		map.put("board", board);
 		return map;
 	}
 }
