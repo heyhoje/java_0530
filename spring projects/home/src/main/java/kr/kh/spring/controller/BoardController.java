@@ -46,12 +46,15 @@ public class BoardController {
 	
 	@GetMapping("/insert")
 	public String insert(Model model, Integer bo_ori_num) {
+		// 그냥 insert만 있을때는 뭐였는데?? 등록된걸 보여주기? 글쓰기로 들어가는 링크제공????????????
+		// 답글 /board/insert?bo_ori_num=${board.bo_num}
 		model.addAttribute("bo_ori_num", bo_ori_num == null ? 0 : bo_ori_num);
 		return "/board/insert";
 	}
 	
 	@PostMapping("/insert")
 	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] files) {
+		// 새로 추가할 bo_ori_num은 BoardVO에 이미 있음 -> BoardMapper 로 이동 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
 		if(boardService.insertBoard(board, user, files)) {

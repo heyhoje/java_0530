@@ -19,12 +19,21 @@
 		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 	</resultMap>
 
-
+	<!-- 아예 이해를 안했었니? 글쓰기+답글 쿼리 -->
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
 		insert into board(bo_num, bo_ori_num, bo_title, bo_contents, bo_me_id)
 		select 
-			ifnull(max(bo_num),0)+1, ifnull(max(bo_num),0)+1,#{board.bo_title}, #{board.bo_contents}
-			,#{board.bo_me_id}
+			ifnull(max(bo_num),0)+1, 
+			<choose>
+				<when test="board.bo_ori_num == 0">
+					ifnull(max(bo_num),0)+1,
+				</when>
+				<otherwise>
+					#{board.bo_ori_num},
+				</otherwise>
+			</choose>
+			#{board.bo_title}, #{board.bo_contents},
+			#{board.bo_me_id}
 		from 
 			board
 	</insert>
@@ -40,9 +49,12 @@
 				<!-- $ 속성이름   # 변수 -->
 			</otherwise>	
 		</choose>
-		order by bo_num desc
+		<!-- ori_num 내림차순 / 게시글 번호 오름차순 -->
+		order by bo_ori_num desc, bo_num asc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
+	
+	
 	<select id="selectBoardCount" resultType="int">
 		select count(*) from board
 		<choose>
@@ -88,6 +100,7 @@
 		delete from board where bo_num = #{bo_num}
 	</delete>
 	
+	<!-- 추천/비추천 쿼리 -->
 	<select id="selectLike" resultType="kr.kh.spring.vo.LikeVO">
 		select * from `like` where li_bo_num = #{li_bo_num} and li_me_id = #{li_me_id}
 	</select>
