@@ -67,8 +67,10 @@ public class BoardController {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
 		//List<FileVO> fileList = boardService.getFileList(bo_num)
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		LikeVO like = boardService.getBoardLike(bo_num, user);
+		
+		MemberVO user = (MemberVO) session.getAttribute("user"); // 얘 왜있음? 강의에는 없음-_-
+		// 해당 게시글을 보고있는 회원의 추천이기 때문에 위 코드로 인해 user정보를 가져옴
+		LikeVO like = boardService.getBoardLike(bo_num, user); // user정보가 없으니 세션에서 가져옴
 		
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);

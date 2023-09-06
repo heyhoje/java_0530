@@ -29,10 +29,15 @@
 			<div class="form-control">${board.bo_up_date_str}</div>
 		</div>
 	</c:if>
+	
 	<div class="form-group clearfix">
-		<button class="btn btn-like btn<c:if test="${like.li_state != 1}">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
-		<button class="btn btn-like btn<c:if test="${like.li_state != -1}">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
+		<!-- 안에 <c:if> 태그를 넣은게 유튜브 좋아요처럼 색저장 처리? 를 하고 싶은거라는데 그게 어떻게 작동하는지는 잘 설명 안됨. 알아서 이해하라는거지 뭐 sb -->
+		<button class="btn btn-like btn<c:if test="${like.li_state != 1}">-outline</c:if>-primary btn-up col-6 float-left">
+			추천(<span class="text-up">${board.bo_up}</span>)</button>
+		<button class="btn btn-like btn<c:if test="${like.li_state != -1}">-outline</c:if>-danger btn-down col-6 float-right">
+			비추천(<span class="text-down">${board.bo_down}</span>)</button>
 	</div>
+	
 	<div class="form-group">
 		<label>내용</label>
 		<div class="form-control" style="min-height: 400px">${board.bo_contents}</div>
@@ -42,7 +47,7 @@
 		<c:choose>
 			<c:when test="${board.fileVoList.size() != 0}">
 				<label>첨부파일</label>
-				<c:forEach items="${board.fileVoList }" var="file">
+				<c:forEach items="${board.fileVoList}" var="file">
 					<a class="form-control" href="<c:url value='/download${file.fi_name}'/>" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 				</c:forEach>
 			</c:when>
@@ -51,7 +56,7 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
+	<a href="<c:url value='/board/list${cri.currentUrl}'/>" class="btn btn-outline-primary">목록으로</a>
 	<a href="c:url value='/board/insert?bo_ori_num=${board.bo_num}'/> class="btn btn-outline-success">답글</a>
 	<c:if test="${user.me_id == board.bo_me_id}">
 		<a href="<c:url value='/board/?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
@@ -60,7 +65,7 @@
 	
 	
 	<script type="text/javascript">
-		// 추천 버튼을 클릭했을 때, 콘솔창에 추천이라고 출력
+		// 추천 + 비추천
 		$('.btn-like').click(function(){
 			if('${user.me_id}' == ''){
 				alert('로그인한 회원만 추천/비추천이 가능합니다.')
@@ -90,6 +95,9 @@
 						alert('비추천을 취소했습니다.')
 					}
 				}
+				// 텍스트 업다운이 갑자기 어디서 나옴?
+				// 은 추천/비추천 버튼 옆에(추천수/비추천수 할때 쓴든)
+				// 근데 갸가 왜 쟈가 되는데???????????????????????????????????????
 				displayLikeBtn(data.res);
 				$('.text-up').text(data.board.bo_up);
 				$('.text-down').text(data.board.bo_down);
@@ -98,7 +106,8 @@
 		
 		
 		function displayLikeBtn(li_state){
-			// 화면에서 보이는 초기 상태, 색깔이 (같으면 왔다갔다만 해도되는데) 달라서 각각 해줘야함
+			// (추천 + 비추천) like상태에 따라 버튼 색상 달라지게!
+			// 화면에서 보이는 초기 상태는 색깔이 (같으면 왔다갔다만 해도되는데) 달라서 각각, 두번씩 작업 해줘야함
 			let $upBtn = ${'btn-up'};
 			let $downBtn = ${'btn-down'};
 			$upBtn.removeClass('btn-primary').addClass('btn-outline-primary');
@@ -112,7 +121,8 @@
 			}
 		}
 		
-		// baseLayout.jsp 로 이동
+		// 이 함수는 다른 페이지에서도 쓰일 수 있으니. 헤더 말고 베이스레이아웃으로!
+		// => baseLayout.jsp 로 이동
 		//function ajaxJsonToJson(async, type, url, sendObject, successFunc){
 		//	$.ajax({
 		//		async : async, // 동기화

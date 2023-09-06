@@ -183,16 +183,16 @@ public class BoardServiceImp implements BoardService{
 			// 추가
 			boardDao.insertLike(likeVo);
 			// return likeVo.getLi_state();
-
 		}
 		else{// 있으면
-			// db에 있는 추천ㄱ 상태와 화면에서 누른 추천 상태가 같으면(=> 취소!!)
+			// db에 있는 추천 상태와 화면에서 누른 추천 상태가 같으면(=> 취소!!)
 			if(dbLikeVo.getLi_state() == likeVo.getLi_state()) {
 				likeVo.setLi_state(0);
 			}
 			// 업데이트
 			boardDao.updateLike(likeVo);
 		}
+		// 리턴하기전에, 좋아요 수 업데이트
 		boardDao.updateBoardLike(likeVo.getLi_bo_num());
 		return likeVo.getLi_state();
 	}
