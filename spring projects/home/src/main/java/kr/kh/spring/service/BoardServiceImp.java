@@ -191,7 +191,7 @@ public class BoardServiceImp implements BoardService{
 				likeVo.setLi_state(0);
 			}
 			// 업데이트
-			boardDao.updateLke(likeVo);
+			boardDao.updateLike(likeVo);
 		}
 		return likeVo.getLi_state();
 	}

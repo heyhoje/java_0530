@@ -116,7 +116,7 @@ public class BoardController {
 		// 추천 : 1, 비추천 : -1, 취소 : 0 / 추천과 비추천 모두 하나의 메소드로 처리할 예정 
 		int res = boardService.like(likeVo);
 		//System.out.println(likeVo);
-		map.put("res", 1);
+		map.put("res", res);
 		return map;
 	}
 }
