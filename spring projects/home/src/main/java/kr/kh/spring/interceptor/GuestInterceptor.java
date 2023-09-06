@@ -22,7 +22,7 @@ public class GuestInterceptor extends HandlerInterceptorAdapter {
 		Object user = request.getSession().getAttribute("user"); 
 		// MemberVO user = request.getSession().getAttribute("user");
 		
-		// 로그인 하지 않았으면
+		// 로그인을 했으면
 		if(user != null) {
 			// 메인페이지로 이동
 			response.sendRedirect(request.getContextPath()+"/");

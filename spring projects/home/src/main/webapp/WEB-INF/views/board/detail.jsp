@@ -31,7 +31,7 @@
 	</c:if>
 	<div class="form-group clearfix">
 		<button class="btn btn-like btn<c:if test="${like.li_state != 1}">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
-		<button class="btn btn-like btn<c:if test="${like.li_state != 1}">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>${board.bo_down })</button>
+		<button class="btn btn-like btn<c:if test="${like.li_state != -1}">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
 	</div>
 	<div class="form-group">
 		<label>내용</label>
@@ -106,7 +106,7 @@
 			// 함수로 변경
 			if(li_state == 1){
 				$upBtn.addClass('btn-primary').removeClass('btn-outline-primary');
-			}else if{
+			}else if(li_state == -1){
 				$downBtn.addClass('btn-danger').removeClass('btn-outlin-danger');
 			}
 		}

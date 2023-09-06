@@ -22,10 +22,10 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		Object user = request.getSession().getAttribute("user"); 
 		// MemberVO user = request.getSession().getAttribute("user");
 		
-		// 로그인을 했으면
-		if(user != null) {
+		// 로그인을 하지 않았으면
+		if(user == null) {
 			// 메인페이지로 이동
-			response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath()+"/member/login");
 			// 기존에 가려던 URL은 방문하지 않고 메인으로 이동
 			return false; // (가려던 컨트롤러 갈필요없음)
 		}
