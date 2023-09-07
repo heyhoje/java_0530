@@ -63,7 +63,20 @@
 		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-danger">삭제</a>
 	</c:if>
 	
+	<div class="comment-container mt-5">
+		<!-- 댓글 입력창 -->
+		<div class="input-group mb-3">
+			<textarea class="form-control" placeholder="댓글" name="co_coments"></textarea>
+		    <div class="input-group-append">
+		      <button class="btn btn-outline-success btn-comment-insert">등록</button>
+		    </div>
+		</div>
+		<!-- 댓글 목록창 -->
+			
+		<!-- 댓글 페이지네이션 -->
+	</div>
 	
+	<!-- 추천 기능 자바스크립트 -->
 	<script type="text/javascript">
 		// 추천 + 비추천
 		$('.btn-like').click(function(){
@@ -134,6 +147,36 @@
 		//		success : successFunc
 		//	});
 		//}
+	</script>
+
+	<!-- 댓글 기능 자바스크립트 -->
+	<script type="text/javascript">
+		$('[name=co_contents]').focus(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('댓글을 작성하려면 로그인이 필요합니다. 로그인을 하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				$(this).blur();
+				return;
+			}
+		});
+		$('.btn-comment-insert').click(() =>{
+			if('${user.me_id}' == ''){
+				if(confirm('댓글을 작성하려면 로그인이 필요합니다. 로그인을 하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				return;
+			}
+			let co_contents = $('[name=co_contents]').val();
+			let comment = {
+					co_contents : co_contents,
+					co_bo_num : '${board.bo_num}',
+					co_me_id : '${user.me_id}'
+			}
+			ajaxJsonToJson(false, 'post', '/comment/insert', comment, (data)=>{
+				console.log(data);
+			});
+		});
 	</script>
 </body>
 </html>

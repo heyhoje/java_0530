@@ -43,6 +43,7 @@
 	<beans:bean id="loginInterceptor" class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="memberInterceptor" class="kr.kh.spring.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="guestInterceptor" class="kr.kh.spring.interceptor.GuestInterceptor"></beans:bean>
+	<beans:bean id="autoLoginInterceptor" class="kr.kh.spring.interceptor.autoLoginInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>
@@ -61,6 +62,10 @@
 			<!-- /member로 시작하는 url이 2개밖에 없다면, /member/* 으로 해도됨 
 			but, /member/logout이 있음-->
 			<beans:ref bean="guestInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="autoLoginInterceptor" />
 		</interceptor>
 	</interceptors>
 	
