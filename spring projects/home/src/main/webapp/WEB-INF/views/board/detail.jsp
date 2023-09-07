@@ -31,7 +31,7 @@
 	</c:if>
 	
 	<div class="form-group clearfix">
-		<!-- 안에 <c:if> 태그를 넣은게 유튜브 좋아요처럼 색저장 처리? 를 하고 싶은거라는데 그게 어떻게 작동하는지는 잘 설명 안됨. 알아서 이해하라는거지 뭐 sb -->
+		<!-- 안에 c:if 태그를 넣은게 유튜브 좋아요처럼 색저장 처리? 를 하고 싶은거라는데 그게 어떻게 작동하는지는 잘 설명 안됨. 알아서 이해하라는거지 뭐 sb -->
 		<button class="btn btn-like btn<c:if test="${like.li_state != 1}">-outline</c:if>-primary btn-up col-6 float-left">
 			추천(<span class="text-up">${board.bo_up}</span>)</button>
 		<button class="btn btn-like btn<c:if test="${like.li_state != -1}">-outline</c:if>-danger btn-down col-6 float-right">

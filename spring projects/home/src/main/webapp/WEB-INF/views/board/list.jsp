@@ -36,7 +36,7 @@
 	        <td>${board.bo_num}</td>
 	        <td>
 	        	<a href="<c:url value='/board/detail${pm.cri.currentUrl}&bo_num=${board.bo_num}'/>">
-	        	<c:if test="${board.bo_num != board.bo_ori_num}"><span sytle="color:red">답글 : </span></c:if>
+	        	<c:if test="${board.bo_num != board.bo_ori_num}"><span style="color:red">답글 : </span></c:if>
 	        	${board.bo_title}(${board.bo_comment})
 	        	</a>
 	        </td>
