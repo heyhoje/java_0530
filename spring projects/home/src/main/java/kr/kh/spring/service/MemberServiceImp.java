@@ -32,9 +32,9 @@ public class MemberServiceImp implements MemberService {
 		}
 		//아이디, 비번 null 체크 + 유효성 검사
 		//아이디는 영문으로 시작하고, 6~15자
-		String idRegex = "^[a-zA-Z][a-zA-Z0-9]{5,14}$";
+		String idRegex = "^[a-zA-Z][a-zA-Z0-9]{4,14}$";
 		//비번은 영문,숫자,!@#$%로 이루어지고 6~15자 
-		String pwRegex = "^[a-zA-Z0-9!@#$%]{6,15}$";
+		String pwRegex = "^[a-zA-Z0-9!@#$%]{5,15}$";
 		
 		//아이디가 유효성에 맞지 않으면
 		if(!Pattern.matches(idRegex, member.getMe_id())) {
@@ -68,6 +68,19 @@ public class MemberServiceImp implements MemberService {
 			return dbMember;
 		}
 		return null;
+	}
+
+	@Override
+	public void updateMemberSession(MemberVO user) {
+		if(user == null) {
+			return;
+		}
+		memberDao.updateMemberSession(user);
+	}
+
+	@Override
+	public MemberVO getMemberBySession(String session_id) {
+		return memberDao.selectMemberBySession(session_id);
 	}
 
 	

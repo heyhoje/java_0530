@@ -46,18 +46,27 @@ public class MemberController {
 	public String memberLoginPost(MemberVO member, Model model) {
 		Message msg = new Message("/member/login", "로그인에 실패했습니다.");
 
+		// DB에서 로그인 정보를 이용하여 가져온 회원 정보. 자동로그인 여부가 없음
+		//(데이터베이스에 자동로그인이라는 속성이 없기 때문)
 		MemberVO user = memberService.login(member); 
 		if(user != null) {
 			msg = new Message("/", "로그인에 성공했습니다.");
+			// 화면에서 선택/미선택한 자동로그인 여부를 user에 저장해서 인터셉터에게 전달
+			user.setAutoLogin(member.isAutoLogin());
 		}
+		
 		model.addAttribute("user", user);
 		model.addAttribute("msg", msg);
 		return "message";
 	}
+	
 	@GetMapping("/member/logout")
 	public String memberLogout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		user.setMe_session_limit(null); // 만료시간이 null이면 'now() <=' 를 비교하지 못해서 회원정보를 못 가져옴
+		memberService.updateMemberSession(user);
+		
 		Message msg = new Message("/", null);
 		if(user != null) {
 			session.removeAttribute("user");
