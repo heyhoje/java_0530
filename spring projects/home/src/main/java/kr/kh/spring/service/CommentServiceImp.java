@@ -16,7 +16,7 @@ public class CommentServiceImp implements CommentService{
 	public boolean insertComment(CommentVO comment) {
 		if(comment == null || comment.getCo_contents() == null || comment.getCo_me_id() == null){
 			return false;
-	}
+		}
 		return commentDao.insertComment(comment);
 	}
 }

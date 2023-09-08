@@ -13,27 +13,27 @@ import kr.kh.spring.vo.MemberVO;
 
 public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse respose, 
-			Object handler) throws Exception{
-		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		
-		// 로그인이 안되어 있을 때 자동 로그인을 할지말지를 결정
-		if(user == null) {
-			// loginCookie 정보를 가져옴
-			Cookie cookie = WebUtils.getCookie(request, "loginCookie");
-			// longinCookie가 null 이 아니면 => 이전에 자동로그인을 체크했으면
-			if(cookie != null) {
-				// 쿠키에 있는 세션 정보와 일치하는 회원 정보를 가져옴
-				String session_id = cookie.getValue();
-				user = memberService.getMemberBySession(session_id);
-				// 회원 정보가 있으면 세션에 저장(자동로그인 성공)
-				if(user != null) {
-					session.setAttribute("user", user);
-				}
-			}
-		}
-		return true;
-	}
+//	@Override
+//	public boolean preHandle(HttpServletRequest request, HttpServletResponse respose, 
+//			Object handler) throws Exception{
+//		HttpSession session = request.getSession();
+//		MemberVO user = (MemberVO) session.getAttribute("user");
+//		
+//		// 로그인이 안되어 있을 때 자동 로그인을 할지말지를 결정
+//		if(user == null) {
+//			// loginCookie 정보를 가져옴
+//			Cookie cookie = WebUtils.getCookie(request, "loginCookie");
+//			// longinCookie가 null 이 아니면 => 이전에 자동로그인을 체크했으면
+//			if(cookie != null) {
+//				// 쿠키에 있는 세션 정보와 일치하는 회원 정보를 가져옴
+//				String session_id = cookie.getValue();
+//				user = memberService.getMemberBySession(session_id);
+//				// 회원 정보가 있으면 세션에 저장(자동로그인 성공)
+//				if(user != null) {
+//					session.setAttribute("user", user);
+//				}
+//			}
+//		}
+//		return true;
+//	}
 }

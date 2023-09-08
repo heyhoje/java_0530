@@ -8,18 +8,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.kh.spring.service.CommentService;
 import kr.kh.spring.vo.CommentVO;
 
-//@RestController
+@RestController // 컨트롤러에 있는 모든 메소드가 ajax를 사용하는 경우로 되있는 경우, @reponseBody 있는 경우 
 @Controller
 public class CommentController {
 
 	@Autowired
 	private CommentService commentService;
 	
-	@ResponseBody
+	// @ResponseBody // ajax 사용시 해당 어노테이션 꼭!
 	@PostMapping("/comment/insert")
 	public Map<String, Object> insert(@RequestBody CommentVO comment){
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -28,4 +29,6 @@ public class CommentController {
 		map.put("res", res);
 		return map;
 	}
+	
+	
 }

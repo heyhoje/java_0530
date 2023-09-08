@@ -63,7 +63,7 @@
 		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-danger">삭제</a>
 	</c:if>
 	
-	<div class="comment-container mt-5">
+	<div class="comment-container mt-3">
 		<!-- 댓글 입력창 -->
 		<div class="input-group mb-3">
 			<textarea class="form-control" placeholder="댓글" name="co_coments"></textarea>
@@ -156,7 +156,7 @@
 				if(confirm('댓글을 작성하려면 로그인이 필요합니다. 로그인을 하겠습니까?')){
 					location.href = '<c:url value="/member/login"/>';
 				}
-				$(this).blur();
+				$(this).blur(); // 포커스 - 알림창 - 취소 - 다시 포커스가 활성화되는걸 막아줌(포커스해지)
 				return;
 			}
 		});
@@ -173,8 +173,18 @@
 					co_bo_num : '${board.bo_num}',
 					co_me_id : '${user.me_id}'
 			}
+			if(co_contents == ''){
+				alert('내용을 입력하세요.');
+				return;
+			}
 			ajaxJsonToJson(false, 'post', '/comment/insert', comment, (data)=>{
-				console.log(data);
+				// console.log(data);
+				if(data.res){
+					alert('댓글을 등록했습니다.');
+					$('[name=co_contents]').val('');
+				}else{
+					alert('댓글을 등록하지 못했습니다.');
+				}
 			});
 		});
 	</script>
