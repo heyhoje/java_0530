@@ -66,13 +66,23 @@
 	<div class="comment-container mt-3">
 		<!-- 댓글 입력창 -->
 		<div class="input-group mb-3">
-			<textarea class="form-control" placeholder="댓글" name="co_coments"></textarea>
+			<textarea class="form-control" placeholder="댓글" name="co_contents"></textarea>
 		    <div class="input-group-append">
 		      <button class="btn btn-outline-success btn-comment-insert">등록</button>
 		    </div>
 		</div>
 		<!-- 댓글 목록창 -->
-			
+		<div class="form-comtrol clearfix">
+			<div class="input-group mb-3">
+				<div class="col-3">작성자 아이디</div>
+			    <div class="col-6">
+			      댓글 내용
+			    </div>
+			    <div class="col-3">
+			    	작성일
+			    </div>
+			</div>
+		</div>
 		<!-- 댓글 페이지네이션 -->
 	</div>
 	

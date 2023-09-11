@@ -26,6 +26,7 @@ public class CommentController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		boolean res = commentService.insertComment(comment);
 		
+		// System.out.println(comment);
 		map.put("res", res);
 		return map;
 	}

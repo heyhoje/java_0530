@@ -28,10 +28,10 @@
 	<textarea rows="" cols="" placeholder="댓글 등록" id="inputComment"></textarea>
 	<button id=btnCommentInsert>등록</button>
 	
-	<script type="text/javascript" src="//cod.jquery.com/jquiery-30501.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.6.1.js"></script>
 	<script type="text/javascript">
-		$('btnCommentInsert').click(function(){
-			let co_contents =$('inputComment').val();
+		$('#btnCommentInsert').click(function(){
+			let co_contents =$('#inputComment').val();
 			let co_me_id = '${user.me_id}'; // 세션에 있는 정보
 			let co_bo_num = '${board.bo_num}';
 			
@@ -46,7 +46,7 @@
 				$('inputComment').focus();
 				return;
 			}
-			let commetn = {
+			let comment = {
 					co_contents : co_contents,
 					co_me_id : co_me_id,
 					co_bo_num : co_bo_num 
@@ -57,7 +57,7 @@
 				method : "post",
 				url : '<c:url value="/comment/insert"/>',
 				data : JSON.stringify(comment),
-				contentType : 'application/json; charset=utf-8'
+				contentType : 'application/json; charset=utf-8',
 				dataType : 'json',
 				success : function(data){
 					//console.log(data);
