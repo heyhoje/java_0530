@@ -72,9 +72,8 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public MemberVO getMemberBySession(String session_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public MemberVO getMemberBySession(String me_session_id) {
+		return memberDao.selectMemberBySession(me_session_id);
 	}
 
 	

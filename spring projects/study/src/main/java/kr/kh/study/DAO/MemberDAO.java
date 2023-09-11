@@ -12,5 +12,7 @@ public interface MemberDAO {
 
 	void updateMemberSession(@Param("user")MemberVO user) ;
 
+	MemberVO selectMemberBySession(@Param("me_sesion_id")String me_session_id);
+
 
 }

@@ -22,7 +22,7 @@ public class AutoInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 		// 이미 로그인되어 있으면 건너뜀
 		HttpSession session = request.getSession();
-		// 클래스형변환에서/ 부모클래스 객체(Object)를 자식 클래스(MemberVO) 객체로 형번환
+		// 클래스형변환 - 부모클래스 객체(Object)를 자식 클래스(MemberVO) 객체로 형번환
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		
 		if(user != null) {
@@ -34,7 +34,7 @@ public class AutoInterceptor extends HandlerInterceptorAdapter {
 		if(cookie == null) {
 			return true;
 		}
-		user = memberService.getMemberBySession(cookie.session.getId());
+		user = memberService.getMemberBySession(cookie.getValue());
 		if(user != null ) {
 			session.setAttribute("user", user);
 		}
