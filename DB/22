@@ -1,0 +1,3 @@
+    
+-- CGV강남 영화관에서 콘크리트 유토피아 20:50에 예매 가능한 좌석을 조회하는 쿼리(outer join 이용)(x 에러뜸)
+select se_name from seat

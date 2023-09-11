@@ -12,6 +12,8 @@
 	<form action="<c:url value='/member/login'/>" method="post">
 		<input type="text" name="me_id" placeholder="아이디" required> <br>
 		<input type="password" name="me_pw" placeholder="비번" required> <br>
+		
+		<input type="checkbox" value="true" name="autoLogin">자동로그인
 		<button>로그인</button>
 	</form>
 </body>
