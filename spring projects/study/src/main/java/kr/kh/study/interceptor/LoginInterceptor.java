@@ -42,7 +42,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				response.addCookie(cookie);
 				
 				Date date = new Date(System.currentTimeMillis() + time * 1000);
-				// user.setMe_sessionId(value);
+				// user.setMe_session_Id(value);
 				user.setMe_session_id(session.getId());
 				user.setMe_session_limit(date);
 				memberService.updateMemberSession(user);

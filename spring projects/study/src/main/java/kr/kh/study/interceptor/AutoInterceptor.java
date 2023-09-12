@@ -17,7 +17,6 @@ public class AutoInterceptor extends HandlerInterceptorAdapter {
 	@Autowired
 	MemberService memberService;
 	
-	@Override
 	public boolean preHandle(HttpServletRequest request, 
 			HttpServletResponse response, Object handler) throws Exception {
 		// 이미 로그인되어 있으면 건너뜀

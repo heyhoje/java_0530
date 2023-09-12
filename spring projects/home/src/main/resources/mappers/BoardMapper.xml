@@ -16,7 +16,20 @@
 		<result property="bo_contents" column="bo_contents"/>
 		<result property="bo_up_date" column="bo_up_date"/>
 		<result property="bo_reg_date" column="bo_reg_date"/>
-		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
+		<collection 
+			property="fileVoList" 
+			ofType="kr.kh.spring.vo.FileVO" 
+			column="bo_num" 
+			select="selectFileList"/>
+	</resultMap>
+	<resultMap type="kr.kh.spring.vo.BoardTypeVO" id="BoardTypeVO">
+		<id property="bt_num" column="bt_num"/>
+		<result property="bt_title" column="bt_title"/>
+		<collection 
+			property="baList" 
+			ofType="kr.kh.spring.vo.BoardAuthorityVO" 
+			column="bt_num" 
+			select="selectBoardAuthorityList"/>	
 	</resultMap>
 
 	<!-- 아예 이해를 안했었니? 글쓰기+답글 쿼리 -->
@@ -119,4 +132,11 @@
 		where
 			bo_num = #{bo_num}
 	</update>
+	
+	<select id="selectBoardTypeList" resultMap="BoardTypeVO">
+		select * from board_type
+	</select>
+	<select id="selectBoardAuthorityList" resultType="kr.kh.spring.vo.BoardAuthorityVO">
+		select * from board_authority where ba_bt_num = #{bt_num}
+	</select>
 </mapper>

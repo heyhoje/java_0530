@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="<c:url value='/' />">
-    <img src="<c:url value='/resources/img/logo.jpg'/>" alt="logo" style="width:40px;">
+    <img src="<c:url value='/resources/img/bear.jpg'/>" alt="logo" style="width:40px;">
   </a>
   
   <!-- Links -->
@@ -25,5 +25,16 @@
     <li class="nav-item">
       <a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
     </li>
+    
+    <c:if test="${user != null && user.me_role == 'admin'}">
+	    <li class="nav-item dropdown">
+	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+	        관리자
+	      </a>
+	      <div class="dropdown-menu">
+	        <a class="dropdown-item" href="<c:url value='/admin/board/type'/>">게시판 타입 관리</a>
+	      </div>
+	    </li>
+    </c:if>
   </ul>
 </nav>
