@@ -33,6 +33,7 @@
 	      </a>
 	      <div class="dropdown-menu">
 	        <a class="dropdown-item" href="<c:url value='/admin/board/type'/>">게시판 타입 관리</a>
+	        <a class="dropdown-item" href="<c:url value='/admin/board/type'/>">회원 / 신고 관리</a>
 	      </div>
 	    </li>
     </c:if>
