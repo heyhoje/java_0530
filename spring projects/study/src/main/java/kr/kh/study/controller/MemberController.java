@@ -63,6 +63,9 @@ public class MemberController {
 	public String memberLogout(Model model, HttpSession session) {
 		String msg="로그아웃 성공!" , url="/";
 		
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		user.setMe_session_limit(null);
+		memberService.updateMemberSession(user);
 		session.removeAttribute("user");
 		
 		model.addAttribute("url", url);
