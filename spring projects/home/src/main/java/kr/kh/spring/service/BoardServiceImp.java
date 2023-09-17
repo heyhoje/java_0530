@@ -211,20 +211,4 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectBoardTypeList();
 	}
 
-	@Override
-	public boolean insertBoardType(BoardTypeVO boardType) {
-		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
-			return false;
-		}
-		boardDao.insertBoardType(boardType);
-		
-		switch(boardType.getBt_authority()) {
-		case "user":
-			boardDao.insertBoardAuthority(boardType.getBt_num(), "user");
-		case "admin":
-			boardDao.insertBoardAuthority(boardType.getBt_num(), "admin");
-			break;
-		}
-		return false;
-	}
 }

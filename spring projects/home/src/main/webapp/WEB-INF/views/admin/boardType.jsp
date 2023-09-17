@@ -39,14 +39,14 @@
 			    </select>
 			</td>
 	        <td>
-				<button class="btn btn-outline-success">수정</button>
+				<button class="btn btn-outline-warning">수정</button>
 				<button class="btn btn-outline-danger">삭제</button>
 			</td>
 	      </tr>
 		</c:forEach>
     </tbody>
 	</table>
-
+${list}
 
 	<script type="text/javascript">
 	$('.btn-insert').click(()=>{
