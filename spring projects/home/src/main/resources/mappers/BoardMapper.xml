@@ -147,4 +147,16 @@
 	<insert id="insertBoardAuthority">
 		insert into board_Authrity(ba_bt_num, ba_authority) values(#{ba_bt_num}, #{ba_authority})
 	</insert>
+	
+	<!-- 게시판 종류 삭제 -->
+	<select id="selectBoardCountByBoardType" resultType="int">
+		select count(*) from board where bo_bt_num = #{bo_bt_num}
+	</select>
+	<select id="selectBoardTypeCount" resultType="int">
+		select count(*) from board_type
+	</select>
+	<delete id="deleteBoardType">
+		delete from board_type where bt_num = #{bt_num}
+	</delete>
+	
 </mapper>

@@ -234,7 +234,28 @@ public class BoardServiceImp implements BoardService{
 			boardDao.insertBoardAuthority(boardType.getBt_num(), "ADMIN");
 			break;
 		}
-		return false;
+		return true;
+	}
+
+	@Override
+	public boolean deleteBoardType(BoardTypeVO boardType) {
+		if(boardType == null) {
+			return false;
+		}
+		// 해당 게시판에 등록된 게시글이 있는지 확인
+		int count = boardDao.selectBoardCountByBoardType(boardType.getBt_num());
+		// 있으면 삭제 실패
+		if(count != 0) {
+			return false;
+		}
+		// 없으면 등록된 게시판 타입이 몇 개 있는지 확인
+		int btCount = boardDao.selectBoardTypeCount();
+		// 1개 있으면 삭제 실패
+		if(btCount == 1) {
+			return false;
+		}
+		// 게시판 타입을 삭제
+		return boardDao.deleteBoardType(boardType.getBt_num());
 	}
 
 }
