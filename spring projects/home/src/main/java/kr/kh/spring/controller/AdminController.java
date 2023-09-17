@@ -50,4 +50,16 @@ public class AdminController {
 		
 		return map;
 	}
+	
+	@ResponseBody
+	@PostMapping("/admin/board/type/update")
+	public Map<String, Object> boardTypeUpdate(@RequestBody BoardTypeVO boardType){
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		boolean res = boardService.updateBoardType(boardType);
+		// System.out.println(boardType);
+		map.put("res", res);
+		
+		return map;
+	}
 }

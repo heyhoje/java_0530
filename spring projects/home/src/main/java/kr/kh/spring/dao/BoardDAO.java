@@ -55,4 +55,6 @@ public interface BoardDAO {
 
 	boolean deleteBoardType(@Param("bt_num")int bt_num);
 
+	boolean updateBoardType(@Param("bt")BoardTypeVO boardType);
+
 }

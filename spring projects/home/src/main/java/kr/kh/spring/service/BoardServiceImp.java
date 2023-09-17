@@ -211,6 +211,7 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectBoardTypeList();
 	}
 
+	/** 관리자모드 - 게시판종류 추가/삭제/수정 */
 	@Override
 	public boolean insertBoardType(BoardTypeVO boardType) {
 		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
@@ -258,4 +259,17 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.deleteBoardType(boardType.getBt_num());
 	}
 
+	@Override
+	public boolean updateBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null) {
+			return false;
+		}
+		
+		try {
+			return boardDao.updateBoardType(boardType);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

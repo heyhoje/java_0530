@@ -30,8 +30,8 @@
 	<tbody>
 		<c:forEach items="${list}" var="bt">
 	      <tr>
-	        <td>${bt.bt_num}</td>
-	        <td><input type="text" value="${bt.bt_title}" class="form-control"></td>
+	        <td>${bt.bt_num}<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
+	        <td><input type="text" value="${bt.bt_title}" class="form-control" name="bt_title"></td>
 	        <td>
 				<select class="form-control" name="type">
 			      <option value="user"> <c:if test="${bt.baList.size()} == 2">selected</c:if>회원이상</option>
@@ -39,7 +39,7 @@
 			    </select>
 			</td>
 	        <td>
-				<button class="btn  btn-outline-warning">수정</button>
+				<button class="btn  btn-outline-warning btn-update">수정</button>
 				<button class="btn  btn-outline-danger" onclick="deleteBoardType(${bt.bt_num})">삭제</button>
 			</td>
 	      </tr>
@@ -50,6 +50,7 @@
 
 	
 	<script type="text/javascript">
+	<!-- 이벤트존 -->
 	$('.btn-insert').click(()=>{
 		let bt_title = $('#bt_title').val();
 		let bt_authority = $('#authority').val();
@@ -73,10 +74,42 @@
 				location.reload();
 			}else{
 				alert('게시판 종류를 추가하지 못했습니다.')
+				alert('게시판명은 20자까지 등록 가능합니다.')
 			}
 		});
 	});
 	
+	$('btn-update').click(function(){
+		console.log(bt_title)
+		let bt_title = $(this).parents('tr').find('[name=bt_title]').val
+		
+		if(bt_title.trim().length == 0){
+			alert('게시판명을 입력하세요.')
+			return;
+		}
+		
+		let bt_num = $(this).parents('tr').find('[name=bt_num]').val
+		
+		let bt = {
+				bt_num : bt_num,
+				bt_title : bt_title
+		}
+		
+		console.log(bt);
+		
+		ajaxJsonToJson(false, "post", "/admin/board/type/update", bt, (data)=>{
+			if(data.res){
+				alert('게시판 종류를 수정했습니다.')
+				location.reload();
+			}else{
+				alert('게시판 종류를 수정하지 못했습니다.')
+				alert('이미 있는 게시판명입니다.')
+			}
+		});
+	});
+	
+	
+	<!-- 함수존 -->
 	function deleteBoardType(bt_num){
 		let bt = {
 				bt_num : bt_num
