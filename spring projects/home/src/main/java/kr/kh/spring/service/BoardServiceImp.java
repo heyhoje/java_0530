@@ -211,4 +211,30 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectBoardTypeList();
 	}
 
+	@Override
+	public boolean insertBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
+			return false;
+		}
+		// 게시판명이 중복되는걸 방지하기 위해
+		try {
+		boolean res = boardDao.insertBoardType(boardType);
+			if(!res) {
+				return false; // jsp 게시판 종류를 추가하지 못했습니다.
+			}
+		}catch(Exception e) {
+			return false;
+		}
+		switch (boardType.getBt_authority()) {
+		case "USER" : 
+			boardDao.insertBoardAuthority(boardType.getBt_num(), "USER");
+			// boardDao.insertBoardAuthority(boardType.getBt_num(), "ADMIN");
+			// break;
+		case "ADMIN" : 
+			boardDao.insertBoardAuthority(boardType.getBt_num(), "ADMIN");
+			break;
+		}
+		return false;
+	}
+
 }

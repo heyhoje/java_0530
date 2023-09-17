@@ -9,13 +9,13 @@
 	<h1>게시판 타입 관리</h1>
 	<div class="input-group mb-3 mt-3">
 		<div class="input-group-prepend">	  	
-		    <select class="form-control" id="authority">
+		    <select class="form-control"  id="authority">
 		      <option value="0">작성권한</option>
 		      <option value="user">회원이상</option>
 		      <option value="admin">관리자</option>
 		    </select>
 	    </div>
-	    <input type="text" class="form-control" id="bt_title">
+	    <input type="text" class="form-control"  id="bt_title">
 	    <button class="btn btn-outline-success btn-insert">등록</button>
 	</div>
 	<table class="table table-hover">
@@ -34,20 +34,21 @@
 	        <td><input type="text" value="${bt.bt_title}" class="form-control"></td>
 	        <td>
 				<select class="form-control" name="type">
-			      <option value="user"> <c:if test="${bt.baList.size()} == 2"></c:if>회원이상</option>
-			      <option value="admin"><c:if test="${bt.baList.size()} == 1"></c:if>관리자</option>
+			      <option value="user"> <c:if test="${bt.baList.size()} == 2">selected</c:if>회원이상</option>
+			      <option value="admin"><c:if test="${bt.baList.size()} == 1">selected</c:if>관리자</option>
 			    </select>
 			</td>
 	        <td>
-				<button class="btn btn-outline-warning">수정</button>
-				<button class="btn btn-outline-danger">삭제</button>
+				<button class="btn  btn-outline-warning">수정</button>
+				<button class="btn  btn-outline-danger">삭제</button>
 			</td>
 	      </tr>
 		</c:forEach>
     </tbody>
 	</table>
-${list}
+	<!-- ${list}  -->
 
+	
 	<script type="text/javascript">
 	$('.btn-insert').click(()=>{
 		let bt_title = $('#bt_title').val();
@@ -57,7 +58,7 @@ ${list}
 			alert('작성 권한을 선택하세요.')
 			return;
 		}
-		if(bt_title.trim().lenth == 0){
+		if(bt_title.trim().length == 0){
 			alert('게시판명을 입력하세요.')
 			return;
 		}
@@ -65,8 +66,14 @@ ${list}
 				bt_title : bt_title,
 				bt_authority : bt_authority
 		};
-		ajaxJsonToJson(false, post, "/admin/board/type/insert", boardType, (data)=>{
-			console.log(data));
+		
+		ajaxJsonToJson(false, "post", "/admin/board/type/insert", boardType, (data)=>{
+			if(data.res){
+				alert('게시판 종류를 추가했습니다.')
+			}else{
+				alert('게시판 종류를 추가하지 못했습니다.')
+			}
+			location.reload();
 			});
 	});
 	</script>

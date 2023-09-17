@@ -32,6 +32,7 @@ public interface BoardService {
 
 	List<BoardTypeVO> getBoardTypeList();
 
-	// boolean insertBoardType(BoardTypeVO boardType);
+	boolean insertBoardType(BoardTypeVO boardType);
+
 
 }

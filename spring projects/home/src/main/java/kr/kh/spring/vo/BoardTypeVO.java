@@ -12,5 +12,6 @@ public class BoardTypeVO {
 	
 	List<BoardAuthorityVO> baList;
 	
+	
 	String bt_authority;
 }
