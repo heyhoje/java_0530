@@ -19,13 +19,6 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-	@GetMapping("/test")
-	public String test() {
-		MemberVO member = memberService.getMember("qwer123");
-		
-		System.out.println(member);
-		return "redirect:/";
-	}
 	
 	@GetMapping("/member/signup")
 	public String signup(Model model) {
@@ -35,14 +28,19 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/signup")
-	public String signupPost(MemberVO member,Model model) {
+	public String signupPost(MemberVO member, Model model) {
+//		System.out.println(me_id);
+//		System.out.println(me_pw);
+//		System.out.println(member);
 		
-		//서비스에게 회원가입 시켜야 함 => 회원정보를 주면서 => 가입여부를 알려달라고 함
+		// 서비스에게 회원가입 시켜야 함 => 회원정보를 주면서! + => 이미 가입되있는지 아닌지 모름/가입여부를 알려달라고 함
 		boolean res = memberService.signup(member);
+		
 		if(res) {
 			model.addAttribute("msg", "회원가입 성공!");
 			model.addAttribute("url", "");
-		}else {
+		}
+		else {
 			model.addAttribute("msg", "회원가입 실패!");
 			model.addAttribute("url", "member/signup");
 		}

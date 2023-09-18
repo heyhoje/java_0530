@@ -12,6 +12,7 @@
 	let msg = '${msg}';
 	let url = '${url}';
 	msg = msg == '' ? '잘못된 접근입니다.' : msg;
+	
 	alert(msg);
 	location.href = '<c:url value="/"/>' + url;
 	

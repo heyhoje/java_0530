@@ -4,8 +4,7 @@ import kr.kh.edu.vo.MemberVO;
 
 public interface MemberService {
 
-	MemberVO getMember(String id);
-	
+	// 회원가입
 	boolean signup(MemberVO member);
 
 	boolean checkId(String id);

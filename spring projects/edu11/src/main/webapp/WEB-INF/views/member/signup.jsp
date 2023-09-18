@@ -12,7 +12,8 @@
 		<div class="form-group">
 			<input type="text" name="me_id" class="form-control" placeholder="아이디">
 		</div>
-		<button class="btn btn-outline-dark col-12" type="button" id="btn-check">아이디 중복체크</button>
+		<button class="btn btn-outline-dark col-12 type="button">아이디 중복체크</button>
+		
 		<div class="form-group">
 			<input type="password" name="me_pw" class="form-control" placeholder="비밀번호">
 		</div>
@@ -23,8 +24,20 @@
 			<input type="text" name="me_email" class="form-control" placeholder="이메일">
 		</div>
 		<button class="btn btn-success col-12">회원가입</button>
-	</form>
-	
+		
+		<br>
+		<ul>
+			<li>
+				<a name="id">아이디</a>
+			</li>
+			<button>아이디 중복 확인</button>
+			<li>
+				<a name="pw">비번</a>
+				<a name="pw2">비번확인</a>
+				<a name="email">이메일</a>
+			</li>
+		</ul>
+	</form>	
 	
 	<script type="text/javascript">
 	let checkId = false;
