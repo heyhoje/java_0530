@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.edu.service.MemberService;
 import kr.kh.edu.vo.MemberVO;
@@ -43,5 +45,14 @@ public class MemberController {
 			model.addAttribute("url", "member/signup");
 		}
 		return "/main/message";
+	}
+	
+	// 아이디 중복 체크
+	@ResponseBody
+	@PostMapping("/member/id/check")
+	public boolean idCheck(@RequestParam("id") String id){
+		// System.out.println("/member/id/check : " + id);
+		
+		return memberService.checkId(id);
 	}
 }

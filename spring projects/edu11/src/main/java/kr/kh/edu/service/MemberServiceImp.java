@@ -42,6 +42,12 @@ public class MemberServiceImp implements MemberService{
 			return false;
 		}
 		
+		// 서버에서 또 한번 체크아이디!!!!!/ 개발자 모드에서 checkId = true; 로 바꿔서 얌생이부릴수도 있어서
+		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		if(dbMember != null) {
+			return false;
+		}
+		
 		//비밀번호 암호화
 		//화면에서 입력받은 비밀번호를 암호화
 		String encodedPassword = passwordEncoder.encode(member.getMe_pw());
@@ -49,5 +55,12 @@ public class MemberServiceImp implements MemberService{
 		member.setMe_pw(encodedPassword);
 		
 		return memberDao.insertMember(member);
+	}
+
+	// 아이디 중복 체크
+	@Override
+	public boolean checkId(String id) {
+		
+		return memberDao.selectMember(id) == null;
 	}
 }

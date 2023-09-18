@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<input type="text" name="me_id" class="form-control" placeholder="아이디">
 		</div>
-		<button class="btn btn-outline-dark col-12" type="button">아이디 중복체크</button>
+		<button class="btn btn-outline-dark col-12" type="button" id="btn-check">아이디 중복체크</button>
 		<div class="form-group">
 			<input type="password" name="me_pw" class="form-control" placeholder="비밀번호">
 		</div>
@@ -24,5 +24,54 @@
 		</div>
 		<button class="btn btn-success col-12">회원가입</button>
 	</form>
+	
+	
+	<script type="text/javascript">
+	let checkId = false;
+	
+	// 아이디 중복 체크
+	$('#btn-check').click(function(){
+		// console.log(1); // 이벤트가 잘 동작하는지 콘솔.로그나 alert로 꼭! 확인하고 넘어가기/근데 난 꼭 안되더라....
+		// 서버로 아이디를 전달 => Object로 id만 서버로 전송..?!
+		$.ajax({
+			let id = $('[name=me_id]').val();
+			if(id.trim() == ''){
+				alert('아이디를 입력하세요.');
+				return;
+			}
+			async : true,
+			url : '<c:url value="/member/id/check"/>', 
+			type : 'post', 
+			data : {id : id}, 
+			success : function (data){
+				// 서버에서 아이디 사용 가능여부를 알려주면 알림창으로 알려줌 => Object로 사용가능/불가능만 알려주면 됨ㅇ.ㅇ
+				//console.log(data)
+				if(data){
+					alert('사용 가능한 아이디 입니다.')
+					checkId = true;
+				}else {
+					alert('이미 사용중인 아이디입니다.')
+					checkId = false;
+				}
+			}, 
+			error : function(jqXHR, textStatus, errorThrown){
+				console.log(jqXHR)
+			}
+		});
+	})
+	
+	// 회원가입 폼태그 제출시?
+	$('form').submit(function(){
+		if(!checkId){
+			alert('아이디 중복 검사를 하세요.')
+			return false;			
+		}
+	})
+	// 아이디 내용이 바뀌면 다시 검사ㄱ
+	$('[name=me_id]').change(function(){
+		checkId = false;
+	})
+	</script>
+	
 </body>
 </html>
