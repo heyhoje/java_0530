@@ -22,6 +22,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, String id) {
 		System.out.println("id : " + id);
+		
 		return "/main/home";
 	}
 	

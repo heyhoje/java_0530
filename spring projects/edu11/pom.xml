@@ -12,6 +12,7 @@
 		<org.springframework-version>5.0.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		
 		<org.apache.tiles-version>3.0.8</org.apache.tiles-version>
 	</properties>
 	<dependencies>
@@ -150,6 +151,7 @@
 		    <version>1.18.24</version>
 		    <scope>provided</scope>
 		</dependency>
+		
 		
 		<!-- Tiles -->
 		<dependency>
