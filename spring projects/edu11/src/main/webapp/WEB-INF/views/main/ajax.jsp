@@ -26,7 +26,7 @@
 			`;
 			$('.box1').html(str);
 		},
-		error : fuction(jqXHR, textStatus, errorThrown){
+		error : function(jqXHR, textStatus, errorThrown){
 			
 		}
 	});
@@ -44,7 +44,7 @@
 			`;
 			$('.box2').html(str);
 		},
-		error : fuction(jqXHR, textStatus, errorThrown){
+		error : function(jqXHR, textStatus, errorThrown){
 			
 		}
 	});
@@ -61,7 +61,7 @@
 			`;
 			$('.box3').html(str);
 		},
-		error : fuction(jqXHR, textStatus, errorThrown){
+		error : function(jqXHR, textStatus, errorThrown){
 			
 		}
 	});
