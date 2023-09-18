@@ -37,6 +37,17 @@
 	    </beans:property>
 	</beans:bean>
 	
+	<!-- 인터셉터 수작업으로 등록/추가 -->
+	<beans:bean id="loginInterceptor" class="kr.kh.edu.interceptor.LoginInterceptor"/>
+	
+	<!-- 인터셉터 맵핑 -->
+	<interceptors>
+		<interceptor>
+			<!-- 매핑할 url -->
+			<mapping path="member/login"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="kr.kh.edu.*" />
 	

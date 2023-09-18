@@ -10,4 +10,7 @@ public interface MemberService {
 
 	boolean checkId(String id);
 
+	//로그인
+	MemberVO login(MemberVO member);
+
 }

@@ -55,4 +55,30 @@ public class MemberController {
 		
 		return memberService.checkId(id);
 	}
+	
+	// 로그인 -> 화면에 연결 login.jsp만들러 ㄱㄱ
+	@GetMapping("/member/login")
+	public String login() {
+		return "/member/login";
+	}
+	
+	@PostMapping("/member/login")
+	public String loginPost(Model model, MemberVO member) {
+		// 화면에서 보내온 아이디와 비번을 가져와서 확인
+		System.out.println(member);
+		
+		// 입력받은 회원 정보와 일치하는 회원정보가 있으면 가져오라고 요청!
+		MemberVO user = memberService.login(member);
+		// 가져왔으면(로그인 성공하면)
+		if(user != null) {
+			model.addAttribute("user", user);
+			model.addAttribute("url", "");
+			model.addAttribute("msg", "로그인 성공!");
+		}
+		else {
+			model.addAttribute("url", "member/login");
+			model.addAttribute("msg", "로그인 성공!");
+		}
+		return "/main/message";
+	}
 }
