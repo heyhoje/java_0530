@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+ 
+<tiles-definitions>
+	
+	
+	<definition name="/*/*" template="/WEB-INF/views/layout/baseLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+        <put-attribute name="import" value="/WEB-INF/views/common/import.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    
+    
+    <!-- 
+    사이트의 모든 페이지가 하나의 레이아웃만 있으면 되는 경우
+    여기서 name은 컨트롤러의 리턴값 패턴
+    --> 
+    
+    <!-- 사이트의 모든 페이지가 하나의 레이아웃만 있으면 되는데, 폴더 개수가 다른 경우 : 레이아우 ㅅ하나를 응용 -->
+    
+    
+    <!-- 다양한 레이아웃을 이용하여 사이트를 만드는 경우 -->
+       
+</tiles-definitions>
