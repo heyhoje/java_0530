@@ -35,7 +35,7 @@ public class HomeController {
 	@GetMapping("/ajax/test")
 	public String ajaxTest() {
 		
-		return "main/ajax";
+		return "/main/ajax";
 	}
 	
 	@ResponseBody
