@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import kr.kh.edu.pagination.Criteria;
+import kr.kh.edu.pagination.PageMaker;
 import kr.kh.edu.service.BoardService;
 import kr.kh.edu.vo.BoardVO;
 
@@ -24,20 +25,18 @@ public class BoardController {
 		List<BoardVO> list;
 		list = boardService.getBoardList(cri);
 		
+		// 현재 페이지 정보(검색어, 타입)에 맞는 전체 게시글 수를 가져옴
+		int totalCount = boardService.getTotalCount(cri);
+		// 페이지네이션 페이지 수
+		final int DISPLAY_PAGE_NUM = 5;
 		
+		PageMaker pm = new PageMaker(DISPLAY_PAGE_NUM, cri, totalCount);
 		
 		// 화면에 데이터를 전송
 		model.addAttribute("list", list);
 		model.addAttribute("title", "게시글 조회");
-//		cri.setPerPageNum(5);
-//		List<BoardDAO> list = boardService.getBoardList(cri);
-//		
-//		int totalCount = boardService.getBoardTotalCount();
-//		
-//		PageMaker pm = new PageMaker(3, cri, totalCount);
-//		
-//		model.addAttribute("list", list);
-//		model.addAttribute("pm", pm);
+		
+		model.addAttribute("pm", pm);
 		return "/board/list";
 	}
 }

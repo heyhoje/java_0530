@@ -18,7 +18,17 @@ public class BoardServiceImp implements BoardService{
 	/** 게시글 리스트 */
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
-		
+		if(cri == null) {
+			cri = new Criteria();
+		}
 		return boardDao.selectBoardList(cri);
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return boardDao.selectCountBoardList(cri);
 	}
 }

@@ -33,4 +33,13 @@ public class Criteria {
 	public int getPageStart() {
 		return (page - 1) * perPageNum;
 	}
+	
+	/** 메소드 오버로딩으로 작업.... 저번에는 currentPage인가 넣었다고 함 */
+	public String getUrl(int page) {
+		return "?t=" + t + "&s=" + s + "&page=" + page;
+	}
+	
+	public String getUrl() {
+		return "?t=" + t + "&s=" + s + "&page=" + page;
+	}
 }
