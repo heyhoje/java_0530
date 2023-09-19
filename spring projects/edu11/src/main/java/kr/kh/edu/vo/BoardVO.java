@@ -2,6 +2,9 @@ package kr.kh.edu.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class BoardVO {
 
 	int bo_num; 

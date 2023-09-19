@@ -23,19 +23,16 @@
 			</li>
 		</c:if>
 		<li class="nav-item">
-			  	<a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
-			</li>
-		<li class="nav-item">
 		  	<a class="nav-link" href="<c:url value='/ajax/test'/>">ajax 테스트</a>
 		</li>
 
 		<!-- Dropdown -->
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-			  Dropdown link
+			  게시글
 			</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="#">Link 1</a>
+				<a class="dropdown-item" href="<c:url value='/board/list'/>">게시글 조회</a>
 				<a class="dropdown-item" href="#">Link 2</a>
 				<a class="dropdown-item" href="#">Link 3</a>
 			</div>

@@ -4,6 +4,9 @@
 	"https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<!-- 해당 경로를 alias처럼 쓰겠다~ -->
 		<typeAlias type="kr.kh.edu.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="kr.kh.edu.vo.BoardVO" alias="BoardVO"/>
+		
 	</typeAliases>
 </configuration>
