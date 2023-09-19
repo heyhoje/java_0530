@@ -2,16 +2,20 @@ package kr.kh.edu.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.kh.edu.pagination.Criteria;
 import kr.kh.edu.vo.BoardVO;
 import kr.kh.edu.vo.MemberVO;
 
 public interface BoardService {
-
+	
+	// 게시글 리스트
 	List<BoardVO> getBoardList(Criteria cri);
 
 	int getTotalCount(Criteria cri);
-
-	boolean insertBoard(BoardVO board, MemberVO user);
+	
+	// 게시글 등록 / 첨부파일
+	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] fileList);
 
 }

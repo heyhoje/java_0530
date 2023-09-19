@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.edu.dao.BoardDAO;
 import kr.kh.edu.pagination.Criteria;
+import kr.kh.edu.util.UploadFileUtils;
 import kr.kh.edu.vo.BoardVO;
+import kr.kh.edu.vo.FileVO;
 import kr.kh.edu.vo.MemberVO;
 
 @Service
@@ -16,6 +19,7 @@ public class BoardServiceImp implements BoardService{
 	@Autowired
 	BoardDAO boardDao;
 	
+	String uploadPath = "D:\\"; // 무슨 경로?? 무슨 디드라이브???????
 	/** 게시글 리스트 */
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
@@ -33,9 +37,9 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectCountBoardList(cri);
 	}
 	
-	/** 게시글 등록 */
+	/** 게시글 등록 / 첨부파일 추가 */
 	@Override
-	public boolean insertBoard(BoardVO board, MemberVO user) {
+	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] fileList) {
 		if(board == null || board.getBo_title() == null || 
 			board.getBo_title().trim().length() == 0 || board.getBo_contents() == null) {
 		return false;
@@ -52,11 +56,30 @@ public class BoardServiceImp implements BoardService{
 		if(!res) {
 			return false;
 		}
-		// 첨부파일 등록(예정)
 		
+		// 첨부파일 등록(예정)
+		if(fileList == null||fileList.length == 0) {
+			return true;
+		}
+		for(MultipartFile file : fileList) {
+			if(file == null || file.getOriginalFilename().length() == 0) {
+				continue;
+			}
+			//있으면 첨부파일 업로드
+			try {
+				// 서버에 업로드 => fileVO 필요!!
+				// 원래 파일명
+				String fi_ori_name = file.getOriginalFilename();
+				// 서버에 업로드 후 업로드된 경로와 uuid가 포함된 파일명
+				String fi_name = UploadFileUtils.uploadFile(uploadPath, uploadPath, null);
+				
+				// 파일 객체
+				FileVO fileVo = new FileVO(board.getBo_bt_num(), fi_name, fi_ori_name);
+				boardDao.insertFile(fileVo); // 다오야, 첨부파일 정보를 db에 넣어줘
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 		return true;
 	}
-}
-	
-	
 }

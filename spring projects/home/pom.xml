@@ -194,7 +194,9 @@
 		    <groupId>org.apache.tiles</groupId>
 		    <artifactId>tiles-template</artifactId>
 		    <version>${org.apache.tiles-version}</version>
-		</dependency>		
+		</dependency>
+		
+		<!-- 서버로 파일 업로드 -->
 	    <dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>

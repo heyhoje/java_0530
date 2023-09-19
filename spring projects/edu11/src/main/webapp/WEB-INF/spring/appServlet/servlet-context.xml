@@ -51,6 +51,10 @@
 	
 	<context:component-scan base-package="kr.kh.edu.*" />
 	
+	<!-- 첨부파일 크기 설정 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
 	
 	
 </beans:beans>
