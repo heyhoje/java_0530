@@ -1,5 +1,6 @@
 package kr.kh.edu.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,30 @@ public class MemberController {
 	@GetMapping("/member/signup")
 	public String signup(Model model) {
 		
-		model.addAttribute("title", "회원가입");
+		model.addAttribute("title", "서버 to 화면 인사해");
+		model.addAttribute("line", "--------------------------------------");
 		return "/member/signup";
 	}
 	
+//	/** 서블릿에서 인사 콘솔창으로 받아오던거 스프링에서 하려면 어떻게해? */
+//	@GetMapping("/member/signup")
+//	public String text(Model model, String test) {
+//		
+//		System.out.println("내가 하고 싶은 말은 : " + test);
+//		return "member/signup";
+//	}
+	
+
 	@PostMapping("/member/signup")
 	public String signupPost(MemberVO member, Model model) {
 //		System.out.println(me_id);
 //		System.out.println(me_pw);
-//		System.out.println(member);
+		System.out.println(member);
 		
-		// 서비스에게 회원가입 시켜야 함 => 회원정보를 주면서! + => 이미 가입되있는지 아닌지 모름/가입여부를 알려달라고 함
+		// 서비스에게 회원가입 시켜야 함 => 회원정보를 주면서! + => 이미 가입되있는지 아닌지 모름/리턴값으로 가입여부를 알려달라고 함
+		// 화면에서 안들어오는게 맞지만 서버에서 재가공, 추가 정보가 필요할 경우
+		// member.setMe_session_id();
+		// 이 정보로 일을 다 할 수있는지 확인. 프로젝트할때 주석을 많이 달아주는게 중요(나를 위해)
 		boolean res = memberService.signup(member);
 		
 		if(res) {
@@ -77,7 +91,7 @@ public class MemberController {
 		}
 		else {
 			model.addAttribute("url", "member/login");
-			model.addAttribute("msg", "로그인 성공!");
+			model.addAttribute("msg", "로그인 실패!");
 		}
 		return "/main/message";
 	}

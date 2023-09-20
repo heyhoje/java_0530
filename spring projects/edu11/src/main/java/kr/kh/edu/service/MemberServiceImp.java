@@ -19,7 +19,7 @@ public class MemberServiceImp implements MemberService{
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
-
+	/** 회원가입 */
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null) {

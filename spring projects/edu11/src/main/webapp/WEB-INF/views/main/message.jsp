@@ -9,12 +9,14 @@
 <body>
 
 <script type="text/javascript">
+	//여긴 다시봐도 모르겠어...
 	let msg = '${msg}';
 	let url = '${url}';
 	msg = msg == '' ? '잘못된 접근입니다.' : msg;
 	
 	alert(msg);
 	location.href = '<c:url value="/"/>' + url;
+	
 	
 </script>
 </body>
