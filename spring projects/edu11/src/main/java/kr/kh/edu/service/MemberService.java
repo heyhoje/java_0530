@@ -6,7 +6,8 @@ public interface MemberService {
 
 	// 회원가입
 	boolean signup(MemberVO member);
-
+	
+	// 아이디 중복확인
 	boolean checkId(String id);
 
 	//로그인

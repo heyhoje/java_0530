@@ -64,9 +64,9 @@ public class MemberController {
 	// 아이디 중복 체크
 	@ResponseBody
 	@PostMapping("/member/id/check")
-	public boolean idCheck(@RequestParam("id") String id){
-		// System.out.println("/member/id/check : " + id);
-		
+	public boolean ajaxTest3(@RequestParam("id") String id){
+//		System.out.println("/member/id/check : " + id);
+//		return true;
 		return memberService.checkId(id);
 	}
 	
