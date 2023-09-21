@@ -14,5 +14,15 @@
 			member(me_id, me_pw, me_email)
 		values(#{member.me_id},#{member.me_pw},#{member.me_email})
 	</insert>
+	
+	<update id="updateMemberSession">
+		update 
+			member 
+		set 
+			me_session_id = #{member.me_session_id},
+			me_session_limit = #{member.me_session_limit}
+		where
+			me_id = #{member.me_id}
+	</update>
 	 
 </mapper>

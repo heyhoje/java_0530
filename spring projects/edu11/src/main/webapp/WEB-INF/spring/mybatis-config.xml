@@ -7,7 +7,7 @@
 		<!-- 해당 경로를 alias처럼 쓰겠다~ -->
 		<typeAlias type="kr.kh.edu.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="kr.kh.edu.vo.BoardVO" alias="BoardVO"/>
-		<typeAlias type="kr.kh.edu.vo.FIleVO" alias="FileVO"/>
+		<typeAlias type="kr.kh.edu.vo.FileVO" alias="FileVO"/>
 		
 	</typeAliases>
 </configuration>

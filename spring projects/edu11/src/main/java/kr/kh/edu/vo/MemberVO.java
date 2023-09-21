@@ -1,5 +1,9 @@
 package kr.kh.edu.vo;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import lombok.Data;
 
 @Data
@@ -12,5 +16,8 @@ public class MemberVO {
 	
 	// 자동 로그인 관련 속성
 	String me_session_id;
-	String me_session_limit;
+	Date me_session_limit;
+	
+	@Autowired
+	boolean isAutologin;
 }

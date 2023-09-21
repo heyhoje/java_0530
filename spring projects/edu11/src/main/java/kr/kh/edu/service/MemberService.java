@@ -12,5 +12,8 @@ public interface MemberService {
 
 	//로그인
 	MemberVO login(MemberVO member);
+	
+	// 자동로그인
+	void updateMemberSeesion(MemberVO user);
 
 }
