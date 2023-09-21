@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,6 +16,7 @@ import kr.kh.edu.pagination.Criteria;
 import kr.kh.edu.pagination.PageMaker;
 import kr.kh.edu.service.BoardService;
 import kr.kh.edu.vo.BoardVO;
+import kr.kh.edu.vo.FileVO;
 import kr.kh.edu.vo.MemberVO;
 
 @Controller
@@ -70,5 +72,21 @@ public class BoardController {
 		}
 		
 		return "/main/message"; 
+	}
+	
+	// 게시글 상세 조회
+	@GetMapping("/board/detail/{bo_num}")
+	public String detail(Model model, @PathVariable("bo_num")int num) {// 경로상에 있는 변수값을 쓸 떄, @PathVariable
+		// System.out.println(num); // 오오~ 오늘은 테스트 나옴ㅋㅋ ㅊㅋㅊㅋ
+		// 서비스한테 번호알려줄테니까 일치하는 게시글 가져와 시킴
+		BoardVO board = boardService.getBoard(num);
+		
+		// 번호알려줄테니까 일치하는 첨부파일 가져와!
+		List<FileVO> fileList = boardService.getFileList(num);
+		
+		// 화면에 전달
+		model.addAttribute("fileList", fileList);
+		model.addAttribute("board", board);
+		return "/board/detail";
 	}
 }

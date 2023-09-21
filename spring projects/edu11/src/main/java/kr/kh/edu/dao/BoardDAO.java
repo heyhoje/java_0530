@@ -20,4 +20,9 @@ public interface BoardDAO {
 
 	void insertFile(@Param("fileVo")FileVO fileVo);
 
+	// 게시글 상세 페이지&첨부파일 가져오기
+	BoardVO selectBoard(@Param("num")int num);
+
+	List<FileVO> selectFileList(@Param("num")int num);
+
 }

@@ -82,4 +82,18 @@ public class BoardServiceImp implements BoardService{
 		}
 		return true;
 	}
+
+	/** 게시글 상세 조회 */
+	@Override
+	public BoardVO getBoard(int num) {
+		// int니까 예외처리 할것 없이 바로 일 시킴 ㄷㄷ
+		return boardDao.selectBoard(num); // getBoard 써도 됨, 그냥 매퍼에서 사용할 태그를 쓰는것뿐
+	}
+
+	/** 게시글 상세 첨부파일*/
+	@Override
+	public List<FileVO> getFileList(int num) {
+		// 예외처리x
+		return boardDao.selectFileList(num);
+	}
 }

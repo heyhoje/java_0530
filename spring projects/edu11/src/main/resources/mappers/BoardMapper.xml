@@ -54,4 +54,12 @@
 	</insert>
 	
 	<!-- 첨부파일 또 고비다 자증나네 마지막 교시라 다행이다 -->
+	
+	<!-- 게시글 상세 조회 -->
+	<select id="selectBoard" resultType="BoardVO">
+		select * from board where bo_num = #{num}
+	</select>
+	<select id="selectFileList" resultType="FileVO">
+		select * from file where fi_bo_num = #{num}		
+	</select>
 </mapper>
