@@ -3,28 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
-	<title>JSX 기본</title>
-	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
-	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
-	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<title>JSX 예제2</title>
+	<!-- 스크립트 jQuery/자바스크립트로 이벤트 등록-->
+	<script src="//code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 
 <body>
 	<div id="container">
-		<!--
-			<h1> 클릭 수 : 0 
-				
-				</h1?
-			<butten>클릭</button>
-		-->
+		<div>
+			<h1>클릭 수 : 0</h1>
+			<button>클릭</button>
+		</div>
 	</div>
-	<script type="text/babel">
-		// 넣을 요소
-		const container = document.getElementById('container');
 
-		// 요소 생성
+	<script>
+		let counter = 0;
 
-		// 요소 배치
-		ReadDOM.render(<Element/>, )
+		/*
+		// JQuery 방식
+		// 버튼이 여러개여도 모든 요소에 이벤트가 등록됨
+		$('button').click(function(){
+			counter++;
+			// alert('버튼 클릭')
+			$(`h1`).text(`클릭 수 : ${counter}`);
+		});
+		*/
+
+		// 자바스크립트 방식
+		// 하나있더라도 배열로 가져옴 => 모든 요소들에게 이벤트가 등록되는게 아님
+		let btn = document.getElementsByTagName('button')[0];
+		let h1 = document.getElementsByTagName('h1')[0];
+		btn.addEventListener('click', ()=>{
+			counter++;
+			h1.innerText = `클릭 수 : ${counter}`;
+		})
 	</script>
 </body>

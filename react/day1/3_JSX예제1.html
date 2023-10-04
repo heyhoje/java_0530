@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
-	<title>JSX 기본</title>
+	<title>JSX 예제1</title>
+	<!-- 클릭수 + 클릭버튼 / 요소 생성 방법 2개-->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -12,19 +13,42 @@
 <body>
 	<div id="container">
 		<!--
-			<h1> 클릭 수 : 0 
-				
-			</h1>
+			<h1> 클릭 수 : 0</h1>
 			<butten>클릭</button>
 		-->
 	</div>
+
 	<script type="text/babel">
 		// 넣을 요소
 		const container = document.getElementById('container');
 
-		// 요소 생성
+		// 요소 생성1
+		function Element(){
+			return (
+			<div>
+				<h1>클릭 수 : 0</h1>
+				<button>클릭</button>
+			</div>
+			);
+		}
+		
+		// 요소 생성2
+		function Htag(){
+			return <h1>클릭 수 : 0</h1>;
+		}
+		function Btn(){
+			return <button>클릭</button>;
+		}
+		function Element2(){
+			return (
+				<div>
+					<Htag/>
+					<Btn/>	
+				</div>
+			);
+		}
 
 		// 요소 배치
-		ReadDOM.render(<Element/>, )
+		ReactDOM.render(<Element2/>, container);
 	</script>
 </body>

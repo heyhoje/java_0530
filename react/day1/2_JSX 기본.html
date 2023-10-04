@@ -7,11 +7,16 @@
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+	<style>
+		#btn{background-color: yellow;}
+	</style>
 </head>
 
 <body id="body">
 	<script type="text/babel">
 		const body = document.getElementById('body');
+		  
 		/*
 		- 함수로 요소를 생성
 		- 요소 생성시 함수명을 대문자로 시작 => 다른 요소에 배치할 수 있게하기 위해
@@ -21,12 +26,19 @@
 				<button id="btn" onClick={()=>alert('버튼입니다.')}>버튼</button>
 			);
 		}
+		// 렌더링~ 
 		ReactDOM.render(<Btn/>, body);
-
-		// let 함수명2 = function(){
+		
+		// function 함수명1(){
+			
+		// }
+		// var 함수명2;
+		// 함수명1();
+		// 함수명2(); // 함수2가 문제가 됨. 호이스팅 - 함수나 변수(var)들이 선언되면 해당 코드들을 다 위로 올림. 
+		// (let )함수명2 = function(){
 
 		// }
-		// 함수명1();
-		// 함수명2();
+
+		// *함수명1 추천* 함수명2는 화살표함수가 가능
 	</script>
 </body>

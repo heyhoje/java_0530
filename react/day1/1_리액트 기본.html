@@ -19,11 +19,16 @@
 
 		// JSX를 학습하면 사용하지 않을 방법
 		const btn = React.createElement("button", {
-			// 속성들을 객체 형태로 / 생성만 한것 배치는 따로
+			// 속성들을 객체 형태로 / 생성만 한 것 배치는 따로
 			id : "btn",
 			onClick : () => alert('버튼입니다.')
 		}, "버튼")
+
+		// btn을 body요소에 넣는다rendering
 		ReactDOM.render(btn, body);
+
+		let str = '안녕';
+		alert(`${str}`)
 	</script>
 </body>
 </html>
