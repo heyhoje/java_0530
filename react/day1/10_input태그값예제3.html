@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>input태그값 예제3</title>
+	<!-- 자바스크립트와 리액트가 섞여있는 형태 -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+		const container = document.getElementById('container');
+		let str = '';
+		let totalStr = '';
+
+		function App(){
+			function onChange(event){			
+				str = event.target.value; // 리액트x, state쓰는 방식은 아님. 
+				console.log(str);
+			}
+			function onClick(){
+				totalStr += str;
+				ReactDOM.render(<App/>, container);
+			}
+
+			return(
+				<div>
+					<input type="text" onChange={onChange}/>
+					<button onClick={onClick}>추가</button>
+					<h3>{text}</h3>
+				</div>	
+				);
+		}
+		ReactDOM.render(<App/>, container);
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>input태그값 예제2</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+		const container = document.getElementById('container');
+		function App(){
+			// let [text, setText] = React.useState("내용을 입력하세요");
+			const initText = '내용을 입력하세요.'
+			let [text, setText] = React.useState(initText);
+
+			function onChange(event){
+				// event.target.value 를 통해 input태그의 내용이 바뀔때, 입력된 내용을 가져올 수 있다. 
+				// console.log(event.target.value);
+				let value = event.target.value;
+				setText(value == '' ? initText : value);
+			}
+
+			return(
+				<div>
+					<input type="text" onChange={onChange}/>
+					<button onClick={onClick} value={counter}/>
+					<h3>{text}</h3>
+				</div>	
+				);
+		}
+		ReactDOM.render(<App/>, container);
+	</script>
+</body>
+</html>
