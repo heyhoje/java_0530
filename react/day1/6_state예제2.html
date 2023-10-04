@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+	<title>state예제 기본</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="container">
+	</div>
+
+	<script type="text/babel">
+		// 넣을 요소
+		const container = document.getElementById('container');
+
+		// 요소 생성
+			function Element(){
+				let[counter, sestCounter] = React.useState(1);
+				const maxCount = 13;
+				function onClickUp(){
+					setCounter(counter + 1 > maxCount ? 1 : counter + 1);
+					// if(counter + 1 > maxCounter){
+					// 	setCount(1);
+					// }else{
+					// 	setCounter(counter + 1);
+					// }
+				}
+				function onClickDown(){
+					setCounter(counter -1 < 1 ? maxCount : count - 1);
+					// if(counter + 1 < 1){
+					// 	setCount(maxCounter);
+					// }else{
+					// 	setCounter(counter - 1);
+					// }
+				}
+
+				return(
+					<div>
+						<button onClick={onClickDown}>&lt;</button>
+						<span>{counter}/{maxCount}</span>
+						<button onClick={onClickUp}>&gt;</button>	
+					</div>
+				);
+			}
+		// 요소 배치
+		ReadDOM.render(<Element/>, container)
+	</script>
+</body>
