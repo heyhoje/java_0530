@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 감추기</title>
+	<!-- ( 8 + 버튼 : 리셋, 전환 ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+	
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		function Btn(){
+			return (
+				<button>버튼</button>
+			)
+		}
+
+		function App(){
+			let show = false;
+
+			// 요소 배치/제거
+			return(
+				<div>	
+					{show ? <Btn/> : null}
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
