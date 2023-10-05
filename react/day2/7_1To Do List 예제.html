@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>to do list	</title>
+	<!-- ( 5 input 입력 + 6 배열리스트 ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+	
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		/*
+		input 태그를 이용하여 오늘의 할일을 입력받고,
+		추가 버튼을 클릭하면 오늘의 할일이 리스트에 추가 되도록 작성
+		*/
+		function App(){
+			// input = todo / arr = todos
+			let [input, setInput] = React.useState("");
+			let [arr, setArr] = React.useState([]);
+			console.log(arr); 
+
+			function onChange(e){
+				setInput(e.target.value);
+			}
+			const onClick = () => {
+				// console.log('click');
+				setArr((beforeTodos) => [input, ...beforeTodos]);
+				setInput("");
+			}
+
+			return(
+				<div>
+					<input type="text" placeholder="입력하세요" onChange={onChange}/>
+					<button onClick={onClick}>추가</button>
+					<h1>today's To Do List</h1>
+					<ul>
+						{arr.map(item => <li>{item}</li>)}
+					</ul>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
