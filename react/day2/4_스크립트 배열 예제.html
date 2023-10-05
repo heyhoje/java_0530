@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크립트 배열 예제</title>
+	<!-- 배열의 특징 / 리액트가 아닌 순수 배열예제 -->
+</head>
+<body>
+	<script>
+		let arr = ['apple', 'banana'];
+		// arr에 orange를 제일 뒤에 추가(배열에 문자열 추가)
+		arr[2] = 'orange'; // 난 이것도 똑똑하다고 생각했는데......
+
+		// 1. arr.push('orange') 뒤에
+		arr = [...arr, 'orange2']
+		// 2. arr.unshift('berry') 앞에
+		arr = ['berry2', ...arr];
+		console.log(arr)
+
+	</script>
+</body>
+</html>
