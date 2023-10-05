@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>시/분 단위변환</title>
+	<!-- ( 분->시 올림/버림 ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+	
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		/*
+		input 태그를 이용하여 '분'을 입력받고,
+		입력받은 '분'을 '시'로 변환하는 코드를 작성
+		60 => 1 / 61 => 1 / 120 => 2
+		*/
+		function App(){
+			// 1. 분을 저장하는 state
+			let [minute, setMinute] = React.useState(0)
+
+			// 3?
+			const onChange = (e)=>setMinute(e.target.value);
+
+			// 2. 요소들을 input 태그로 배치
+			// Math.round = 올림 / Math.floor = 버림 (소숫점 첫재짜리까지 적용)
+			return(
+				<div>	
+					<div>
+						<input type="number" onChange={onChange} value={minute}/>
+					</div>
+					<div>
+						<input type="number" value={Math.floor(minute/6)/10} disabled/>
+					</div>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
