@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>props 예제1</title>
+	<!-- (  ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+		<button style="color:red">1</button>
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		function Btn1(){
+			return(
+				<button>버튼1</button>
+			)
+		}
+
+		function Btn2(){
+			return(
+				<button>버튼2</button>
+			)
+		}
+		// --------------------------
+		// 진짜 스타일을 적용하려면 컴포넌트로 와서 해야함 @@
+		// 부모 컴포넌트가 매개변수처럼 전달해서, 자식 컴포넌트에서 사용하게 하는 방법
+
+		// 프롭스를 이용해서 재사용 높은 컴포넌트/요소를 만들어야함
+		function Btn(props){
+			return(
+				<button style={props.css}>{props.text}</button>
+			)
+		}
+		// 매개변수로 어떤 속성이 들어가는지 바로 확인
+		function OtherBtn({text, style}){
+			return(
+				<button style={style}>{text}</button>
+			)
+		}
+
+		function App(){
+			
+			return(
+				<div>	
+					<Btn1/>
+					<Btn2/>
+					<br/>
+					<Btn text="버튼a" style={{color : 'red', fontSize : 20}}/>
+					<Btn text="버튼b" style={{backgroundColor : 'tomato'}}/>
+					<br/>
+					<OtherBtn text="버튼C" css={{color : 'red', fontSize : 20}}/>
+					<OtherBtn text="버튼D" css={{backgroundColor : 'tomato'}}/>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>

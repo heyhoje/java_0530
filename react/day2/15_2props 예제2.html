@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>props 예제2</title>
+	<!-- (  ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+		<button style="color:red">1</button>
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		/*
+		Btn 컴포넌트를 생성한 후, Btn 컴포넌트를 이용하여 버튼1과 버튼2를 만들고
+		버튼1을 클릭하면 버튼2가 토글되도록(보이면 안보이게, 안보이면 보이게) 코드를 작성
+		*/
+		
+		function Btn(props){
+			const [isVisible, setIsVisible] = useState(true);
+	
+			const toggleVisibility = () => {
+				setIsVisible(!isVisible);
+			};
+			return(
+				<button>{props.text}</button>
+			)
+		}
+			
+		const onClick = ()=>{};
+
+		function App(){
+			
+			return(
+				<div>	
+					<Btn text="버튼1" onClick={onClick}/>
+					<Btn text="버튼2"/>
+				</div>
+			)
+		}
+		Btn.propTypes = {
+
+		}
+
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
