@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>m/km 단위변환</title>
+	<!-- ( 9, 10, 11 + 단위 변환 기능 합치기 ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	
+	
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		/*
+		input 태그를 이용하여 'm'을 입력받고,
+		입력받은 'm'을 'km'로 변환하는 코드를 작성
+		1000m => 1km
+		*/
+		function App(){
+			// 분을 저장하는 state
+			let [amount, setAmount] = React.useState(0);
+			let [fliped, setFliped] = React.useState(false);
+			let [unit, setUnit] = React.useState('분 <-> 시'); // 초기 단위 설정
+			
+			const onChange = (e)=>setAmount(Number(e.target.value));
+			const reset = ()=>setAmount(0);
+			const convert = ()=>{
+				if(unit == '분 <-> 시'){
+					setAmount(flipped ? amount * 60 : (amount/6)/10);
+				}else if(unit == 'm <-> km'){
+					setAmount(flipped ? (amount/100)/10 : amount * 1000);
+				}
+
+				setAmount(0);
+				setFliped((item)=>!item)
+			}; // 함수대신 (!fliped) 도 가능
+
+			// 요소들을 input 태그로 배치
+			// Math.round = 올림 / Math.floor = 버림 (소숫점 첫재짜리까지 적용)
+			return(
+				<div>	
+					<select onChange={(e) => setUnit(e.target.value)}>
+						<option>변환할 단위를 선택하세요.</option>
+						<option>m &lt;-&gt; km</option>
+						<option>분 &lt;-&gt; 시</option>	
+					</select>
+
+					<div>
+						<input type="number" onChange={onChange} value={flipped ? amount : Math.floor(amount)} disabled={!flipped}/>
+						{unit === 'm <-> km' ? '미터' : '분'}
+					</div>
+					<div>
+						<input type="number" onChange={onChange} value={!flipped ? amount : Math.floor(amount*1000)/1000} disabled={flipped}/>
+						{unit === 'm <-> km' ? '킬로미터' : '시간'}
+					</div>
+
+					<button onClick={reset}>Reset</button>
+					<button onClick={convert}>Convert</button>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
