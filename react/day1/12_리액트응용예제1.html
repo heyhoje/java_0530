@@ -4,26 +4,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>리액트 응용 예제1</title>
-	<!-- 뭐했다고 기본 다하고 응용이야... -->
+	<!-- 쉬운거 한다며 왜 응용이야!! 뭐했다고 기본 다하고 응용이야... -->
+	<!-- 과일 선택하기 -->
+	<!-- 이 state, 기본만 하더라도 리액트를 많이 활용할 수 있음-->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 	<div id="container">
+
 	</div>
 
 	<script type="text/babel">
 		const container = document.getElementById('container');
 		
 		function App(){
-			const initFruit = "";
-			let[fruit, setFruit] = React.useState(initFruit)
+			const initFruit = "~과일을 선택하세요~";
+			let[fruit, setFruit] = React.useState(initFruit);
 			
 			function onChange(event){
 				// console.log('이벤트')
 
-				// setter를 이용해야 선택한 요소로 select 태그 값이 변경됨
+				// value={fruit}을 적용하고 나서는 어떤 과일을 선택해도 '선택'으로 돌아감
+				// => setter를 이용해야 선택한 요소로 'select 태그 값'이 변경됨
 				setFruit(event.target.value);
 				console.log(event.target.value)
 			}
@@ -33,9 +37,9 @@
 					<h1>좋아하는 과일은?</h1>
 					<select onChange={onChange} value={fruit}>
 						<option value={initFruit}>선택</option>
-						<option value="사과를 선택했습니다">사과</option>
-						<option value="오렌지를 선택했습니다">오렌지</option>
-						<option value="바나나를 선택했습니다">바나나</option>
+						<option value="-사과를 선택했습니다">사과</option>
+						<option value="-오렌지를 선택했습니다">오렌지</option>
+						<option value="-바나나를 선택했습니다">바나나</option>
 					</select>
 					<h1>{fruit}</h1>
 				</div>

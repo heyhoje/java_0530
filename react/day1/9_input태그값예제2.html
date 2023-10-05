@@ -4,31 +4,40 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>input태그값 예제2</title>
+	<!-- (8 인풋 + 5 버튼) 초기값이 입력한 값을 기준으로 +1 증가 -->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
 	<div id="container"></div>
 	<script type="text/babel">
-		const container = document.getElementById('container');
-		function App(){
-			// let [text, setText] = React.useState("내용을 입력하세요");
-			const initText = '내용을 입력하세요.'
-			let [text, setText] = React.useState(initText);
 
+		const container = document.getElementById('container');
+
+		function App(){
+			let [counter, setCounter] = React.useState(0);
+			// state를 통해 초기화하니까 정수로 초기화가잘 되는데, 이후에는 문자열로 됨
 			function onChange(event){
-				// event.target.value 를 통해 input태그의 내용이 바뀔때, 입력된 내용을 가져올 수 있다. 
-				// console.log(event.target.value);
-				let value = event.target.value;
-				setText(value == '' ? initText : value);
+				let value = 0;
+
+				value = parseInt(event.target.value); // 정수로 변환!
+				if(isNaN(value)){
+					value = 0;
+				}
+				setCounter(value);
+			}
+
+			function onClick(){
+				setCounter(counter + 1);
 			}
 
 			return(
 				<div>
-					<input type="text" onChange={onChange}/>
-					<button onClick={onClick} value={counter}/>
-					<h3>{text}</h3>
+					<input type="text" onChange={onChange} value={counter}/>
+					<button onClick={onClick}>+</button>
+					<h3>{counter}</h3>
 				</div>	
 				);
 		}

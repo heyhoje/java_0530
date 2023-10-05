@@ -3,35 +3,49 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>input태그값 예제4</title>
-	<!-- 순수 리액트 / state 이용해서 -->
+	<title>input태그값 예제3-2</title>
+	<!-- 입력한 값이 div박스안에 들어가서, 뒤에 추가되도록!-->
+	<!-- 11 -> 순수 리액트 버전으로 / state 이용해서 -->
+	<!-- 자바스크립트가되야 리액트를 잘 활용할 수 있음. 
+		자바스크립트로 작업한 코드 -> 리액트로 변환하는 연습. 어떤식으로 작성해야 효율적으로 작성할 수 있는지-->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
 	<div id="container"></div>
 	<script type="text/babel">
 		const container = document.getElementById('container');
+		
 		function App(){
-			let[str, setStr] = React.useState("");
-			let[totalStr, setTotalStr] = React.useState("");
+			// 1. 전역 변수로 썼던것 -> state로 2개 만듦
+			// 10번처럼 전역변수로 연습 => 잘 된다면state로 바꿔보는 연습
+			let [str, setStr] = React.useState("");
+			let [totalStr, setTotalStr] = React.useState("");
 
-			function onChange(event){			
-				setStr(event.starget.value);
-				
+			function onChange(event){		
+				// 2. setter를 이용해서 수정
+				setStr(event.target.value);
+				// console.log(str);
 			}
 			function onClick(){
-				let beforTotalStr = totalStr;
-				setTotalStr((beforeTotalStr)=>{beforTotalStr + str});
+				// 3. 굳이 왜이렇게 하는지 모르겠음. setter에는 값or함수, 함수를 넣을 경우 첫번째 매개변수가 이전값임
+				// 이전값을 가져와서 뒤에 +str을 붙일 수 있다.
+				// let beforeTotalStr = totalStr;
+				// setTotalStr(beforTotalStr + str);
+				setTotalStr((beforeTotalStr) => {beforeTotalStr + str});
 				setStr("");
+
+				// 글 쓰고 추가 누르니까, 인풋이랑 같이 사라져 버리는데요....????
 			}
 
+			//4. **jsx로 리액트 형태로 요소를 추가하고 리액트 동적렌더링 통해서 요소를 대체**하는 작업은 꼭 기억해야함
 			return(
 				<div>
 					<input type="text" onChange={onChange} value={str}/>
 					<button onClick={onClick}>추가</button>
-					<h3>{text}</h3>
+					<h3>{str}</h3>
 				</div>	
 				);
 		}

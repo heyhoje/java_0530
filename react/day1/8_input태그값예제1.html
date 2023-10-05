@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>input태그값 예제</title>
+	<title>input태그값 예제1</title>
+	<!-- state+인풋, event.target.value, 빈문자열일 때 초기값-->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -11,24 +12,33 @@
 <body>
 	<div id="container"></div>
 	<script type="text/babel">
+
 		const container = document.getElementById('container');
+
 		function App(){
 			// let [text, setText] = React.useState("내용을 입력하세요");
-			const initText = '내용을 입력하세요.'
+			const initText = "내용을 입력하세요.";
 			let [text, setText] = React.useState(initText);
+
 			function onChange(event){
-				// event.target.value 를 통해 input태그의 내용이 바뀔때, 입력된 내용을 가져올 수 있다. 
+				// console.log('change 이벤트 발생!')
+
+				// 1. event.target.value 를 통해 input태그의 내용이 바뀔때, '입력된 내용'을 가져올 수 있다. 
 				// console.log(event.target.value);
 				let value = event.target.value;
 				setText(value == '' ? initText : value);
 			}
+
+			// 2. 입력된 내용은 state에 저장이 되고, 이 값을 어딘가에 활용하고 싶으면 {state}를 활용하면 된다. 
 			return(
 				<div>
 					<input type="text" onChange={onChange}/>
+					<button>클릭</button>
 					<h3>{text}</h3>
 				</div>	
 				);
 		}
+		// container 에 내가 작업한 '요소(태그처럼 작성)'를 넣어주는 역할 
 		ReactDOM.render(<App/>, container);
 	</script>
 </body>

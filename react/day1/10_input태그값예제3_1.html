@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>input태그값 예제3</title>
+	<title>input태그값 예제3-1</title>
+	<!-- 입력한 값이 div박스안에 들어가서, 뒤에 추가되도록!-->
 	<!-- 자바스크립트와 리액트가 섞여있는 형태 -->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
@@ -13,16 +14,19 @@
 	<div id="container"></div>
 	<script type="text/babel">
 		const container = document.getElementById('container');
+		// state 적응 안됐으면 '전역변수' 써도 됨
 		let str = '';
 		let totalStr = '';
 
 		function App(){
 			function onChange(event){			
-				str = event.target.value; // 리액트x, state쓰는 방식은 아님. 
+				str = event.target.value; // 리액트x, state를 사용안하고 하는 방법. 스크립트 하는 것처럼 해보기 
 				console.log(str);
 			}
 			function onClick(){
 				totalStr += str;
+				str = '';
+				document.getElementsByTagName('input')[0].value=str; // 뭔데 니 (리액트 + 자바스크립트 섞여있는 형태)
 				ReactDOM.render(<App/>, container);
 			}
 
@@ -30,7 +34,7 @@
 				<div>
 					<input type="text" onChange={onChange}/>
 					<button onClick={onClick}>추가</button>
-					<h3>{text}</h3>
+					<h3>{totalStr}</h3>
 				</div>	
 				);
 		}

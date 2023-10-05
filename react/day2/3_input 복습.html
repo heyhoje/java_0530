@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>input 복습</title>
+	<!--  -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+
+		function App(){
+			// 1. input 태그값 가져오기 = onChange
+			// 값 저장 = state를 통해서
+			let [input, setInput] = React.useState('1');
+
+			function onChange(event){
+				// console.log(event.target.value);
+				
+				// 2. 입력한 값이 {input} 에 반영되게 = setter를 통해
+				setInput(event.target.value);
+
+			}
+
+			return(
+				<div>
+					<input type="text" onChange={onChange}/>
+					<h1>{input}</h1>
+				</div>
+			)
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>

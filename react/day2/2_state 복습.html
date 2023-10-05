@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>state 복습</title>
+	<!-- 클릭할때마다 숫자 증가 -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="root">	</div>
+
+	<script type="text/babel">
+		
+		function App(){
+			// let data = React.useState(0);
+			// // console.log(data);
+
+			// let num = data[0];
+			// let setNum = data[1];
+
+			let [num, setNum] = React.useState(0);
+
+			// setNum(2); // 무한루프빠짐
+			// console.log(num);
+
+			function onClick(){
+				// setter를 이용하면 렌더링을 다시 안해도됨
+				// 1. setter를 통해 특정 값을 넘겨줌
+				/// setNum(num+1);
+				// 2. setter를 통해 함수를 넘겨줌 
+				/// setNum((beforeNum)=>before+1)
+				setNum((beforeNum)=>{
+					return beforenum+1
+				})
+			}
+
+			return(
+				<div>
+					<button onClick={onClick}>버튼</button>
+					<h1>{num}</h1>
+				</div>
+			);
+		}
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+</body>
+</html>
