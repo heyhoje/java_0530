@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>prop types 복습 예제</title>
+	<!-- ( 속성의 타입에 제한을 둠/isRequired 필수항목도  ) -->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+</head>
+<body>
+	<!-- 
+	리액트를 이용해서
+	버튼1, 버튼2, ..., 버튼5로 된 버튼 5개를 화면에 배치해보세요
+	-->
+	<div id="root">	
+
+	</div>
+
+	<script type="text/babel">
+
+		const root = document.getElementById("root");
+
+		// function Btn(props){
+		// return (
+		// <button >{props.text}</button>
+		// );
+		function Btn({text, color, fontSize}){
+			return (
+			<button style={{backgroundColor : color, fontSize : fontSize}}>{text}</button>
+			)
+		}
+
+		// fontSize 정수는 {} 로 보내야함
+		function App(){
+			return (
+				<div>
+					<Btn text="버튼1" color={"red"} fontSize={30}/> 
+					<Btn text="버튼2" color="tomato"/>
+					<Btn text="버튼3" color="orange"/>
+					<Btn text="버튼4" color="yellow"/>
+					<Btn text="버튼5" color="green"/>
+				</div>
+			)
+		}	
+		Btn.propTypes = {
+			text : PropTypes.string.isRequired,
+			color : PropTypes.string ,
+			fontsize : PropTypes.number
+		}
+
+		ReactDOM.render(<App/>, root);
+
+	</script>
+
+</body>
+</html>
