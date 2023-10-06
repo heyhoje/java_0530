@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>memo 예제1</title>
+	<!-- 성능향상을 위한 것. 몰라도 리액트에 문제 없음 -->
+	<!-- 또 화면 안나옴... 2까지 랜더링이 되버림-->
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+</head>
+<body>
+	
+	<div id="root">	
+
+	</div>
+
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		/* 따로 하려다가 걍 합침..ㅋ
+		function Btn1(){
+			let [value, setValue] = React.useState("버튼1");
+
+			console.log("Btn1 랜더링");
+			return (
+				<button onClick={onClick}>버튼1</button>
+			)
+		}
+		function Btn2(){
+			console.log("Btn2 랜더링");
+			return (
+				<button>버튼2</button>
+			)
+		}
+		*/
+		function Btn({text, onClick}){
+			console.log(text, "랜더링")
+			return(
+				<button onClick={onClick}>{text}</button>
+			)
+		}
+		// function Btn(props){
+		// 	console.log(props.text, "랜더링")
+		// 	return(
+		// 		<button onClick={props.onClick}>{props.text}</button>
+		// 	);
+		// }
+
+		const MemoBtn = React.memo(Btn);
+
+		function App(){
+			let [value, setValue] = React.useState("버튼1")
+
+			const onClick = () => setValue("버튼1 클릭ok")
+			return (
+				<div>
+					<MemoBtn text={value} onClick={onClick}/>
+					<MemoBtn text={"버튼2"}/>
+				</div>
+			)
+		}	
+		
+		ReactDOM.render(<App/>, root);
+
+	</script>
+
+</body>
+</html>
