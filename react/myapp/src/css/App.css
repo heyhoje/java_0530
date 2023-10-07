@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.footer{
+  background-color: whitesmoke; height: 150px; padding : 30px;
+}
+
+.body{
+	min-height: calc(100vh - 56px - 210px);
+}
