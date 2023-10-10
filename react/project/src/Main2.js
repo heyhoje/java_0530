@@ -7,7 +7,7 @@ function Main2(){
 	const idChange = (e) => setId(e.target.value);
 	const pwChange = (e) => setPw(e.target.value);
 
-	// 받을때는 location 보낼때는 navigate
+	// 보낼때는 navigate, 받을때는 location 
 	const navigate = useNavigate();
 	const sendData = ()=>{
 		navigate('/menu3', {
