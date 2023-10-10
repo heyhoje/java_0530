@@ -19,7 +19,7 @@
 		const container = document.getElementById('container');
 		
 		function App(){
-			// 1. 전역 변수로 썼던것 -> state로 2개 만듦
+			// 1. 전역 변수로 썼던것 -> state 2개 만듦
 			// 10번처럼 전역변수로 연습 => 잘 된다면state로 바꿔보는 연습
 			let [str, setStr] = React.useState("");
 			let [totalStr, setTotalStr] = React.useState("");
@@ -30,11 +30,12 @@
 				// console.log(str);
 			}
 			function onClick(){
-				// 3. 굳이 왜이렇게 하는지 모르겠음. setter에는 값or함수, 함수를 넣을 경우 첫번째 매개변수가 이전값임
+				// 3. 굳이 왜이렇게 하는지 모르겠음. 
+				// setter에는 값or함수, 함수를 넣을 경우 첫번째 매개변수가 이전값임
 				// 이전값을 가져와서 뒤에 +str을 붙일 수 있다.
 				// let beforeTotalStr = totalStr;
 				// setTotalStr(beforTotalStr + str);
-				setTotalStr((beforeTotalStr) => {beforeTotalStr + str});
+				setTotalStr((beforeTotalStr) => beforeTotalStr + str);
 				setStr("");
 
 				// 글 쓰고 추가 누르니까, 인풋이랑 같이 사라져 버리는데요....????
@@ -45,7 +46,7 @@
 				<div>
 					<input type="text" onChange={onChange} value={str}/>
 					<button onClick={onClick}>추가</button>
-					<h3>{str}</h3>
+					<h3>{totalStr}</h3>
 				</div>	
 				);
 		}

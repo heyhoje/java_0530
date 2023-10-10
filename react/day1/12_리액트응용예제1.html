@@ -28,6 +28,8 @@
 
 				// value={fruit}을 적용하고 나서는 어떤 과일을 선택해도 '선택'으로 돌아감
 				// => setter를 이용해야 선택한 요소로 'select 태그 값'이 변경됨
+				// state를 사용할때 주의해야할 점!!
+				// change 이벤트를 호출한 함수에 setter를 호출해서 바꿔줘야 내가 선택한 요소로 값이 바뀜.
 				setFruit(event.target.value);
 				console.log(event.target.value)
 			}
