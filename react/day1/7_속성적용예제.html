@@ -22,9 +22,7 @@
 
 <body>
 	<div id="container">
-		<button class="btn-down">&lt;</button>
-		<span class="page">1/13</span>
-		<button class="btn-up">&gt;</button>	
+		
 	</div>
 
 	<script type="text/babel">
@@ -45,7 +43,7 @@
 					// }
 				
 				function onClickDown(){
-					setCounter(counter - 1 < 1 ? maxCount : count - 1);
+					setCounter(counter - 1 < 1 ? maxCount : counter - 1);
 				}
 					// if(counter + 1 < 1){
 					// 	setCount(maxCounter);
@@ -63,7 +61,7 @@
 				);
 			}
 		// 요소 배치
-		ReadDOM.render(<Element/>, container)
+		ReactDOM.render(<Element/>, container)
 	</script>
 </body>
 </html>
