@@ -23,7 +23,7 @@ function Insert(){
 
 	return (
 		<div>
-			<input type="number" placeholder='게시글 번호' coChange={numChange} value={num}/>
+			<input type="number" placeholder='게시글 번호' onChange={numChange} value={num}/>
 			<br/>
 			<input type="text" placeholder='게시글 제목' onChange={titleChange} value={title}/>
 			<br/>

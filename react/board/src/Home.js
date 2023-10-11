@@ -1,3 +1,4 @@
+import React from 'react'
 import {useLocation} from 'react-router-dom'
 
 function Home({list}, deleteBoard, add){
@@ -20,7 +21,7 @@ function Home({list}, deleteBoard, add){
 					</tr>
 				</thead>
 				<tbody>
-					{list.length() == 0 ? 
+					{list.length == 0 ? 
 					<tr><th colSpan={4}><h1>등록된 게시글이 없습니다.</h1></th></tr> :
 						list.map(item=>{
 							return(
