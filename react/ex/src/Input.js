@@ -1,15 +1,6 @@
 import { useState } from 'react'
 
 function Input({inputEvent}){
-	// 밖으로 가고, app.js로 가고 어쩌고 뭐라는지 이해안되기 시작.... 
-	// props 만 쓰면됨, 매개변수는 App.js에서 빨간색(inputEvent)과 맞춰야한다. 
-		// let [text, setText] = useState('');
-		
-		// const inputChange = (e) => {
-		// 	setText(e.target.value);
-		// }
-		// console.log('input태그 입력창 : ', text);
-
 	return(
 		<input type="text" onChange={inputEvent}/>
 	)
