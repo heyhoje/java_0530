@@ -3,13 +3,17 @@ body {
 }
 
 .menu-list{
-  list-style: none; margin: 0; padding: 10px 0;
-  display: flex; justify-content: space-around;
+  list-style: none;
+  margin: 0; padding: 10px;
+  border: 3px solid black; font-size: 20px;
+  display: flex; justify-content: space-around; 
 }
+
+.menu-list+.menu-list
+
 .menu-link{
   color: black;
 }
-
 .menu-link:hover{
-  background-color: azure;
+  background-color: beige;
 }

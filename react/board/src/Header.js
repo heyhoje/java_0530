@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'
 function Header(){
 	return(
 		<header className='menu'>
@@ -12,6 +11,7 @@ function Header(){
 					<Link to="/insert" className='menu-link'>게시글 등록</Link>
 				</li>
 			</ul>
+			<br/>
 		</header>
 	)
 }
