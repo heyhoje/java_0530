@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+.menu-list{
+  list-style: none;
+  margin: 0; padding: 10px;
+  display: flex; justify-content: space-around; 
+}
+
+.menu-link{
+  color: black;
+}
+
+h1, th{
+  text-align: center;
+}
+
+.box{
+text-align: center;
+
+
+}
