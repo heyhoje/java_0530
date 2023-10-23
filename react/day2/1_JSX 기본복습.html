@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>JSX 기본 복습</title>
-	<!-- 자바스크립트 태그버튼 vs JSX 리액트버튼 차이점 비교-->
+	<!-- (html이 아니라)자바스크립트 태그버튼 vs JSX 리액트버튼 차이점 비교-->
+	<!-- 리액트 코드 대신에, 리액트 확장 라이브러리인 jsx를 이용. 스크립트로 연결 ~CDN~ -->
 	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -18,18 +19,24 @@
 </head>
 <body>
 	<div id="root">	</div>
-		<button onclick="alert('태그버튼')" class="btn">태그버튼</button>
+		<button onclick="alert('태그버튼')" class="btn">javaScript태그버튼</button>
 	<script type="text/babel">
-		// 넣어줄 위치 상수로 지정
+		// 1. 넣어줄 위치 상수로 지정
 		const root = document.getElementById("root");
 
-		// onClick에 넣을 기능을 함수로
-		// 코드간소화를 위해 
+		// onClick에 넣을 기능을 함수로(코드간소화를 위해)
 		function alertBtn(){
 			alert('리액트 버튼');
 		}
 
-		// jsx - 함수로 요소 만들기1
+		// 2-2. 변수처럼, 함수를 선언해서 요소 만들기2
+		const Btn = ()=>{
+			return (
+				// <button onClick={()=>alert("리액트 버튼")}>버튼</button>
+				<button onClick={alertBtn} className="btn">리액트 버튼</button>
+			);
+		}
+		// 2-1. jsx - 함수로 요소 만들기1
 		// + 이벤트 추가
 		/*
 		function Btn(){
@@ -38,13 +45,7 @@
 				<button onClick={alertBtn} className="btn">리액트 버튼</button>
 			);
 		} */
-		// 변수처럼 함수를 선언해서 요소 만들기2
-		const Btn = ()=>{
-			return (
-				// <button onClick={()=>alert("리액트 버튼")}>버튼</button>
-				<button onClick={alertBtn} className="btn">리액트 버튼</button>
-			);
-		}
+		
 		function Div(){
 			return(
 				<div>
@@ -52,11 +53,11 @@
 				</div>
 			);
 		}
-		// 태그처럼, 배치할 위치
+		// 3. .render(<Btn/>이란 함수를 태그처럼, 넣어줄 위치)
 		// 배치1
 		// ReactDOM.render(<Btn/>, root);
 
-		// 배치2
+		// 배치2(이미 만들어진 컴포넌트<Btn/>는 단일 태그처럼 사용하면됨 )
 		ReactDOM.render(<Div/>, root);
 
 	</script>
