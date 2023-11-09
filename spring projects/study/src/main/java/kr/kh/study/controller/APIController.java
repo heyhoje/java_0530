@@ -23,7 +23,7 @@ public class APIController {
 	}
 	
 	@ResponseBody // ajax니까
-	@GetMapping("/api/request")
+	@GetMapping(value="/api/request", produces = "application/json; charset=UTF-8")
 	public String request(@RequestParam("pageNo")int pageNo, @RequestParam("numOfRows")int numOfRows) throws Exception{
 		
 		  StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1741000/TsunamiShelter3/getTsunamiShelter1List"); /*URL*/

@@ -35,7 +35,33 @@
 			let numOfRows = $('numOfRows').val();
 			
 			$.ajax({
-				
+				url : '<c:url value="/api/request"/>',
+				data : {
+					pageNO : pageNO,
+					numOfRows : numOfRows
+				},
+				success : function(data){
+					console.log(data);
+					let obj = JSON.parse(data) // json으로 보낸 문자열?을 객체object로 바꿔줌
+					console.log(obj)
+					// console.log(obj.보라색 영어 이름 복사[몇 번지에 있는 값].row)
+					let list = console.log(obj.보라색 영어 이름 복사[몇 번지에 있는 값].row);
+					console.log(list)
+					let str = '';
+					for(item of list){
+						str += `
+							<tr>
+								<td>\${item.시도명}</td>
+								<td>\${item.시군구명}</td>
+								<td>\${item.시설명}</td>
+							</tr>		
+						`;
+					}
+					$('tbody').html(str);
+				},
+				error : function(a,b,c){
+				console.log(a)
+				}
 			})
 
 		});
